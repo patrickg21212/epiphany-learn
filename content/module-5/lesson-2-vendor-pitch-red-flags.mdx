@@ -1,0 +1,288 @@
+---
+id: lesson-2
+moduleId: module-5
+slug: vendor-pitch-red-flags
+title: "Red Flags in AI Vendor Pitches"
+subtitle: "What sales reps say vs. what it actually means"
+estimatedMinutes: 8
+xpReward: 50
+---
+
+# Red Flags in AI Vendor Pitches
+
+![Vendor red flags](/images/generated/m5l2-intro.png)
+
+AI sales demos are some of the most polished in tech right now. The tools look amazing. The use cases are compelling. The ROI claims are astronomical.
+
+Most of it is real — in the best-case scenario, with perfect inputs, and a dedicated implementation team.
+
+Here's how to decode what you're actually being sold.
+
+---
+
+## Why AI Pitches Are Different
+
+<Visual name="m5-ai-pitches-different" />
+
+With most software, demos represent the real product. With AI, demos often represent the ceiling — the best possible outcome under ideal conditions.
+
+The gap between demo and reality in AI is wider than in almost any other software category. This isn't necessarily dishonesty; it's a structural feature of probabilistic systems. But it means you need to do more due diligence, not less.
+
+---
+
+## The 8 Classic Red Flags
+
+<Visual name="m5-red-flags" />
+
+<RevealCard
+  id="rf-1"
+  label="1. 'Our AI is 99.9% accurate'"
+  reveal="All LLM-based AI hallucinates. All of it. A system that claims 99.9% accuracy either has a very narrow, well-defined task (where you could just write rules), is cherry-picking the metrics they're measuring, or is simply lying. Ask: accurate on what dataset? Measured how? Validated by whom? If they can't show you third-party validation, treat this as noise."
+/>
+
+<RevealCard
+  id="rf-2"
+  label="2. 'It learns from your data automatically'"
+  reveal="Most hosted AI tools don't retrain on your data in real time. What they usually mean is: the context window accumulates conversation history, or there's a RAG (retrieval-augmented generation) layer that pulls from your documents. That's not 'learning' in the machine learning sense. It's memory management. Ask exactly how personalization works — is it fine-tuning, RAG, prompt context, or just a feedback button that goes nowhere?"
+/>
+
+<RevealCard
+  id="rf-3"
+  label="3. 'We integrate with everything'"
+  reveal="'Everything' usually means: the 20 most popular tools via their APIs, with varying levels of depth. Ask for the specific integration you need, tested live in the demo. Ask what the fallback is if an integration breaks. 'Native integration' often means a one-way Zapier connection with no error handling."
+/>
+
+<RevealCard
+  id="rf-4"
+  label="4. 'ROI guarantee — 10x your output in 30 days'"
+  reveal="ROI claims in AI pitches are almost always based on best-case scenarios from customer stories carefully selected for the sales deck. Ask: what does the ROI model actually assume? What does onboarding look like — how long before the tool is actually running? What's the average time-to-value across all customers, not just the top case studies?"
+/>
+
+<RevealCard
+  id="rf-5"
+  label="5. 'No technical setup required — works out of the box'"
+  reveal="There is almost always setup required for any AI tool to be actually useful to a specific business. Training it on your products, connecting it to your data, configuring workflows, setting guardrails, testing edge cases. 'No setup' means no setup for a generic demo. For your actual use case: plan for at least 1-4 weeks of configuration. Ask what a typical onboarding looks like, step by step."
+/>
+
+<RevealCard
+  id="rf-6"
+  label="6. 'Our AI understands your industry'"
+  reveal="Most AI tools are general-purpose LLMs with industry-specific prompts and a curated knowledge base. That's useful — but it's not the same as a model trained from scratch on healthcare, legal, or financial data. Ask: what data was the model actually trained on? Is there a human review process for domain-specific outputs? What happens when the AI gives wrong industry-specific advice?"
+/>
+
+<RevealCard
+  id="rf-7"
+  label="7. 'We're the only platform that can do this'"
+  reveal="The AI tool space moves at extraordinary speed. If a vendor claims exclusive capability, either they have a meaningful technical moat (rare but real) or they're exaggerating competitive differentiation. Ask: what specifically does your platform do that competitors can't? Is that a patent, a proprietary model, or a feature gap that could close in 6 months?"
+/>
+
+<RevealCard
+  id="rf-8"
+  label="8. 'The demo runs on your actual data'"
+  reveal="Sometimes true, often not. Many demos use carefully prepared 'sample' data that showcases the model's strengths and avoids its weaknesses. Ask to see the tool run on your actual messy, real-world data — not cleaned samples. The gap between curated demo data and your real data is often where the product falls apart."
+/>
+
+---
+
+## The Demo Manipulation Playbook
+
+<Visual name="m5-demo-playbook" />
+
+Sales demos are designed to highlight strengths and avoid weaknesses. Watch for:
+
+**The single-path walkthrough** — they show you one perfect scenario. Ask what happens with edge cases, bad inputs, or ambiguous requests.
+
+**The live demo that's actually pre-recorded or staged** — if the demo feels too smooth, ask to try a specific prompt yourself in real time.
+
+**The feature that's "coming soon"** — if you're buying based on a roadmap promise, that's a bet on execution. Get it in writing with a timeline and refund terms, or wait.
+
+**The impressive output that takes 20 minutes of back-and-forth to produce** — if the AI needs extensive prompting to generate something good, factor that prompting effort into your actual workload.
+
+---
+
+## Sort the Signals
+
+<Visual name="m5-sort-signals" />
+
+<DragDrop
+  id="pitch-signals"
+  instruction="Sort these vendor claims and behaviors into Red Flags and Green Flags."
+  categories={["Red Flag", "Green Flag"]}
+  items={[
+    { id: "s1", text: "\"Our AI hallucinates about 2-3% of the time on this task — here's how we handle that\"", correctCategory: "Green Flag" },
+    { id: "s2", text: "\"We guarantee 10x ROI in 30 days or your money back\"", correctCategory: "Red Flag" },
+    { id: "s3", text: "\"Here's what onboarding looks like step by step — it usually takes 2-3 weeks to get fully configured\"", correctCategory: "Green Flag" },
+    { id: "s4", text: "\"Our AI learns your business automatically — no setup needed\"", correctCategory: "Red Flag" },
+    { id: "s5", text: "\"Let me run your actual data through it right now so you can see how it handles your real inputs\"", correctCategory: "Green Flag" },
+    { id: "s6", text: "\"We integrate with everything\"", correctCategory: "Red Flag" },
+    { id: "s7", text: "\"Here are three customers who tried it and it didn't work well for their use case — and here's why\"", correctCategory: "Green Flag" },
+    { id: "s8", text: "\"This feature is on our roadmap for Q3 — we're confident it'll be ready by then\"", correctCategory: "Red Flag" }
+  ]}
+/>
+
+---
+
+## Quick Check
+
+<Visual name="m5-quick-check-2" />
+
+<Quiz
+  id="lesson-2-quiz"
+  questions={[
+    {
+      id: "q1",
+      illustration: "m5-red-flags",
+      text: "A vendor claims their AI is '99.9% accurate.' What's the most important follow-up question?",
+      options: [
+        { id: "a", text: "What technology is the model built on?" },
+        { id: "b", text: "Accurate on what task, measured how, and validated by whom?" },
+        { id: "c", text: "How long has the company been operating?" },
+        { id: "d", text: "What is the pricing at enterprise scale?" }
+      ],
+      correctId: "b",
+      explanation: "Accuracy claims are meaningless without context. 99.9% accurate on what specific task? Measured on what dataset? Validated by an independent third party or by the vendor themselves? Without answers to these questions, the number is a marketing claim, not a specification."
+    },
+    {
+      id: "q2",
+      illustration: "m5-demo-playbook",
+      text: "During a demo, the vendor walks through one flawless scenario showing perfect AI output. What should you do?",
+      options: [
+        { id: "a", text: "Accept it as representative of real-world performance" },
+        { id: "b", text: "Ask to see the tool handle edge cases and run your own messy real-world data through it" },
+        { id: "c", text: "Ask for the ROI guarantee in writing" },
+        { id: "d", text: "Request access to the model's training data" }
+      ],
+      correctId: "b",
+      explanation: "Single-path demos are designed to showcase best-case performance. The real test is messy, ambiguous, real-world inputs — the same kind of data you'll actually be feeding it. Always ask to try your own data, not their curated samples."
+    },
+    {
+      id: "q3",
+      illustration: "m5-red-flags",
+      text: "A vendor says their tool 'learns from your data automatically.' What does this most likely actually mean?",
+      options: [
+        { id: "a", text: "The model retrains on your data in real time using continuous learning" },
+        { id: "b", text: "The model uses your conversation history and documents as context, not actual model retraining" },
+        { id: "c", text: "The vendor's team manually fine-tunes the model on your data each week" },
+        { id: "d", text: "Your data is added to the base training dataset for future model versions" }
+      ],
+      correctId: "b",
+      explanation: "For hosted AI tools, 'learns from your data' almost always means storing context in a retrieval system (RAG) or conversation memory — not retraining the model. Real fine-tuning is expensive, slow, and rare in standard SaaS pricing. If they claim actual retraining, ask exactly how and how often."
+    },
+    {
+      id: "q4",
+      illustration: "m5-sort-signals",
+      text: "A vendor tells you their AI tool 'integrates with everything.' What's the right follow-up?",
+      options: [
+        { id: "a", text: "Great — that means less setup work for you" },
+        { id: "b", text: "Ask them to demo the specific integration you need, live, with real data — and ask what happens when it breaks" },
+        { id: "c", text: "Check how many integrations are listed on their website" },
+        { id: "d", text: "Ask if they use Zapier or a native API" }
+      ],
+      correctId: "b",
+      explanation: "'Integrates with everything' usually means the 20 most popular tools via their APIs, with varying depth and reliability. The only way to verify is to see your specific integration working with real data. Also ask about error handling — what happens when the integration fails silently? That's where most 'everything' integrations fall apart."
+    },
+    {
+      id: "q5",
+      illustration: "m5-demo-playbook",
+      text: "A vendor's demo goes flawlessly — not a single hiccup, perfect outputs every time. What should this tell you?",
+      options: [
+        { id: "a", text: "The product is extremely well-built and reliable" },
+        { id: "b", text: "The demo may be staged or use pre-selected inputs — ask to run your own data through it in real time" },
+        { id: "c", text: "You should buy immediately before the price goes up" },
+        { id: "d", text: "The company has excellent quality control" }
+      ],
+      correctId: "b",
+      explanation: "A flawless demo is a red flag, not a green one. AI systems are probabilistic — they make mistakes by nature. A demo that never stumbles likely uses carefully selected inputs that showcase the model's strengths and avoid its weaknesses. Always insist on running your own real, messy data through the tool to see how it actually performs."
+    },
+    {
+      id: "q6",
+      illustration: "m5-sort-signals",
+      text: "Which of these is a green flag during an AI vendor pitch?",
+      options: [
+        { id: "a", text: "The vendor claims their tool is the only one that can solve your problem" },
+        { id: "b", text: "The vendor openly discusses failure rates and shows you how errors are handled" },
+        { id: "c", text: "The vendor guarantees 10x ROI within the first month" },
+        { id: "d", text: "The vendor says no technical setup is required" }
+      ],
+      correctId: "b",
+      explanation: "A vendor who openly discusses limitations, failure rates, and error handling is selling you a real product they understand. This kind of transparency signals confidence in the tool's actual value — they don't need to hide the downsides. Vendors who promise perfection are usually covering for shortcomings they don't want you to discover until after you've paid."
+    },
+    {
+      id: "q7",
+      illustration: "m5-red-flags",
+      text: "A vendor says a key feature you need is 'coming in Q3.' They show it on their product roadmap slide. How should you treat this?",
+      options: [
+        { id: "a", text: "As a reliable commitment — it's on an official slide" },
+        { id: "b", text: "As aspirational until it ships — don't pay for features that don't exist yet unless you have contractual guarantees" },
+        { id: "c", text: "As a reason to buy now to influence the development roadmap" },
+        { id: "d", text: "As proof the company is innovative and forward-thinking" }
+      ],
+      correctId: "b",
+      explanation: "Roadmap features are aspirational by default. A slide in a sales deck is not a contractual commitment. If a feature is critical to your decision, either get it in writing with a delivery date and refund clause, or wait until it actually ships. Buying based on roadmap promises is how businesses end up paying for products that don't do what they need."
+    },
+    {
+      id: "q8",
+      illustration: "m5-ai-pitches-different",
+      text: "Why is the gap between demo and reality wider for AI tools than for most other software?",
+      options: [
+        { id: "a", text: "AI vendors are more dishonest than other software vendors" },
+        { id: "b", text: "AI systems are probabilistic — demos show the ceiling (best-case), while reality includes the full range of variable outputs" },
+        { id: "c", text: "AI tools are newer and have more bugs" },
+        { id: "d", text: "AI demos use different software than the actual product" }
+      ],
+      correctId: "b",
+      explanation: "This isn't necessarily about dishonesty — it's a structural feature of probabilistic systems. Traditional software is deterministic: the demo IS the product. AI systems produce variable outputs depending on inputs, context, and randomness. Demos naturally showcase the best-case results, but your daily experience will include the full range, including the mediocre and wrong outputs."
+    },
+    {
+      id: "q9",
+      illustration: "m5-red-flags",
+      text: "A vendor says 'no technical setup required — works out of the box.' What does this most likely mean in practice?",
+      options: [
+        { id: "a", text: "You can be fully operational within minutes" },
+        { id: "b", text: "The generic demo works immediately, but configuring it for your actual use case will take 1-4 weeks of setup" },
+        { id: "c", text: "The tool is so simple it can't be customized" },
+        { id: "d", text: "They handle all the setup for free as part of the subscription" }
+      ],
+      correctId: "b",
+      explanation: "'No setup required' almost always means the default demo configuration works immediately. But getting the tool to work well for your specific business — training it on your products, connecting your data, configuring workflows, setting guardrails, testing edge cases — requires real work. Plan for 1-4 weeks minimum for any serious implementation."
+    },
+    {
+      id: "q10",
+      illustration: "m5-ai-pitches-different",
+      text: "A vendor says 'Our AI understands your industry.' What should you ask to verify this claim?",
+      options: [
+        { id: "a", text: "How many customers they have in your industry" },
+        { id: "b", text: "What data the model was actually trained on, whether there's human review for domain-specific outputs, and what happens when it gives wrong industry-specific advice" },
+        { id: "c", text: "Whether they have a dedicated industry team" },
+        { id: "d", text: "How long they've been serving your industry" }
+      ],
+      correctId: "b",
+      explanation: "Most 'industry-specific' AI tools are general-purpose models with industry-specific prompts and a curated knowledge base. That can be useful, but it's very different from a model actually trained on industry data. The real test is: what happens when it's wrong? If there's no human review process for domain-specific outputs, wrong answers could go undetected."
+    },
+    {
+      id: "q11",
+      illustration: "m5-demo-playbook",
+      text: "During a demo, the AI produces an impressive output — but only after the sales rep spent 5 minutes refining the prompt back and forth. What should you factor in?",
+      options: [
+        { id: "a", text: "Nothing — the final output is what matters" },
+        { id: "b", text: "The prompting effort is part of the real workload — if it takes extensive back-and-forth to get good results, your team will face that same time cost daily" },
+        { id: "c", text: "The sales rep is just an inexperienced user" },
+        { id: "d", text: "This means the AI is highly customizable, which is a positive" }
+      ],
+      correctId: "b",
+      explanation: "If the demo requires 5 minutes of prompt refinement to get a good result, your team will face that same overhead every time they use the tool. That prompting time adds up. Factor it into your time-savings calculation — a tool that saves 10 minutes but requires 8 minutes of prompting is only saving you 2 minutes per use."
+    }
+  ]}
+/>
+
+---
+
+## Key Takeaway
+
+<Visual name="m5-key-takeaway-2" />
+
+> **The best thing a vendor can do in a pitch is tell you honestly what their tool doesn't do well. Vendors who acknowledge limitations are selling you a real product. Vendors who can't find any limitations are selling you a story.**
+
+---
+
+<LessonComplete lessonId="lesson-2" nextLessonSlug="questions-before-buying" xpReward={50} />

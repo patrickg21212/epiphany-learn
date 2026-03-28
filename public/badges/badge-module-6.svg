@@ -1,0 +1,22 @@
+<svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="48" cy="48" r="44" fill="#0891b2"/>
+  <circle cx="48" cy="48" r="38" fill="#0e7490"/>
+  <!-- Rocket -->
+  <path d="M48 16 C48 16 60 24 60 46 L48 56 L36 46 C36 24 48 16 48 16 Z" fill="white" opacity="0.9"/>
+  <path d="M48 16 C48 16 60 24 60 36 L48 42 L36 36 C36 24 48 16 48 16 Z" fill="#a5f3fc"/>
+  <!-- Window -->
+  <circle cx="48" cy="40" r="6" fill="white" opacity="0.9"/>
+  <circle cx="48" cy="40" r="3.5" fill="#0891b2"/>
+  <!-- Fins -->
+  <path d="M36 46 L26 58 L36 54 Z" fill="#0891b2" opacity="0.7"/>
+  <path d="M60 46 L70 58 L60 54 Z" fill="#0891b2" opacity="0.7"/>
+  <!-- Flames -->
+  <path d="M42 56 C42 56 40 66 48 62 C56 66 54 56 54 56" fill="#fbbf24"/>
+  <path d="M44 56 C44 56 43 68 48 64 C53 68 52 56 52 56" fill="#fde68a"/>
+  <!-- Stars -->
+  <circle cx="24" cy="26" r="2" fill="white" opacity="0.6"/>
+  <circle cx="72" cy="30" r="2" fill="white" opacity="0.6"/>
+  <circle cx="20" cy="44" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="76" cy="48" r="1.5" fill="white" opacity="0.5"/>
+  <text x="48" y="82" font-size="9" fill="white" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" opacity="0.7">MODULE 6</text>
+</svg>

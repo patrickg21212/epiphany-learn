@@ -1,0 +1,21 @@
+<svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="48" cy="48" r="44" fill="#191b52"/>
+  <circle cx="48" cy="48" r="36" fill="#282dab"/>
+  <!-- Star burst (8 points) -->
+  <path d="M48 14 L51 36 L70 22 L55 38 L78 38 L58 48 L78 58 L55 58 L70 74 L51 60 L48 82 L45 60 L26 74 L41 58 L18 58 L38 48 L18 38 L41 38 L26 22 L45 36 Z" fill="white" opacity="0.15"/>
+  <!-- Graduation cap -->
+  <!-- Board -->
+  <rect x="28" y="44" width="40" height="26" rx="6" fill="white" opacity="0.9"/>
+  <!-- Cap top -->
+  <path d="M48 22 L18 36 L48 50 L78 36 Z" fill="white" opacity="0.9"/>
+  <rect x="30" y="50" width="36" height="3" rx="1.5" fill="#282dab"/>
+  <rect x="30" y="57" width="28" height="3" rx="1.5" fill="#c3d1ff"/>
+  <rect x="30" y="64" width="36" height="3" rx="1.5" fill="#282dab"/>
+  <!-- Tassel -->
+  <line x1="72" y1="36" x2="72" y2="50" stroke="white" stroke-width="2" opacity="0.8"/>
+  <circle cx="72" cy="52" r="3" fill="#fbbf24"/>
+  <!-- Center star on board -->
+  <path d="M48 36 L49.5 42 L56 42 L51 46 L52.5 52 L48 48 L43.5 52 L45 46 L40 42 L46.5 42 Z" fill="#4f61fa"/>
+  <!-- Label -->
+  <text x="48" y="81" font-size="7" fill="white" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700">FULL STACK</text>
+</svg>

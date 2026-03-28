@@ -1,0 +1,223 @@
+---
+id: lesson-1
+moduleId: module-1
+slug: ai-vs-hype
+title: "AI vs. the Hype Machine"
+subtitle: "What it actually does — and doesn't do"
+estimatedMinutes: 7
+xpReward: 50
+---
+
+# AI vs. the Hype Machine
+
+![AI vs the hype](/images/generated/m1l1-intro.png)
+
+You've seen the headlines. *"AI will take everyone's jobs."* *"AI is basically conscious."* *"We're six months from the end of the world as we know it."*
+
+Every week it's something new. And somehow each story is either pure doom or pure magic — nothing in between.
+
+Here's the truth: most of that is noise. And once you understand what AI actually is, the noise stops being scary and starts being kind of funny.
+
+---
+
+## It's Really Just Really Good Autocomplete
+
+<Visual name="m1-autocomplete-parrot" />
+
+You know how your phone finishes your texts? You start typing "Happy birth—" and your keyboard suggests "day!" because it's seen you type that a hundred times?
+
+That's autocomplete. Simple, obvious, kind of dumb.
+
+Now imagine a version of autocomplete that read every book ever written, every article ever published, every forum post and Wikipedia page and recipe blog on the entire internet. Billions upon billions of sentences, in dozens of languages.
+
+That's closer to what AI is. It's autocomplete — but trained on so much more information that it can finish your sentences, answer your questions, write poems, and explain tax law.
+
+It is not thinking. It's not understanding you. It's predicting what words should come next, based on patterns it found in everything it read.
+
+That's the whole trick. And it's an impressive trick! But it's still a trick — not magic.
+
+---
+
+## The Headlines vs. What's Real
+
+<Visual name="m1-headlines-vs-real" />
+
+The gap between how AI is reported and what AI actually does is enormous. Let's close that gap.
+
+Click each card below to see what's behind the headline:
+
+<RevealCard
+  id="hype-1"
+  label="AI is going to take your job"
+  reveal="Reality: AI is replacing tasks inside jobs, not the whole job. A radiologist still reads the results — but AI flags which scans to look at first. A writer still writes — but AI helps brainstorm faster. Your job might change. It probably won't disappear overnight. The people panicking the most are usually selling something."
+/>
+
+<RevealCard
+  id="hype-2"
+  label="AI can think and reason like a human"
+  reveal="Reality: It absolutely cannot. It produces text that sounds like reasoning. But there's no actual thinking happening inside. Ask it a trick question it wasn't trained on and it'll confidently give you a wrong answer — because it's predicting what sounds right, not figuring out what is right."
+/>
+
+<RevealCard
+  id="hype-3"
+  label="AI is sentient / has feelings"
+  reveal="Reality: No. AI does not experience anything. It generates text that sounds emotional because emotional language is extremely common in what it learned from. When ChatGPT says 'I feel excited about this!' — it's pattern-matching to human conversation, not feeling anything. It has no inner life whatsoever."
+/>
+
+<RevealCard
+  id="hype-4"
+  label="AI will solve climate change / cure cancer / end poverty"
+  reveal="Reality: AI is a useful tool for helping researchers move faster. It can process huge amounts of data, find patterns humans would miss, and accelerate certain kinds of work. But it doesn't replace human scientists, doesn't run experiments in the real world, and can't conjure breakthrough discoveries from thin air."
+/>
+
+---
+
+## Why This Matters to You Personally
+
+<Visual name="m1-why-hype-matters" />
+
+Here's why understanding the hype gap is actually useful in your daily life:
+
+When you know AI is sophisticated autocomplete — not a robot brain — you stop being intimidated by it. You start using it like a tool instead of treating it like an oracle.
+
+You also stop getting played. Vendors, politicians, and tech companies all benefit from you thinking AI is magic. If you believe the hype, you're easier to impress, easier to scare, and easier to sell to.
+
+Understanding what's real means you can use these tools confidently, question them when they get things wrong, and tune out the parts that are just theater.
+
+---
+
+## Quick Check
+
+<Visual name="m1-quick-check-l1" />
+
+<Quiz questions={[
+  {
+    id: "hype-q1",
+    illustration: "m1-autocomplete-parrot",
+    text: "What is the most accurate description of how AI works?",
+    options: [
+      { id: "a", text: "It thinks through problems like a human brain does" },
+      { id: "b", text: "It looks up answers in a massive built-in database" },
+      { id: "c", text: "It predicts what words should come next based on patterns it learned" },
+      { id: "d", text: "It connects to the internet to find real-time answers" },
+    ],
+    correctId: "c",
+    explanation: "AI generates responses by predicting the most likely next word, over and over, based on patterns absorbed from enormous amounts of text. There's no thinking, no database lookup, and no real-time internet search happening (unless those are specifically added features).",
+  },
+  {
+    id: "hype-q2",
+    illustration: "m1-headlines-vs-real",
+    text: "A headline says 'AI passed the bar exam — lawyers are obsolete.' What's the most accurate response?",
+    options: [
+      { id: "a", text: "Time to panic — law as a career is finished" },
+      { id: "b", text: "AI can assist with legal research and drafting, but can't replace the judgment, relationships, and accountability that lawyers provide" },
+      { id: "c", text: "The headline is 100% accurate and lawyers should retrain immediately" },
+      { id: "d", text: "AI definitely cheated somehow" },
+    ],
+    correctId: "b",
+    explanation: "AI passing a standardized test is genuinely impressive and does change how lawyers work. But passing an exam is not the same as practicing law — which involves client relationships, ethical judgment, courtroom presence, and accountability. Tasks change. Entire professions rarely vanish overnight.",
+  },
+  {
+    id: "hype-q3",
+    illustration: "m1-autocomplete-parrot",
+    text: "Why does AI sometimes sound like it has opinions or emotions?",
+    options: [
+      { id: "a", text: "Because it has developed basic feelings through training" },
+      { id: "b", text: "Because emotional and opinionated language is extremely common in the text it learned from" },
+      { id: "c", text: "Because programmers coded specific emotions into the system" },
+      { id: "d", text: "Because it mirrors the user's emotional state in real time" },
+    ],
+    correctId: "b",
+    explanation: "AI learned from billions of examples of human writing, which is full of opinions, emotions, and personality. When it generates text that sounds emotional, it's reproducing those patterns — not experiencing anything. There's no inner life behind the words.",
+  },
+  {
+    id: "hype-q4",
+    illustration: "m1-autocomplete-parrot",
+    text: "What is the best analogy for how AI generates responses?",
+    options: [
+      { id: "a", text: "A librarian looking up the right book for your question" },
+      { id: "b", text: "A calculator solving a math equation" },
+      { id: "c", text: "A very advanced version of your phone's autocomplete, trained on an enormous amount of text" },
+      { id: "d", text: "A search engine indexing web pages" },
+    ],
+    correctId: "c",
+    explanation: "AI works by predicting what words should come next, one at a time — just like autocomplete on your phone, except trained on vastly more text. It's not looking things up, solving equations, or searching the web. It's pattern-matching at an incredible scale.",
+  },
+  {
+    id: "hype-q5",
+    illustration: "m1-headlines-vs-real",
+    text: "A coworker says 'AI understands everything I tell it — it's basically thinking.' What's wrong with this claim?",
+    options: [
+      { id: "a", text: "Nothing — AI does understand language" },
+      { id: "b", text: "AI processes language patterns but has no actual comprehension or awareness of what the words mean" },
+      { id: "c", text: "AI only understands English, not other languages" },
+      { id: "d", text: "AI understands text but not spoken words" },
+    ],
+    correctId: "b",
+    explanation: "AI produces responses that look like understanding, but there's no comprehension happening inside. It recognizes patterns in language and generates statistically likely responses. It doesn't know what words mean the way you do — it just knows which words tend to appear together.",
+  },
+  {
+    id: "hype-q6",
+    illustration: "m1-why-hype-matters",
+    text: "Why do tech companies benefit from people believing AI is more powerful than it actually is?",
+    options: [
+      { id: "a", text: "They don't — companies always undersell their products" },
+      { id: "b", text: "Overhyped AI attracts investment, customers, and media attention, which drives revenue" },
+      { id: "c", text: "Companies are legally required to exaggerate AI capabilities" },
+      { id: "d", text: "The hype is always accurate — companies just report the truth" },
+    ],
+    correctId: "b",
+    explanation: "When AI sounds like magic, companies get more investment, more press coverage, and more paying customers. The hype cycle serves business interests. Understanding this helps you evaluate AI claims more critically and avoid being oversold on capabilities that don't exist yet.",
+  },
+  {
+    id: "hype-q7",
+    illustration: "m1-intro-hype",
+    text: "Which statement about AI is actually true?",
+    options: [
+      { id: "a", text: "AI can learn new things from your conversations and permanently remember them" },
+      { id: "b", text: "AI is conscious but at a lower level than humans" },
+      { id: "c", text: "AI predicts text based on patterns and can be genuinely useful as a tool, but it's not thinking" },
+      { id: "d", text: "AI will surpass human intelligence within the next year" },
+    ],
+    correctId: "c",
+    explanation: "The grounded truth about AI: it's a powerful pattern-prediction tool that produces useful outputs. It doesn't think, isn't conscious, doesn't permanently learn from conversations (unless specifically designed to), and nobody can reliably predict exactly when or if it will surpass human intelligence.",
+  },
+  {
+    id: "hype-q8",
+    illustration: "m1-headlines-vs-real",
+    text: "Someone tells you 'AI is going to make all creative jobs disappear.' Based on what you've learned, what's the most accurate response?",
+    options: [
+      { id: "a", text: "That's absolutely true — creative work is the easiest for AI to replace" },
+      { id: "b", text: "AI can generate creative content, but human creativity involves lived experience, taste, and intentionality that AI doesn't have" },
+      { id: "c", text: "AI cannot do anything creative at all" },
+      { id: "d", text: "Only visual art jobs are at risk, not writing or music" },
+    ],
+    correctId: "b",
+    explanation: "AI can produce text, images, and music that look creative. But it's remixing patterns from existing work, not creating from personal experience or intention. Creative professionals are already using AI as a tool to work faster — the jobs are changing, but 'disappearing entirely' is hype, not reality.",
+  },
+  {
+    id: "hype-q9",
+    illustration: "m1-why-hype-matters",
+    text: "What's the most practical benefit of understanding that AI is 'just' advanced autocomplete?",
+    options: [
+      { id: "a", text: "You can impress people at parties with technical knowledge" },
+      { id: "b", text: "You can use it confidently as a tool without being intimidated or misled by hype" },
+      { id: "c", text: "You'll know how to build your own AI system" },
+      { id: "d", text: "You won't need to use AI at all" },
+    ],
+    correctId: "b",
+    explanation: "When you understand what AI actually is, you stop being scared of it and start using it effectively. You know what it's good at (generating text, brainstorming, drafting) and what it's bad at (facts, reasoning, real understanding). That knowledge makes you a smarter, more confident user.",
+  },
+]} />
+
+---
+
+## Key Takeaway
+
+<Visual name="m1-key-takeaway-l1" />
+
+> **AI is extraordinarily powerful autocomplete — not a robot brain, not a magic oracle, not a job-eating monster. Understand that, and the headlines stop being scary.**
+
+---
+
+<LessonComplete lessonId="lesson-1" nextLessonSlug="ai-vs-automation" xpReward={50} />

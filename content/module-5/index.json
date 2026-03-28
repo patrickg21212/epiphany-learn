@@ -1,0 +1,43 @@
+{
+  "id": "module-5",
+  "title": "Evaluating AI Tools and Vendors",
+  "subtitle": "Make smarter buying decisions before you spend a dollar",
+  "description": "In 4 lessons, you'll learn how to decide if you actually need AI (or just better processes), how to spot the red flags in vendor sales pitches, what questions to ask before buying anything, and how AI pricing models work — plus a clear framework for deciding whether to build, buy, or wait.",
+  "estimatedMinutes": 32,
+  "xpReward": 200,
+  "badgeId": "ai-buyer-smart",
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "slug": "ai-or-automation",
+      "title": "Do You Actually Need AI?",
+      "subtitle": "How to tell if AI is the answer — or if simpler automation will do",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-2",
+      "slug": "vendor-pitch-red-flags",
+      "title": "Red Flags in AI Vendor Pitches",
+      "subtitle": "What sales reps say vs. what it actually means",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-3",
+      "slug": "questions-before-buying",
+      "title": "12 Questions to Ask Before You Buy",
+      "subtitle": "The buyer's checklist that cuts through the demo magic",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-4",
+      "slug": "pricing-and-build-vs-buy",
+      "title": "Pricing Models and Build vs. Buy",
+      "subtitle": "Understand what you're actually paying for — and when to build your own",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    }
+  ]
+}

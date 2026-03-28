@@ -1,0 +1,306 @@
+---
+id: lesson-4
+moduleId: module-5
+slug: pricing-and-build-vs-buy
+title: "Pricing Models and Build vs. Buy"
+subtitle: "Understand what you're actually paying for — and when to build your own"
+estimatedMinutes: 8
+xpReward: 50
+---
+
+# Pricing Models and Build vs. Buy
+
+![Pricing and build vs buy](/images/generated/m5l4-intro.png)
+
+AI tools use pricing structures that are genuinely confusing — often by design. And underneath every "just use a third-party tool" decision is an unanswered question: should we be building this ourselves?
+
+This lesson gives you a clear mental model for both.
+
+---
+
+## The Three Main AI Pricing Models
+
+<Visual name="m5-pricing-models" />
+
+Most AI tools use one of three pricing structures — or a hybrid of them.
+
+<RevealCard
+  id="pricing-1"
+  label="Per-Seat Pricing"
+  reveal="A flat monthly fee per user. Example: $50/user/month. Simple to budget. Common for productivity tools (AI writing assistants, meeting notetakers). The risk: you pay for seats whether people use them or not. Works well when adoption is high and usage is roughly uniform across users. Breaks down when usage is highly variable (power users vs. light users) — you end up subsidizing inactive seats."
+/>
+
+<RevealCard
+  id="pricing-2"
+  label="Per-Use (Consumption) Pricing"
+  reveal="You pay per action: per API call, per message, per document processed, per minute of audio transcribed. Example: $0.002 per 1,000 tokens processed. Scales directly with usage — you never pay for idle capacity. The risk: unpredictable costs if usage spikes. A single batch job or viral moment can generate a $2,000 bill overnight if you don't have usage caps set. Always set spending limits on consumption-priced tools."
+/>
+
+<RevealCard
+  id="pricing-3"
+  label="Flat Rate (All-Inclusive) Pricing"
+  reveal="One fixed price for unlimited access — or access up to a very high limit. Example: $299/month for unlimited AI responses. Predictable budgeting. Best when you have high, consistent volume. The risk: vendors often use 'fair use' clauses to throttle heavy users or quietly downgrade model quality at high volumes. Read the fine print on what 'unlimited' actually means — it often has asterisks."
+/>
+
+---
+
+## Hybrid Pricing: The Sneaky Variant
+
+<Visual name="m5-hybrid-pricing" />
+
+Most enterprise AI tools blend the models:
+
+- **Per-seat base fee** (for platform access and support) + **consumption charges** (for actual AI usage)
+- **Tiered flat rate** (cheap entry tier with low limits, forced upgrades when you hit the ceiling)
+- **Free base + paid add-ons** (the core feature is free, but every useful integration, export, or advanced feature requires an upgrade)
+
+The most common hidden cost: **overage charges**. Many flat-rate plans have a soft limit after which per-use pricing kicks in — often at a premium rate. Check the overage terms before you exceed them, not after.
+
+---
+
+## Total Cost of Ownership: What the Pricing Page Doesn't Show
+
+<Visual name="m5-total-cost" />
+
+The tool's pricing page is only the starting point. Real cost includes:
+
+| Cost Category | Often Missed? |
+|---|---|
+| Subscription fee | No — it's on the page |
+| Onboarding / setup time | Usually |
+| Integration development time | Always |
+| Training and onboarding | Always |
+| Ongoing prompt maintenance | Always |
+| Output review / quality control | Always |
+| Switching costs if it doesn't work | Always |
+
+For a $99/month tool that takes 40 hours to set up properly, integrate with your stack, and get up and running with — the real first-year cost is thousands of dollars, not $1,188.
+
+Factor these before you evaluate "ROI."
+
+---
+
+## Build vs. Buy: The Decision Framework
+
+<Visual name="m5-build-vs-buy" />
+
+At some point, every growing business asks: should we build our own AI capability instead of buying a vendor product?
+
+Here's how to think about it:
+
+<RevealCard
+  id="bvb-1"
+  label="Buy when: the use case is generic"
+  reveal="Customer service chatbot, email drafting, meeting summaries, document Q&A — these are solved problems. Dozens of mature tools exist. Building your own would take months and cost hundreds of thousands of dollars to reach feature parity with a $200/month SaaS product. Buy. Focus your engineering resources on your actual differentiated problems."
+/>
+
+<RevealCard
+  id="bvb-2"
+  label="Buy when: speed matters more than customization"
+  reveal="Getting to value in 2 weeks vs. 6 months is often the right tradeoff even if the vendor solution is imperfect. Especially true for early-stage experiments where you're not sure the use case will stick. Use vendor tools to validate, then consider building once you've proven the workflow."
+/>
+
+<RevealCard
+  id="bvb-3"
+  label="Build when: your use case is genuinely unique"
+  reveal="If your workflow has domain-specific requirements no vendor has solved, your data structure is proprietary, or the competitive advantage depends on the AI being yours — building is justified. Examples: a proprietary pricing model, a medical diagnosis assistant trained on your specific patient population, a recommendation engine built on your unique product catalog."
+/>
+
+<RevealCard
+  id="bvb-4"
+  label="Build when: vendor pricing becomes prohibitive at scale"
+  reveal="If a tool costs $0.01 per transaction and you process 10 million transactions/month, that's $100k/month. At that scale, building on top of a foundation model API directly (and optimizing your usage) often drops costs by 80-90%. The build vs. buy crossover point is usually somewhere between $5k and $50k/month in vendor fees."
+/>
+
+<RevealCard
+  id="bvb-5"
+  label="The 'Build Later' Path"
+  reveal="The most common winning strategy: Buy a vendor tool to validate the workflow and prove ROI. Once you've confirmed it works and the volume justifies it, build a leaner custom solution on top of foundation model APIs (OpenAI, Anthropic, etc.). You get speed-to-market from the vendor and cost efficiency from your own implementation. This is the path most successful mid-size companies take."
+/>
+
+---
+
+## Quick Reference: The Build vs. Buy Matrix
+
+<Visual name="m5-build-vs-buy-matrix" />
+
+<DragDrop
+  id="bvb-sort"
+  instruction="For each scenario, decide whether it's a Buy situation or a Build situation."
+  categories={["Buy", "Build"]}
+  items={[
+    { id: "sc1", text: "You need a chatbot to answer FAQs about your product — same as 10,000 other businesses", correctCategory: "Buy" },
+    { id: "sc2", text: "You process 8 million AI requests/month and current vendor costs are $120k/month", correctCategory: "Build" },
+    { id: "sc3", text: "You want AI meeting notes — a well-solved, commodity use case", correctCategory: "Buy" },
+    { id: "sc4", text: "Your medical AI needs to be trained on 20 years of your proprietary patient outcome data", correctCategory: "Build" },
+    { id: "sc5", text: "You want to test if AI email drafting saves time before committing to it", correctCategory: "Buy" },
+    { id: "sc6", text: "Your competitive moat depends on a recommendation algorithm unique to your use case", correctCategory: "Build" }
+  ]}
+/>
+
+---
+
+## Quick Check
+
+<Visual name="m5-quick-check-4" />
+
+<Quiz
+  id="lesson-4-quiz"
+  questions={[
+    {
+      id: "q1",
+      illustration: "m5-pricing-models",
+      text: "You're evaluating a flat-rate AI tool at $299/month. The pricing page says 'unlimited usage.' What should you verify before signing?",
+      options: [
+        { id: "a", text: "Whether the company has received VC funding" },
+        { id: "b", text: "Whether 'unlimited' has a fair use policy, overage charges, or throttling above a certain volume" },
+        { id: "c", text: "Whether the tool is available on mobile" },
+        { id: "d", text: "Whether the tool has more features than per-seat alternatives" }
+      ],
+      correctId: "b",
+      explanation: "'Unlimited' in SaaS almost always has conditions. Look for fair use clauses, soft limits that trigger throttling, or overage rates in the fine print. The $299/month flat rate may become $800/month once you hit the actual limit — which often isn't disclosed prominently."
+    },
+    {
+      id: "q2",
+      illustration: "m5-total-cost",
+      text: "A consumption-priced AI API charges $0.003 per 1,000 tokens. You start using it heavily and you get a $4,000 bill at the end of the month. What should you have done first?",
+      options: [
+        { id: "a", text: "Negotiated a flat-rate plan before starting" },
+        { id: "b", text: "Set a spending cap or usage alert at a defined threshold before going live" },
+        { id: "c", text: "Avoided consumption-priced tools entirely — they're always a trap" },
+        { id: "d", text: "Limited the tool to one team member until you understood usage patterns" }
+      ],
+      correctId: "b",
+      explanation: "Consumption pricing is predictable if you manage it. Always set spending caps and usage alerts before deploying any consumption-priced tool to a team. Most APIs and platforms offer budget alerts or hard caps — configure them before you start, not after you get the bill."
+    },
+    {
+      id: "q3",
+      illustration: "m5-build-vs-buy",
+      text: "You're considering building a custom AI email drafting tool. You currently process about 500 emails/month. What's the right approach?",
+      options: [
+        { id: "a", text: "Build a custom solution — it will give you a competitive advantage" },
+        { id: "b", text: "Buy an existing vendor tool — email drafting is a solved problem and custom builds aren't justified at this volume" },
+        { id: "c", text: "Hire a team of ML engineers to train a proprietary model" },
+        { id: "d", text: "Wait until you understand AI better before adopting any tool" }
+      ],
+      correctId: "b",
+      explanation: "Email drafting is a commodity use case — dozens of mature tools solve it well. At 500 emails/month, you're nowhere near the volume where build economics make sense. Buy a vendor tool, get value in weeks, and revisit the build decision if you eventually scale to millions of emails/month."
+    },
+    {
+      id: "q4",
+      illustration: "m5-hybrid-pricing",
+      text: "A tool costs $49/month on the starter plan, but you notice the next tier is $299/month and kicks in at 5,000 messages. You currently send 3,000 messages/month and growing. What's the real concern?",
+      options: [
+        { id: "a", text: "The starter plan is too cheap to be trustworthy" },
+        { id: "b", text: "You'll likely hit the tier jump soon, and your real cost will be $299/month — not the $49 you're budgeting for" },
+        { id: "c", text: "You should negotiate a custom plan before signing up" },
+        { id: "d", text: "Tiered pricing always means the product is low quality" }
+      ],
+      correctId: "b",
+      explanation: "Tiered pricing with steep jumps is one of the most common hidden costs in AI tools. If you're at 3,000 messages and growing, you'll cross the 5,000 threshold soon — and your monthly cost will jump 6x overnight. Always project your costs at 3x and 10x current usage before committing to any plan."
+    },
+    {
+      id: "q5",
+      illustration: "m5-total-cost",
+      text: "What is the 'total cost of ownership' for an AI tool, and why does it matter?",
+      options: [
+        { id: "a", text: "It's the subscription fee — that's the only real cost" },
+        { id: "b", text: "It includes the subscription plus setup time, integration work, training, ongoing maintenance, quality control, and switching costs — often much higher than the sticker price" },
+        { id: "c", text: "It's the subscription fee multiplied by the number of users" },
+        { id: "d", text: "It's whatever the vendor quotes during the sales call" }
+      ],
+      correctId: "b",
+      explanation: "The pricing page only shows the subscription fee. Real cost includes the hours spent on setup, integration, team training, ongoing prompt maintenance, output review, and the cost of switching if it doesn't work out. A $99/month tool that takes 40 hours to implement properly costs thousands in the first year when you account for all the hidden labor."
+    },
+    {
+      id: "q6",
+      illustration: "m5-pricing-models",
+      text: "Per-seat pricing works well in which scenario?",
+      options: [
+        { id: "a", text: "When most seats will go unused" },
+        { id: "b", text: "When usage is roughly uniform across users and adoption is high" },
+        { id: "c", text: "When only one person on the team will use the tool" },
+        { id: "d", text: "When the tool is used for a single project and then cancelled" }
+      ],
+      correctId: "b",
+      explanation: "Per-seat pricing makes economic sense when most users are actually using the tool regularly and their usage patterns are similar. It breaks down when usage is highly variable — power users get great value while light users represent wasted spend. If half your seats go unused, you're subsidizing empty chairs."
+    },
+    {
+      id: "q7",
+      illustration: "m5-build-vs-buy-matrix",
+      text: "You're spending $15,000/month on an AI vendor tool. Your CTO says you could build the same thing in-house for a one-time $80,000 investment plus $2,000/month in API costs. What's the smartest approach?",
+      options: [
+        { id: "a", text: "Build immediately — the math clearly favors it" },
+        { id: "b", text: "Do the full comparison: build costs often exceed estimates, and factor in maintenance, hiring, and the time to reach feature parity before deciding" },
+        { id: "c", text: "Stay with the vendor — building is always riskier" },
+        { id: "d", text: "Negotiate a discount with the vendor first and abandon the build idea" }
+      ],
+      correctId: "b",
+      explanation: "The initial math looks compelling, but build costs almost always exceed estimates. Factor in ongoing maintenance, the engineering time diverted from other projects, the months it takes to reach feature parity, and the risk of the project going over budget. The build-vs-buy crossover point requires honest accounting on both sides, not just the optimistic build estimate."
+    },
+    {
+      id: "q8",
+      illustration: "m5-build-vs-buy",
+      text: "What is the 'buy then build' strategy, and why is it the most common winning approach?",
+      options: [
+        { id: "a", text: "Buy a vendor's source code and modify it internally" },
+        { id: "b", text: "Use a vendor tool first to validate the workflow and prove ROI, then build a custom solution on foundation model APIs once volume justifies it" },
+        { id: "c", text: "Buy two competing tools and merge them together" },
+        { id: "d", text: "Buy the tool and never build — always let vendors handle AI" }
+      ],
+      correctId: "b",
+      explanation: "The most successful mid-size companies follow this path: buy a vendor tool to get speed-to-market and validate that the workflow actually works. Once the use case is proven and volume justifies the investment, build a leaner custom solution using foundation model APIs directly. This combines the vendor's speed with your own cost efficiency."
+    },
+    {
+      id: "q9",
+      illustration: "m5-hybrid-pricing",
+      text: "An AI tool advertises a 'free plan' with paid add-ons for advanced features. What's the typical hidden cost?",
+      options: [
+        { id: "a", text: "There are no hidden costs — free means free" },
+        { id: "b", text: "The core feature is free, but every useful integration, export capability, or advanced feature requires a paid upgrade — making the real cost much higher than 'free'" },
+        { id: "c", text: "The free plan secretly charges your credit card" },
+        { id: "d", text: "Free plans have better features than paid plans" }
+      ],
+      correctId: "b",
+      explanation: "Free-tier-plus-add-ons is a common pricing strategy. The base product works for a basic demo, but the integrations you need, the export formats you require, and the volume you'll actually use all sit behind paywalls. By the time you've added everything you need, the 'free' tool costs more than a competitor with transparent flat-rate pricing."
+    },
+    {
+      id: "q10",
+      illustration: "m5-build-vs-buy-matrix",
+      text: "When does building your own AI solution make sense instead of buying a vendor product?",
+      options: [
+        { id: "a", text: "Whenever your team has engineers available" },
+        { id: "b", text: "When your use case is genuinely unique, your data is proprietary, or vendor pricing becomes prohibitive at your scale" },
+        { id: "c", text: "When the vendor's tool has any limitation" },
+        { id: "d", text: "Always — buying AI tools is wasteful" }
+      ],
+      correctId: "b",
+      explanation: "Building is justified in specific situations: your workflow has domain-specific requirements no vendor has solved, your competitive advantage depends on owning the AI, or you've grown to the point where vendor fees are orders of magnitude more expensive than running it yourself. For generic use cases at normal volumes, buying is almost always more efficient."
+    },
+    {
+      id: "q11",
+      illustration: "m5-total-cost",
+      text: "You're on a consumption-priced plan. A team member accidentally runs a batch job over the weekend that processes 50x your normal volume. What should you have set up in advance?",
+      options: [
+        { id: "a", text: "A policy document reminding employees to be careful" },
+        { id: "b", text: "Spending caps and usage alerts at defined thresholds — most platforms offer these, and they prevent surprise bills" },
+        { id: "c", text: "Weekend access restrictions for all employees" },
+        { id: "d", text: "A separate account for batch jobs" }
+      ],
+      correctId: "b",
+      explanation: "Consumption-priced tools are predictable only if you manage them proactively. Always configure hard spending caps and alert thresholds before deploying any consumption-priced tool. A $50 weekend job that accidentally becomes a $5,000 weekend job is completely preventable with a simple spending limit — but you have to set it up before the mistake happens, not after."
+    }
+  ]}
+/>
+
+---
+
+## Key Takeaway
+
+<Visual name="m5-key-takeaway-4" />
+
+> **There's no universal right answer between buy and build — there's only the right answer for your use case, your volume, and your stage. Most businesses should buy first, prove the value, then optimize. The businesses that always build end up slow. The ones that always buy end up captive.**
+
+---
+
+<ModuleComplete moduleId="module-5" nextModuleSlug="module-6" xpReward={200} />

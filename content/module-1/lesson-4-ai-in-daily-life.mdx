@@ -1,0 +1,266 @@
+---
+id: lesson-4
+moduleId: module-1
+slug: ai-in-daily-life
+title: "You're Already Using AI (You Just Don't Know It)"
+subtitle: "It's been hiding in plain sight for years"
+estimatedMinutes: 6
+xpReward: 50
+---
+
+# You're Already Using AI (You Just Don't Know It)
+
+![AI in your daily life](/images/generated/m1l4-intro.png)
+
+Here's something most people don't realize: AI isn't coming. It's already here. It's been here for years.
+
+It's in your pocket. In your living room. In your bank account. In the app you used this morning before you finished your coffee.
+
+You've been using AI every single day — you just weren't calling it that.
+
+---
+
+## The AI You're Already Living With
+
+<Visual name="m1-ai-already-living" />
+
+No, really. Go through a normal day:
+
+You wake up and check your phone. Your email app has already sorted the spam away from the real stuff — AI did that. You open Netflix. The show it's suggesting is actually something you'd probably like — AI figured that out. You unlock your phone with your face — AI is recognizing you in real time. You ask your phone for directions and it estimates you'll arrive in 22 minutes — AI analyzed current traffic patterns and predicted that.
+
+You haven't even had breakfast and you've already used AI four times.
+
+Click through these to see how each one works:
+
+<RevealCard
+  id="daily-1"
+  label="Your email spam filter"
+  reveal="Your spam filter was trained on millions of examples of spam and real emails. It learned the patterns — the suspicious links, the weird sender addresses, the phrases scammers love to use. When a new email arrives, it compares it against all those patterns in a fraction of a second and makes a call: inbox or trash. Every time you mark something as spam, you're actually helping it learn."
+/>
+
+<RevealCard
+  id="daily-2"
+  label="Netflix recommendations"
+  reveal="Netflix isn't just tracking what you watch — it's tracking what you pause, rewind, abandon after 10 minutes, or watch three times in a row. It mixes that with patterns from millions of other viewers who have similar taste to yours. The result is a recommendation that actually knows you're not in a superhero movie mood today, even though you watched two last week."
+/>
+
+<RevealCard
+  id="daily-3"
+  label="Face ID on your phone"
+  reveal="Your phone mapped your face the first time you set it up — using 30,000 invisible infrared dots that built a 3D model of your facial structure. Every time you unlock it, it compares what it sees to that model. It works in the dark, with glasses, with a beard you grew last month. The AI updates the model over time as your face changes."
+/>
+
+<RevealCard
+  id="daily-4"
+  label="Google Maps travel time"
+  reveal="Maps isn't just looking at how fast cars are currently moving. It's predicting how traffic will change over the next 20-30 minutes based on patterns from millions of previous trips on that road, at that time, on that day of the week. That's why it sometimes knows to route you a different way before you'd even see the slowdown yourself."
+/>
+
+<RevealCard
+  id="daily-5"
+  label="Credit card fraud detection"
+  reveal="Every time you swipe your card, AI checks: does this purchase fit this person's normal pattern? Right location? Typical amount? Merchant they'd use? If something looks off — you're buying electronics in a city you never visit, at 3am — the system flags or blocks it, sometimes before you've even put your wallet away. Modern banks stop millions of fraudulent transactions a day this way."
+/>
+
+---
+
+## So Why Does It Feel New?
+
+<Visual name="m1-why-feels-new" />
+
+Because consumer AI — the stuff that writes essays and answers questions and makes images from descriptions — is new. Or at least, newly accessible to regular people.
+
+The AI in your spam filter was always invisible. It did its job silently in the background, and you never had to think about it.
+
+The AI in ChatGPT is *visible*. You talk to it. It talks back. It feels like a conversation. That's a genuinely new thing — and it's why it feels like AI just arrived.
+
+But the fundamentals aren't new. The technology has been quietly running in the background of your daily life for years.
+
+---
+
+## AI or Not AI? Let's Find Out.
+
+<Visual name="m1-ai-or-not" />
+
+<DragDrop
+  id="ai-or-not"
+  instruction="Sort each of these into 'AI' or 'Not AI (just regular software)'"
+  categories={["AI", "Not AI (just regular software)"]}
+  items={[
+    { id: "d1", text: "A calculator giving you the answer to 847 × 23", correctCategory: "Not AI (just regular software)" },
+    { id: "d2", text: "Spotify's Discover Weekly playlist, updated every Monday with songs you haven't heard", correctCategory: "AI" },
+    { id: "d3", text: "A website showing you items from your shopping cart when you come back", correctCategory: "Not AI (just regular software)" },
+    { id: "d4", text: "Your phone keyboard suggesting the next word as you type", correctCategory: "AI" },
+    { id: "d5", text: "A traffic light that changes on a fixed timer", correctCategory: "Not AI (just regular software)" },
+    { id: "d6", text: "A traffic light that changes based on how many cars are waiting", correctCategory: "AI" },
+  ]}
+/>
+
+---
+
+## What This Means for You
+
+<Visual name="m1-what-means-for-you" />
+
+Here's the real point of this lesson:
+
+AI isn't something that's happening to you. It's already something you're living with, and mostly it's making your life easier without you having to do anything.
+
+The part that's changing is that now you can *use* it yourself. Not just passively receive its outputs — actually direct it, talk to it, put it to work on your actual problems.
+
+That shift — from AI-as-background-service to AI-as-tool-you-use — is what this whole course is about.
+
+And now that you understand what it is, you're ready to actually use it.
+
+---
+
+## Quick Check
+
+<Visual name="m1-quick-check-l4" />
+
+<Quiz questions={[
+  {
+    id: "daily-q1",
+    illustration: "m1-ai-already-living",
+    text: "You've been using AI for years without realizing it. Which of these has been using AI the longest?",
+    options: [
+      { id: "a", text: "ChatGPT writing text for you" },
+      { id: "b", text: "Your email sorting out spam automatically" },
+      { id: "c", text: "A calculator solving math problems" },
+      { id: "d", text: "A website remembering your password for you" },
+    ],
+    correctId: "b",
+    explanation: "Email spam filters have used machine learning — a type of AI — since the early 2000s. ChatGPT-style conversational AI is much newer (2022 for the public version). Calculators and password managers are regular software, not AI.",
+  },
+  {
+    id: "daily-q2",
+    illustration: "m1-why-feels-new",
+    text: "What's the main reason AI feels like it 'just arrived' even though it's been around for years?",
+    options: [
+      { id: "a", text: "AI was kept secret by tech companies until recently" },
+      { id: "b", text: "The new AI tools are visible — you interact with them directly — instead of working silently in the background" },
+      { id: "c", text: "AI genuinely is brand new — it only became possible in 2022" },
+      { id: "d", text: "Most AI before 2022 didn't actually work very well" },
+    ],
+    correctId: "b",
+    explanation: "The AI in your spam filter and Netflix recommendations has been running quietly for years. What changed is that conversational AI like ChatGPT made AI interactive — you talk to it, it talks back, it feels present. That visibility is what makes it feel sudden, even though the underlying technology has been evolving for decades.",
+  },
+  {
+    id: "daily-q3",
+    illustration: "m1-ai-or-not",
+    text: "Which of these everyday features uses AI?",
+    options: [
+      { id: "a", text: "A calculator app solving 15 x 23" },
+      { id: "b", text: "A website storing your items in a shopping cart" },
+      { id: "c", text: "Your phone's keyboard predicting the next word you'll type" },
+      { id: "d", text: "An alarm clock going off at 7 AM" },
+    ],
+    correctId: "c",
+    explanation: "Predictive text on your phone uses AI — it learns from your typing patterns and predicts what word you're likely to type next. Calculators, shopping carts, and alarm clocks are all straightforward software following fixed rules, with no pattern recognition or judgment involved.",
+  },
+  {
+    id: "daily-q4",
+    illustration: "m1-ai-already-living",
+    text: "How does your credit card company's fraud detection work?",
+    options: [
+      { id: "a", text: "A person at the bank manually reviews every transaction" },
+      { id: "b", text: "It blocks all purchases over a certain dollar amount" },
+      { id: "c", text: "AI compares each transaction to your normal spending patterns and flags unusual activity" },
+      { id: "d", text: "It only works if you report the fraud yourself" },
+    ],
+    correctId: "c",
+    explanation: "Modern fraud detection uses AI to build a profile of your normal spending — where, when, how much, and what kind of purchases. When a transaction doesn't fit your pattern, the system flags it instantly. It's one of the most impactful everyday uses of AI that most people never think about.",
+  },
+  {
+    id: "daily-q5",
+    illustration: "m1-why-feels-new",
+    text: "What's the key difference between the AI in your spam filter and ChatGPT?",
+    options: [
+      { id: "a", text: "Spam filters don't use real AI — they just follow rules" },
+      { id: "b", text: "ChatGPT is visible and interactive; spam filters work silently in the background" },
+      { id: "c", text: "ChatGPT is free and spam filters cost money" },
+      { id: "d", text: "Spam filters are more advanced than ChatGPT" },
+    ],
+    correctId: "b",
+    explanation: "Both are genuinely AI — they both use pattern recognition to make judgments. The big difference is visibility. Your spam filter works invisibly; you never talk to it. ChatGPT is a conversation you actively participate in. That interactivity is what makes conversational AI feel new and different.",
+  },
+  {
+    id: "daily-q6",
+    illustration: "m1-ai-already-living",
+    text: "When Netflix recommends a show you end up loving, what made that recommendation possible?",
+    options: [
+      { id: "a", text: "A Netflix employee picked it out for you" },
+      { id: "b", text: "AI analyzed your viewing habits and compared them to millions of other viewers with similar tastes" },
+      { id: "c", text: "Netflix just shows the most popular shows to everyone" },
+      { id: "d", text: "The show's producers paid Netflix to recommend it to you" },
+    ],
+    correctId: "b",
+    explanation: "Netflix's recommendation engine tracks what you watch, what you skip, what you rewatch, and what you abandon — then compares those patterns against millions of other viewers. It finds people with similar taste to you and suggests what they enjoyed. That's AI-powered personalization at massive scale.",
+  },
+  {
+    id: "daily-q7",
+    illustration: "m1-ai-or-not",
+    text: "A traffic light that adjusts its timing based on how many cars are waiting is an example of:",
+    options: [
+      { id: "a", text: "Simple automation — all traffic lights work this way" },
+      { id: "b", text: "AI — it senses real-world conditions and adapts its behavior accordingly" },
+      { id: "c", text: "Neither AI nor automation — just standard traffic engineering" },
+      { id: "d", text: "A malfunction in the traffic system" },
+    ],
+    correctId: "b",
+    explanation: "A traffic light that adapts to real-time conditions — sensing car volume and adjusting timing — uses AI principles. It's making judgment calls based on changing data. A standard traffic light on a fixed timer is automation. The difference: one adapts to the situation, the other runs the same cycle regardless.",
+  },
+  {
+    id: "daily-q8",
+    illustration: "m1-what-means-for-you",
+    text: "Why is it important to know that you've already been using AI for years?",
+    options: [
+      { id: "a", text: "So you can demand refunds from the companies using it" },
+      { id: "b", text: "Because it shows AI is already part of normal life — not something scary or futuristic that's coming to get you" },
+      { id: "c", text: "So you can avoid all products that use AI" },
+      { id: "d", text: "It's not important — this is just trivia" },
+    ],
+    correctId: "b",
+    explanation: "Realizing AI is already woven into your daily life — spam filters, recommendations, fraud detection, navigation — takes the fear and mystery out of it. AI isn't a distant threat; it's a familiar tool you've been benefiting from for years. The only thing changing is that now you can use it directly.",
+  },
+  {
+    id: "daily-q9",
+    illustration: "m1-ai-or-not",
+    text: "Which of these tasks does NOT require AI?",
+    options: [
+      { id: "a", text: "Identifying objects in a photo" },
+      { id: "b", text: "Translating a paragraph from English to Spanish" },
+      { id: "c", text: "Setting a countdown timer for 10 minutes" },
+      { id: "d", text: "Recommending songs based on your listening history" },
+    ],
+    correctId: "c",
+    explanation: "A countdown timer follows one simple, fixed rule: count down from 10 minutes and alert when done. No judgment, no pattern recognition, no adaptation needed. Object recognition, language translation, and personalized recommendations all require AI because they involve processing complex, variable input and making judgment calls.",
+  },
+]} />
+
+---
+
+## Key Takeaway
+
+<Visual name="m1-key-takeaway-l4" />
+
+> **AI has been running quietly in the background of your daily life for years. What's new is that now you can use it yourself — on your own terms, for your own problems.**
+
+---
+
+## Module Complete!
+
+<Visual name="m1-module-complete" />
+
+You just finished **Module 1: What AI Actually Is.**
+
+Here's what you now know that most people don't:
+
+- AI is pattern prediction, not magic or robot thinking
+- There's a real difference between automation (rules) and AI (judgment)
+- ChatGPT predicts text like a very well-read parrot — impressive, but not infallible
+- AI has been living in your phone, your inbox, and your streaming apps for years
+
+**Up next: Module 2 — AI at Work.** Real-world use cases explained in plain English — no buzzwords, no hype.
+
+<ModuleComplete moduleId="module-1" nextModuleSlug="module-2" xpReward={200} />

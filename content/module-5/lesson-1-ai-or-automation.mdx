@@ -1,0 +1,264 @@
+---
+id: lesson-1
+moduleId: module-5
+slug: ai-or-automation
+title: "Do You Actually Need AI?"
+subtitle: "How to tell if AI is the answer — or if simpler automation will do"
+estimatedMinutes: 8
+xpReward: 50
+---
+
+# Do You Actually Need AI?
+
+![Do you need AI?](/images/generated/m5l1-intro.png)
+
+There's a $500/month AI tool for almost every problem you have. There's also a $15/month automation tool that does the same thing without the hallucinations.
+
+Before you buy anything, answer this question: **is your problem actually an AI problem?**
+
+---
+
+## The Core Distinction
+
+<Visual name="m5-core-distinction" />
+
+AI and automation are not the same thing. Most businesses trying to "implement AI" actually need automation — and that's completely fine.
+
+**Automation** follows rules you define. It handles structured, predictable inputs and produces consistent outputs. It doesn't think. It executes.
+
+**AI** handles ambiguity. It processes unstructured inputs (text, images, voice), generates responses that don't exist in a lookup table, and adapts to context that changes. It does think — after a fashion.
+
+The mistake most people make is reaching for AI when automation is cheaper, faster to implement, and more reliable.
+
+---
+
+## The Decision Framework
+
+<Visual name="m5-decision-framework" />
+
+Use this to triage any process you're considering automating.
+
+<RevealCard
+  id="decision-1"
+  label="Step 1: Is the input structured or unstructured?"
+  reveal="Structured inputs: form submissions, spreadsheet rows, calendar events, database records, order data. Unstructured inputs: customer emails, voice messages, social media comments, meeting notes, photos of receipts. If your input is structured, you almost certainly don't need AI — a standard automation tool will do."
+/>
+
+<RevealCard
+  id="decision-2"
+  label="Step 2: Can you write a complete rule for the output?"
+  reveal="If you can write out every decision branch — 'if X then Y, else if A then B' — you don't need AI. You need a workflow builder (Zapier, Make.com, n8n). AI is for situations where you can't pre-define all the rules because the input is too varied, too contextual, or too human."
+/>
+
+<RevealCard
+  id="decision-3"
+  label="Step 3: Does it need to understand language or generate text?"
+  reveal="Reading and categorizing emails, drafting responses, summarizing documents, answering questions in natural language — these genuinely need AI. Moving data between apps, sending notifications, updating records, scheduling events — these don't. Reach for a language model only when language is the actual problem."
+/>
+
+<RevealCard
+  id="decision-4"
+  label="Step 4: What's the cost of an error?"
+  reveal="Automation errors are usually deterministic and easy to catch — the rule either runs or it doesn't. AI errors are probabilistic and sometimes invisible. If you can't afford silent mistakes (wrong medical advice, miscommunicated contract terms, bad financial data), either don't use AI or build human review into the loop."
+/>
+
+---
+
+## Side-by-Side: When to Use What
+
+<Visual name="m5-side-by-side" />
+
+| Situation | Use This |
+|---|---|
+| Move new Typeform submissions to a CRM | Automation (Zapier/Make) |
+| Respond to inbound leads with personalized follow-up | AI (LLM-powered draft) |
+| Send invoice reminders every 7 days | Automation |
+| Triage support tickets by urgency and topic | AI (classification) |
+| Route form submissions to the right team member | Automation |
+| Summarize meeting transcripts and extract action items | AI |
+| Pull weekly sales data into a report | Automation |
+| Answer customer questions about your product via chat | AI |
+
+The pattern: **if it's repetitive and rule-based, automate it. If it involves human language or judgment, consider AI.**
+
+---
+
+## The Hybrid Reality
+
+<Visual name="m5-hybrid-reality" />
+
+Most good implementations use both.
+
+A common pattern for a customer service setup:
+1. **Automation** catches the incoming email and routes it to the right inbox (structured logic — easy)
+2. **AI** reads the email, classifies the intent, and drafts a reply (unstructured language — needs AI)
+3. **Automation** sends the draft reply after human review, logs it in the CRM, and closes the ticket
+
+Neither step 1 nor step 3 needs AI. Only step 2 does. That's the right split.
+
+---
+
+## Quick Check
+
+<Visual name="m5-quick-check-1" />
+
+<Quiz
+  id="lesson-1-quiz"
+  questions={[
+    {
+      id: "q1",
+      illustration: "m5-core-distinction",
+      text: "A client wants to automatically send a \"thank you\" email whenever someone submits a contact form on their website. What's the right tool for this?",
+      options: [
+        { id: "a", text: "An AI chatbot that generates a personalized response" },
+        { id: "b", text: "A workflow automation tool like Zapier or Make.com" },
+        { id: "c", text: "A large language model API with custom prompting" },
+        { id: "d", text: "An AI email assistant trained on the client's past emails" }
+      ],
+      correctId: "b",
+      explanation: "This is a structured, rule-based task: form submitted → send email. There's no ambiguity, no language understanding required, no need for generation. Standard automation is cheaper, faster, and more reliable than any AI solution here."
+    },
+    {
+      id: "q2",
+      illustration: "m5-decision-framework",
+      text: "Which of these tasks genuinely requires AI rather than standard automation?",
+      options: [
+        { id: "a", text: "Moving a new Stripe payment record into a Google Sheet" },
+        { id: "b", text: "Sending a Slack notification when a new GitHub PR is opened" },
+        { id: "c", text: "Reading customer support emails and drafting context-aware replies" },
+        { id: "d", text: "Scheduling a weekly backup of a database" }
+      ],
+      correctId: "c",
+      explanation: "Reading unstructured customer emails and generating contextual replies involves natural language understanding and generation — that's an AI task. The other three are rule-based data routing tasks that automation handles perfectly."
+    },
+    {
+      id: "q3",
+      illustration: "m5-hybrid-reality",
+      text: "You're building a customer service flow. Step 1: route incoming support emails by department. Step 2: draft a reply based on the email content. Step 3: log the reply in your CRM. Which steps need AI?",
+      options: [
+        { id: "a", text: "All three steps" },
+        { id: "b", text: "Steps 1 and 3 only" },
+        { id: "c", text: "Step 2 only" },
+        { id: "d", text: "None — automation can handle all three" }
+      ],
+      correctId: "c",
+      explanation: "Step 1 (routing by department) and Step 3 (logging to CRM) are structured, rule-based tasks — perfect for automation. Step 2 (drafting a reply from unstructured email content) requires language understanding and generation — that's where AI earns its place."
+    },
+    {
+      id: "q4",
+      illustration: "m5-core-distinction",
+      text: "A restaurant wants to automatically post a 'We're closing in 30 minutes' message to social media every night. What's the right tool?",
+      options: [
+        { id: "a", text: "An AI content generator that writes a unique closing message each night" },
+        { id: "b", text: "A scheduled automation that posts a pre-written message at the same time daily" },
+        { id: "c", text: "A large language model that monitors foot traffic and decides when to post" },
+        { id: "d", text: "An AI assistant that learns the restaurant's brand voice over time" }
+      ],
+      correctId: "b",
+      explanation: "This is a time-triggered, predictable task with a fixed output. No language understanding or generation is needed — just a scheduled post. A simple automation tool handles this perfectly at a fraction of the cost of any AI solution."
+    },
+    {
+      id: "q5",
+      illustration: "m5-decision-framework",
+      text: "What is the key characteristic that makes a task require AI rather than automation?",
+      options: [
+        { id: "a", text: "The task involves a computer" },
+        { id: "b", text: "The task handles unstructured inputs or requires judgment that can't be fully pre-defined in rules" },
+        { id: "c", text: "The task is expensive to do manually" },
+        { id: "d", text: "The task is performed daily" }
+      ],
+      correctId: "b",
+      explanation: "The defining line between AI and automation is whether you can write a complete set of rules for every possible input. If the inputs are unstructured (natural language, images, ambiguous data) or the decision requires contextual judgment, AI is needed. If you can map every input to an output with if-then logic, automation is the better choice."
+    },
+    {
+      id: "q6",
+      illustration: "m5-side-by-side",
+      text: "A company wants to categorize thousands of handwritten customer feedback cards by sentiment. What's the right approach?",
+      options: [
+        { id: "a", text: "Automation — set up rules to sort cards into positive and negative bins" },
+        { id: "b", text: "AI — it needs to read handwriting (vision) and interpret sentiment (language understanding)" },
+        { id: "c", text: "A spreadsheet with keyword filters" },
+        { id: "d", text: "Automation — just scan the cards and file them alphabetically" }
+      ],
+      correctId: "b",
+      explanation: "Handwritten feedback cards involve two unstructured inputs: handwriting that needs to be read (image recognition) and sentiment that needs to be interpreted (natural language understanding). Neither of these can be handled by simple rule-based automation. This is a genuine AI use case."
+    },
+    {
+      id: "q7",
+      illustration: "m5-core-distinction",
+      text: "Why is automation often a better choice than AI for structured, predictable tasks?",
+      options: [
+        { id: "a", text: "Automation is newer technology" },
+        { id: "b", text: "Automation is cheaper, faster to implement, and produces more consistent results for rule-based work" },
+        { id: "c", text: "AI cannot handle structured data at all" },
+        { id: "d", text: "Automation looks more impressive in demos" }
+      ],
+      correctId: "b",
+      explanation: "For tasks with structured inputs and deterministic outputs, automation wins on every dimension: it's cheaper to run, faster to set up, and produces perfectly consistent results every time. AI adds cost and complexity — plus the risk of hallucination — without providing any benefit when the task doesn't require language understanding or judgment."
+    },
+    {
+      id: "q8",
+      illustration: "m5-side-by-side",
+      text: "A law firm receives 200 emails per day and wants to automatically forward each email to the correct attorney based on the client name in the subject line. What tool fits best?",
+      options: [
+        { id: "a", text: "AI — because it involves reading emails" },
+        { id: "b", text: "Automation — the routing rule is based on a structured field (client name) with a known lookup table" },
+        { id: "c", text: "AI — because law firms deal with complex information" },
+        { id: "d", text: "Neither — this must be done manually for legal compliance" }
+      ],
+      correctId: "b",
+      explanation: "Even though emails are involved, the actual task is simple pattern matching: read the client name from the subject line and route to the corresponding attorney. That's a lookup table, not a language understanding problem. Automation handles this reliably and cheaply."
+    },
+    {
+      id: "q9",
+      illustration: "m5-hybrid-reality",
+      text: "In a hybrid AI-plus-automation workflow, what's the most common pattern for how the two technologies are combined?",
+      options: [
+        { id: "a", text: "AI handles everything and automation is only a backup" },
+        { id: "b", text: "Automation handles data movement and triggers, AI handles the steps requiring language or judgment, and automation handles the structured follow-up actions" },
+        { id: "c", text: "Automation runs first, then AI re-does the same work to double-check" },
+        { id: "d", text: "AI and automation run in parallel on the same task for redundancy" }
+      ],
+      correctId: "b",
+      explanation: "The most effective hybrid pattern is a sandwich: automation handles the structured intake and routing, AI handles the middle step that requires language understanding or contextual judgment, and automation handles the structured output actions (logging, sending, updating records). Each technology does what it's best at."
+    },
+    {
+      id: "q10",
+      illustration: "m5-decision-framework",
+      text: "A real estate agent wants to generate personalized property descriptions for listings based on photos and features. What's the right tool?",
+      options: [
+        { id: "a", text: "Automation — just use a template with fields for each feature" },
+        { id: "b", text: "AI — generating unique, natural-sounding descriptions from varied inputs requires language generation" },
+        { id: "c", text: "A spreadsheet formula that concatenates feature names" },
+        { id: "d", text: "Automation — property descriptions follow standard formats" }
+      ],
+      correctId: "b",
+      explanation: "While templates can produce basic descriptions, generating personalized, engaging property descriptions that highlight unique features and appeal to buyers requires natural language generation. The inputs vary widely (different photos, features, neighborhoods), and the output needs to sound human and compelling — not formulaic. This is an AI task."
+    },
+    {
+      id: "q11",
+      illustration: "m5-side-by-side",
+      text: "What's the biggest risk of using AI for a task that automation could handle?",
+      options: [
+        { id: "a", text: "AI tools are always slower" },
+        { id: "b", text: "You pay more, add complexity, and introduce the risk of hallucination — all for no additional benefit" },
+        { id: "c", text: "AI tools don't integrate with other software" },
+        { id: "d", text: "Automation vendors will refuse to work with you in the future" }
+      ],
+      correctId: "b",
+      explanation: "Using AI where automation suffices means you're paying a premium for a probabilistic system when a deterministic one would do the job better. You gain nothing — the task doesn't need language understanding or judgment — but you add cost, implementation complexity, and the very real risk that the AI hallucinates or produces inconsistent outputs."
+    }
+  ]}
+/>
+
+---
+
+## Key Takeaway
+
+<Visual name="m5-key-takeaway-1" />
+
+> **Ask "is this an automation problem or an AI problem?" before reaching for any tool. Most businesses need both — and the best implementations use each for what it's actually good at.**
+
+---
+
+<LessonComplete lessonId="lesson-1" nextLessonSlug="vendor-pitch-red-flags" xpReward={50} />

@@ -1,0 +1,51 @@
+{
+  "id": "module-2",
+  "title": "Talking to AI",
+  "subtitle": "How to actually get good results from ChatGPT, Claude, and friends",
+  "description": "AI is only as useful as you know how to use it. In 5 lessons you'll go from nervous first-timer to someone who gets real answers, spots AI mistakes, and knows exactly when to reach for an AI — and when not to.",
+  "estimatedMinutes": 35,
+  "xpReward": 250,
+  "badgeId": "ai-conversationalist",
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "slug": "first-conversation",
+      "title": "Your First Real Conversation with AI",
+      "subtitle": "It's just a chat box — and it can do a lot more than you think",
+      "estimatedMinutes": 6,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-2",
+      "slug": "better-questions",
+      "title": "How to Ask Better Questions",
+      "subtitle": "Vague in, vague out — here's how to actually get what you want",
+      "estimatedMinutes": 7,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-3",
+      "slug": "when-ai-gets-it-wrong",
+      "title": "When AI Gets It Wrong (And How to Spot It)",
+      "subtitle": "AI makes stuff up — confidently. Here's how to catch it.",
+      "estimatedMinutes": 7,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-4",
+      "slug": "ai-for-everyday-tasks",
+      "title": "AI for Everyday Tasks",
+      "subtitle": "Emails, research, creative ideas — prompts you can steal right now",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-5",
+      "slug": "ai-cheat-sheet",
+      "title": "The AI Cheat Sheet",
+      "subtitle": "What AI is great at, okay at, and terrible at — in plain English",
+      "estimatedMinutes": 7,
+      "xpReward": 50
+    }
+  ]
+}

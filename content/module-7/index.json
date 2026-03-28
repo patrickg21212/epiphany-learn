@@ -1,0 +1,43 @@
+{
+  "id": "module-7",
+  "title": "AI Anxiety Is Normal",
+  "subtitle": "What's really happening — and what you can actually do about it",
+  "description": "Everyone's worried about AI. Most of those worries are based on bad information. This module gives you the real numbers, the real failures, and the real framework for deciding what to trust.",
+  "estimatedMinutes": 30,
+  "xpReward": 200,
+  "badgeId": "ai-anxiety",
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "slug": "the-fear-is-real",
+      "title": "The Fear Is Real (And Mostly Wrong)",
+      "subtitle": "Job displacement fears, what the data actually says, and why 80% of the worry is fixable",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-2",
+      "slug": "why-ai-projects-fail",
+      "title": "Why 85% of AI Projects Fail",
+      "subtitle": "The hype-reality gap, real case studies, and how to avoid being a statistic",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-3",
+      "slug": "what-ai-is-bad-at",
+      "title": "What AI Is Actually Bad At",
+      "subtitle": "Customer service disasters, trust gaps, and the things AI can't do",
+      "estimatedMinutes": 7,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-4",
+      "slug": "your-ai-bill-of-rights",
+      "title": "Your AI Bill of Rights",
+      "subtitle": "Privacy, bias, transparency — what you should demand and how to protect yourself",
+      "estimatedMinutes": 7,
+      "xpReward": 50
+    }
+  ]
+}

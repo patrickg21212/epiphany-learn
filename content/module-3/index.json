@@ -1,0 +1,43 @@
+{
+  "id": "module-3",
+  "title": "AI in Your Everyday Life",
+  "subtitle": "Real ways AI can save you time starting today",
+  "description": "You don't have to work in tech to benefit from AI. This module is for regular people — students, parents, retirees, anyone with too much to do and not enough hours. Four practical lessons showing how AI handles email, schedules, learning, and all the tedious stuff you hate doing anyway.",
+  "estimatedMinutes": 30,
+  "xpReward": 240,
+  "badgeId": "everyday-ai",
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "slug": "email-automation",
+      "title": "AI That Handles Your Inbox",
+      "subtitle": "Stop drowning in email — let AI do the heavy lifting",
+      "estimatedMinutes": 7,
+      "xpReward": 60
+    },
+    {
+      "id": "lesson-2",
+      "slug": "ai-scheduling",
+      "title": "AI That Manages Your Time",
+      "subtitle": "Reclaim your calendar before it eats your life",
+      "estimatedMinutes": 7,
+      "xpReward": 60
+    },
+    {
+      "id": "lesson-3",
+      "slug": "customer-service-chatbots",
+      "title": "AI That Helps You Learn and Create",
+      "subtitle": "Your personal tutor, creative partner, and idea machine",
+      "estimatedMinutes": 8,
+      "xpReward": 60
+    },
+    {
+      "id": "lesson-4",
+      "slug": "data-analysis-decisions",
+      "title": "AI That Handles the Boring Stuff",
+      "subtitle": "Let AI deal with the tasks you keep putting off",
+      "estimatedMinutes": 8,
+      "xpReward": 60
+    }
+  ]
+}

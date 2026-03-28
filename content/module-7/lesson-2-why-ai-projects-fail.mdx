@@ -1,0 +1,328 @@
+---
+id: lesson-2
+moduleId: module-7
+slug: why-ai-projects-fail
+title: "Why 85% of AI Projects Fail"
+subtitle: "The hype-reality gap, real case studies, and how to avoid being a statistic"
+estimatedMinutes: 8
+xpReward: 50
+---
+
+# Why 85% of AI Projects Fail
+
+![Why AI projects fail](/images/generated/m7l2-intro.png)
+
+Here's a number that should make you feel better about being skeptical: **85% of enterprise AI projects fail to deliver expected value.** That's not from some anti-tech blog. That's Gartner, 2024 — the research firm that Fortune 500 companies pay six figures to listen to.
+
+<StatHighlight value="85%" label="of enterprise AI projects fail to deliver expected value (Gartner 2024)" />
+
+And it gets worse. Over 30% of generative AI projects get abandoned after the proof-of-concept stage. Companies spend months and millions building a demo that works in a conference room, then discover it falls apart with real data, real users, and real edge cases.
+
+This isn't a technology problem. It's a hype-detection problem.
+
+---
+
+## The Hype-Reality Gap
+
+<Visual name="m7-hype-reality" />
+
+Every AI vendor demo you've ever seen was the ceiling — the absolute best-case output under perfect conditions. The reality is messier.
+
+<StatHighlight value="80%" label="failure rate for large-scale AI projects — vs 50% for traditional IT (RAND Corporation 2024)" />
+
+Think about that. AI projects fail at nearly double the rate of regular software projects. Not because the technology is bad — but because expectations are inflated, the problems are poorly defined, and nobody wants to be the person in the meeting who says "I don't think this will actually work."
+
+RAND Corporation studied this in 2024 and found that the gap isn't about the tech. It's about how organizations approach AI projects compared to normal IT projects. More hype, less planning, vaguer success criteria. A recipe for expensive failure.
+
+---
+
+## The Adoption Lie
+
+<Visual name="m7-adoption-gap" />
+
+You've probably seen headlines claiming "over half of small businesses are using AI." That number is real — sort of. It comes from vendor-funded surveys where "using AI" includes things like having a spam filter or using autocomplete in Gmail.
+
+Here's what the government found when they asked the same question with stricter definitions:
+
+<StatHighlight value="8.8%" label="of SMBs actually using AI in production (SBA 2025 — government definition)" />
+
+Versus the 55-58% number vendors love to quote. The gap exists because the vendor version counts any software that has "AI" in the marketing copy. The government version counts businesses that actually deployed and are actively using AI systems.
+
+<Warning>82% of micro-businesses (under 10 employees) say AI is "not applicable" to their work. If you run a small operation and feel like AI hasn't clicked for you yet — you're in the overwhelming majority, not the minority.</Warning>
+
+---
+
+## The 7 Root Causes
+
+<Visual name="m7-seven-causes" />
+
+When researchers autopsied failed AI projects, the same seven problems kept showing up. Not occasionally — almost every single time.
+
+<RevealCard
+  id="cause-1"
+  label="1. No clear objective"
+  reveal="'We need an AI strategy' is not an objective. 'Reduce customer response time from 4 hours to 30 minutes' is an objective. Most failed projects started with a technology decision ('let's use AI') instead of a business problem ('our response times are killing us'). If you can't describe the measurable outcome you want in one sentence, the project will fail."
+/>
+
+<RevealCard
+  id="cause-2"
+  label="2. Poor data quality"
+  reveal="AI is only as good as the data it's trained on and the data it processes. IBM found that poor data quality costs organizations an average of $12.9 million per year — and that's before you add AI on top. Feeding garbage data into an AI system doesn't give you magic. It gives you confident garbage. Most businesses don't realize how messy their data is until they try to train a model on it."
+/>
+
+<RevealCard
+  id="cause-3"
+  label="3. Chasing novelty over usefulness"
+  reveal="'Our competitor announced an AI feature, so we need one too.' This is how companies end up with AI chatbots that nobody asked for, bolted onto products that worked fine without them. The question isn't 'can we add AI here?' — it's 'would AI actually make this better for the people who use it?' If you're adding AI to check a box, you're adding a liability."
+/>
+
+<RevealCard
+  id="cause-4"
+  label="4. Change management ignored"
+  reveal="You can build the most sophisticated AI system in the world. If the people who are supposed to use it don't trust it, don't understand it, or feel threatened by it, they'll find workarounds. Every time. The technology is usually the easy part. Getting humans to actually adopt it is where most projects die."
+/>
+
+<RevealCard
+  id="cause-5"
+  label="5. Unrealistic expectations"
+  reveal="The sales demo showed 95% accuracy. In production, you're getting 72%. The vendor promised 'plug and play.' Six months later, you're still configuring. Unrealistic expectations aren't just disappointing — they poison the entire organization's willingness to try AI in the future. One high-profile failure can make a company AI-averse for years."
+/>
+
+<RevealCard
+  id="cause-6"
+  label="6. Wrong vendor for the job"
+  reveal="A vendor that's great for enterprise search is not automatically great for customer-facing chatbots. AI capabilities are not fungible. Companies pick vendors based on brand recognition or the best sales pitch, rather than the best fit for their specific use case. Due diligence here is the same as any other major purchase — but people skip it because the demo was impressive."
+/>
+
+<RevealCard
+  id="cause-7"
+  label="7. No integration plan"
+  reveal="The AI works great in isolation. Then you try to connect it to your CRM, your scheduling system, your inventory database, and your phone system — and nothing talks to anything. Integration isn't a footnote. It's usually 60-80% of the total project effort and cost. If your vendor hand-waves this part, run."
+/>
+
+<StatHighlight value="$12.9M" label="average annual loss from poor data quality feeding AI systems (IBM)" />
+
+---
+
+## Case Study: McDonald's AI Drive-Thru
+
+![McDonald's AI drive-thru failure](/images/generated/m7-case-mcdonalds.png)
+
+McDonald's partnered with IBM to build an AI-powered drive-thru ordering system. The goal: take your order through a speaker without a human. Massive brand. Massive resources. Massive failure.
+
+The AI added bacon to ice cream orders. It couldn't handle accents. It got confused by background noise — the kind of background noise that exists at literally every drive-thru on Earth. Customers posted videos of the system adding hundreds of dollars of chicken nuggets to their orders.
+
+McDonald's shut down the pilot.
+
+<Tip>This wasn't a startup cutting corners. This was one of the world's largest companies, working with one of the world's largest tech firms, with practically unlimited budget. The problem wasn't money or talent. The problem was that real-world conditions are harder than demo conditions — always.</Tip>
+
+---
+
+## Case Study: Air Canada's Chatbot
+
+![Air Canada chatbot fabricated policy](/images/generated/m7-case-aircanada.png)
+
+Air Canada deployed a customer service chatbot on their website. A passenger asked about bereavement fare discounts. The chatbot confidently explained a refund policy — one that sounded reasonable, specific, and completely made up.
+
+The passenger booked flights based on that policy. When they asked for the promised discount, Air Canada said no such policy existed. The passenger took them to court.
+
+**Air Canada was held legally liable for the chatbot's fabricated policy.** The tribunal ruled that a company is responsible for the information its AI provides, whether a human wrote it or not.
+
+<Warning>If your business uses a customer-facing chatbot, every answer it gives carries the same legal weight as if a human employee said it. "The AI made it up" is not a legal defense.</Warning>
+
+---
+
+## Case Study: The Lawyer Who Trusted ChatGPT
+
+![Lawyer cited fake AI-generated cases](/images/generated/m7-case-lawyer.png)
+
+In 2023, a New York lawyer used ChatGPT to research case citations for a legal brief. ChatGPT generated several citations that looked perfect — correct formatting, plausible case names, realistic legal reasoning.
+
+Every single citation was fake. The cases didn't exist. The courts didn't exist. The legal precedents were hallucinated.
+
+The lawyer submitted the brief to a federal court. The judge discovered the fake citations. The lawyer was sanctioned, publicly humiliated, and his client's case was severely damaged.
+
+He told the judge he "did not comprehend that ChatGPT could fabricate cases." That excuse didn't help.
+
+<Tip>This case became the go-to example for why AI output must always be verified before it's used for anything consequential. AI doesn't "know" things — it generates plausible text. Plausible and true are very different concepts.</Tip>
+
+---
+
+## What These Failures Have in Common
+
+<Visual name="m7-hype-reality" />
+
+Every one of these failures shares the same DNA:
+
+**Someone trusted the demo more than reality.** McDonald's tested in controlled environments that don't resemble actual drive-thrus. Air Canada deployed without testing what happens when the AI doesn't know the answer. The lawyer assumed the output was factual because it looked factual.
+
+**Nobody built a failure plan.** What happens when the AI is wrong? If you can't answer that question before you launch, you aren't ready to launch.
+
+**The humans in the loop were removed too early.** AI works best as an assistant, not a replacement. The companies that succeed with AI keep humans in the decision chain. The ones that fail hand over the reins entirely.
+
+---
+
+## Quick Check
+
+<Visual name="m7-quick-check-2" />
+
+<Quiz
+  id="lesson-2-quiz"
+  questions={[
+    {
+      id: "q1",
+      illustration: "m7-failure-rate",
+      text: "According to Gartner's 2024 research, what percentage of enterprise AI projects fail to deliver expected value?",
+      options: [
+        { id: "a", text: "25%" },
+        { id: "b", text: "50%" },
+        { id: "c", text: "85%" },
+        { id: "d", text: "95%" }
+      ],
+      correctId: "c",
+      explanation: "85% of enterprise AI projects fail to deliver expected value. This isn't because AI doesn't work — it's because organizations approach AI projects with inflated expectations, vague objectives, and poor planning. The technology is usually the least of the problems."
+    },
+    {
+      id: "q2",
+      illustration: "m7-adoption-gap",
+      text: "Vendor surveys claim 55-58% of small businesses use AI. What does the SBA's government survey find when using stricter definitions?",
+      options: [
+        { id: "a", text: "52% — about the same" },
+        { id: "b", text: "35% — somewhat lower" },
+        { id: "c", text: "8.8% — dramatically lower" },
+        { id: "d", text: "0.5% — almost nobody" }
+      ],
+      correctId: "c",
+      explanation: "Only 8.8% of SMBs are actually using AI in production when measured by government definitions. The vendor number counts anything with 'AI' in the marketing copy — including spam filters and autocomplete. The gap between 8.8% and 55% is pure marketing inflation."
+    },
+    {
+      id: "q3",
+      illustration: "m7-seven-causes",
+      text: "A company decides 'we need an AI strategy' without defining a specific business problem to solve. Which root cause of AI failure does this represent?",
+      options: [
+        { id: "a", text: "Poor data quality" },
+        { id: "b", text: "No clear objective" },
+        { id: "c", text: "Wrong vendor for the job" },
+        { id: "d", text: "Change management ignored" }
+      ],
+      correctId: "b",
+      explanation: "Starting with 'we need AI' instead of 'we need to solve X problem' is the number one cause of AI project failure. Technology should serve a defined business outcome. Without a measurable objective, there's no way to know if the project succeeded or failed — which usually means it quietly fails."
+    },
+    {
+      id: "q4",
+      illustration: "m7-mcdonalds-fail",
+      text: "Why did McDonald's AI drive-thru pilot fail despite having massive resources and a partnership with IBM?",
+      options: [
+        { id: "a", text: "The technology was too expensive to scale" },
+        { id: "b", text: "Real-world conditions (accents, background noise, unusual orders) were far harder than demo conditions" },
+        { id: "c", text: "Customers refused to use it on principle" },
+        { id: "d", text: "IBM's AI technology was outdated" }
+      ],
+      correctId: "b",
+      explanation: "The AI worked well in controlled tests but fell apart when exposed to the chaos of actual drive-thrus — accents, road noise, kids yelling in the back seat, unusual order combinations. This is the demo-to-reality gap in action. Controlled demos always outperform messy real-world deployment."
+    },
+    {
+      id: "q5",
+      illustration: "m7-air-canada",
+      text: "What happened when Air Canada's chatbot invented a bereavement fare policy that didn't exist?",
+      options: [
+        { id: "a", text: "The company apologized and nothing else happened" },
+        { id: "b", text: "The chatbot was retrained and the issue was resolved" },
+        { id: "c", text: "Air Canada was held legally liable for the chatbot's fabricated information" },
+        { id: "d", text: "The passenger was told to read the real policy on the website" }
+      ],
+      correctId: "c",
+      explanation: "A tribunal ruled that Air Canada was responsible for the information its AI chatbot provided, regardless of whether a human wrote it. This set a precedent: if your business deploys a customer-facing AI, you own every word it says — including the made-up parts."
+    },
+    {
+      id: "q6",
+      illustration: "m7-lawyer-case",
+      text: "A lawyer submitted AI-generated fake case citations to a federal court. What was the consequence?",
+      options: [
+        { id: "a", text: "The judge ignored the fake citations and moved on" },
+        { id: "b", text: "The lawyer was sanctioned and publicly humiliated, damaging his client's case" },
+        { id: "c", text: "ChatGPT was banned from legal proceedings" },
+        { id: "d", text: "The opposing counsel was blamed for not catching the errors" }
+      ],
+      correctId: "b",
+      explanation: "The lawyer was sanctioned by the court, the incident became international news, and his client's case was severely damaged. 'I didn't know AI could make things up' is not a legal defense. This case is now the textbook example of why AI output must always be verified before professional use."
+    },
+    {
+      id: "q7",
+      illustration: "m7-seven-causes",
+      text: "IBM found that poor data quality costs organizations an average of how much per year?",
+      options: [
+        { id: "a", text: "$500,000" },
+        { id: "b", text: "$2.1 million" },
+        { id: "c", text: "$12.9 million" },
+        { id: "d", text: "$50 million" }
+      ],
+      correctId: "c",
+      explanation: "$12.9 million per year — and that's before you add AI on top. When you feed bad data into an AI system, you don't get magic, you get confidently wrong outputs at scale. Data quality is boring, unsexy, and arguably the single most important factor in whether an AI project succeeds."
+    },
+    {
+      id: "q8",
+      illustration: "m7-seven-causes",
+      text: "A company builds an excellent AI system, but employees refuse to use it and find workarounds instead. Which root cause is this?",
+      options: [
+        { id: "a", text: "Poor data quality" },
+        { id: "b", text: "Chasing novelty over usefulness" },
+        { id: "c", text: "Change management ignored" },
+        { id: "d", text: "No integration plan" }
+      ],
+      correctId: "c",
+      explanation: "Change management — getting the actual humans to adopt the tool — is where many technically sound AI projects die. If employees don't trust it, don't understand it, or feel threatened by it, they'll route around it every time. The technology is usually the easy part."
+    },
+    {
+      id: "q9",
+      illustration: "m7-hype-reality",
+      text: "What do the McDonald's, Air Canada, and lawyer failures all have in common?",
+      options: [
+        { id: "a", text: "They all used outdated AI technology" },
+        { id: "b", text: "They all trusted the demo more than reality and had no plan for when the AI was wrong" },
+        { id: "c", text: "They all lacked sufficient budget" },
+        { id: "d", text: "They were all caused by user error, not AI error" }
+      ],
+      correctId: "b",
+      explanation: "In every case, someone trusted what the AI could do in ideal conditions and never seriously asked 'what happens when it's wrong?' Building a failure plan — what happens when the AI hallucinates, misunderstands, or breaks — is as important as building the AI system itself."
+    },
+    {
+      id: "q10",
+      illustration: "m7-failure-rate",
+      text: "RAND Corporation found that large-scale AI projects fail at 80% compared to what rate for traditional IT projects?",
+      options: [
+        { id: "a", text: "10%" },
+        { id: "b", text: "30%" },
+        { id: "c", text: "50%" },
+        { id: "d", text: "75%" }
+      ],
+      correctId: "c",
+      explanation: "AI projects fail at 80% versus 50% for traditional IT — nearly double the rate. The technology isn't the main difference. It's the approach: AI projects attract more hype, vaguer success criteria, and less rigorous planning. The same discipline that makes regular software projects succeed is often abandoned in AI projects because people assume the technology will compensate."
+    },
+    {
+      id: "q11",
+      illustration: "m7-adoption-gap",
+      text: "What percentage of micro-businesses (under 10 employees) say AI is 'not applicable' to their work?",
+      options: [
+        { id: "a", text: "25%" },
+        { id: "b", text: "48%" },
+        { id: "c", text: "67%" },
+        { id: "d", text: "82%" }
+      ],
+      correctId: "d",
+      explanation: "82% of micro-businesses say AI isn't applicable to their work. If you run a small business and feel like AI hasn't clicked for you yet, you're in the overwhelming majority. The hype makes it feel like everyone else has figured it out — they haven't. Most businesses your size haven't found a practical use case yet either."
+    }
+  ]}
+/>
+
+---
+
+## Key Takeaway
+
+<Visual name="m7-key-takeaway-2" />
+
+> **The companies that succeed with AI aren't the ones that spent the most or used the fanciest models. They're the ones that started with a clear problem, kept humans in the loop, and planned for failure before it happened. Skepticism isn't anti-technology — it's the only rational response to an 85% failure rate.**
+
+---
+
+<LessonComplete lessonId="lesson-2" nextLessonSlug="what-ai-is-bad-at" xpReward={50} />

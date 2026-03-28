@@ -1,0 +1,249 @@
+---
+id: lesson-3
+moduleId: module-2
+slug: when-ai-gets-it-wrong
+title: "When AI Gets It Wrong (And How to Spot It)"
+subtitle: "AI makes stuff up — confidently. Here's how to catch it."
+estimatedMinutes: 7
+xpReward: 50
+---
+
+# When AI Gets It Wrong (And How to Spot It)
+
+![When AI gets it wrong](/images/generated/m2l3-intro.png)
+
+Here's something nobody tells you in the AI hype cycle: **AI makes things up.**
+
+Not maliciously. Not because it's broken. It makes things up the same way a person might confidently give you wrong directions — it's doing its best with incomplete information, and it doesn't always know when it's wrong.
+
+The technical term is "hallucination." The practical term is "plausible-sounding nonsense."
+
+---
+
+## What Hallucination Actually Means
+
+![AI hallucination danger](/images/generated/hero-hallucination.png)
+
+When you ask AI a question, it's not searching a database of verified facts. It's predicting what words are most likely to come next, based on patterns in everything it was trained on.
+
+Most of the time, this works great. But sometimes the pattern-matching leads to a confident answer that is completely fabricated.
+
+Think of it like asking someone at a party a trivia question. If they're uncertain, they might just... make something up. And deliver it with total confidence. Not because they're lying — they genuinely believe they're helping.
+
+---
+
+## Real Things AI Has Gotten Embarrassingly Wrong
+
+<Visual name="m2-ai-blunders" />
+
+AI systems have:
+
+- Cited legal cases that don't exist — a real lawyer submitted AI-generated citations to a court and they were entirely fabricated
+- Given wrong medication dosages (never use AI for medical decisions without verification)
+- Made up historical dates that sound plausible but are simply incorrect
+- "Remembered" news events that never happened
+- Confidently stated that a living person died in a specific year — the wrong year, sometimes the wrong person
+
+The confident tone is part of the problem. AI doesn't hedge like a human who's unsure would. It doesn't say "I think, but I'm not certain." It just states things.
+
+---
+
+## What AI Doesn't Know It Doesn't Know
+
+<Visual name="m2-blind-spots" />
+
+AI has a training cutoff — a date after which it has no information. If something happened after that date, AI either doesn't know about it or (worse) confabulates an answer based on what it expects might have happened.
+
+It also has gaps in specialized knowledge. For common topics, AI is excellent. For very niche, local, or highly technical questions, it can confidently wander off a cliff.
+
+The rule: **the more specific the fact, the more you should verify it.**
+
+---
+
+## How to Catch AI When It's Making Stuff Up
+
+<Visual name="m2-catch-ai" />
+
+**Ask for sources.** Tell it: "Where did this information come from? Can you give me a source I can look up?" If it cites something, Google the source. If it starts hedging or giving you vague "as reported by various sources"-type language, that's a red flag.
+
+**Use common sense.** If an answer surprises you, question it. If a statistic sounds too dramatic, question it. If a historical claim contradicts what you vaguely remember, check it.
+
+**Google the specific claim.** This takes 20 seconds. Paste the specific fact into Google. See if a credible source confirms it. If the first three results don't support it, don't trust it.
+
+**Ask AI to check itself.** Seriously. Try asking: "How confident are you in this? Are there any parts of this response where you might be wrong?" Better AI tools will actually flag their own uncertainty.
+
+---
+
+## The Right Way to Think About This
+
+<Visual name="m2-right-way-to-think" />
+
+AI is not a fact source. It's a starting point.
+
+Think of it like asking a well-read friend for information before a meeting. They might give you a great overview that saves you 30 minutes of research. But before you repeat any of it in public, you confirm the key facts yourself.
+
+AI is brilliant at getting you 80% of the way there. The last 20% — anything where being wrong actually matters — is on you to verify.
+
+---
+
+## Would You Trust AI for This?
+
+<Visual name="m2-trust-scale" />
+
+<Quiz
+  id="m2-lesson-3-quiz"
+  questions={[
+    {
+      id: "q1",
+      illustration: "m2-hallucination",
+      text: "You ask AI what year a famous law was passed. It tells you confidently: 1974. You should:",
+      options: [
+        { id: "a", text: "Trust it — AI has access to historical databases" },
+        { id: "b", text: "Spend 30 seconds verifying on Google or Wikipedia before repeating it" },
+        { id: "c", text: "Ask AI to repeat the answer — repetition makes it more reliable" },
+        { id: "d", text: "Only trust it if the year is before 2000" }
+      ],
+      correctId: "b",
+      explanation: "Historical dates are exactly the kind of specific fact AI can get wrong while sounding completely confident. A 30-second Google check is all it takes. This isn't a criticism of AI — it's just smart information hygiene."
+    },
+    {
+      id: "q2",
+      illustration: "m2-trust-scale",
+      text: "Which of these tasks is SAFEST to trust AI output without independent verification?",
+      options: [
+        { id: "a", text: "Finding out the exact side effects of a new medication" },
+        { id: "b", text: "Looking up whether a specific law applies to your situation" },
+        { id: "c", text: "Getting ideas for what to cook for dinner tonight" },
+        { id: "d", text: "Checking today's stock price for a company" }
+      ],
+      correctId: "c",
+      explanation: "Dinner ideas are low-stakes and subjective — if AI suggests something you end up not liking, no harm done. Medications, legal questions, and real-time data (like stock prices) all require independent verification. The stakes matter."
+    },
+    {
+      id: "q3",
+      illustration: "m2-hallucination",
+      text: "What is AI 'hallucination'?",
+      options: [
+        { id: "a", text: "When AI crashes and shows a blank screen" },
+        { id: "b", text: "When AI confidently produces information that is fabricated or incorrect" },
+        { id: "c", text: "When AI's answers become incoherent due to a long conversation" },
+        { id: "d", text: "When AI refuses to answer a question" }
+      ],
+      correctId: "b",
+      explanation: "Hallucination is when AI generates plausible-sounding but false information — confidently and without acknowledging uncertainty. It's not lying; it's pattern-matching gone wrong. Knowing this exists is the first step to using AI safely."
+    },
+    {
+      id: "q4",
+      illustration: "m2-ai-blunders",
+      text: "A lawyer submitted legal citations generated by AI to a real court. What happened?",
+      options: [
+        { id: "a", text: "The citations were all correct and the case was won" },
+        { id: "b", text: "The citations were entirely fabricated — the cases didn't exist" },
+        { id: "c", text: "The citations were slightly outdated but still valid" },
+        { id: "d", text: "The court couldn't tell the difference between real and AI-generated citations" }
+      ],
+      correctId: "b",
+      explanation: "This actually happened — AI generated completely fabricated legal case citations that looked legitimate. The lawyer submitted them without checking, and they were exposed as non-existent. This is a real-world example of why verification matters, especially for professional or high-stakes use."
+    },
+    {
+      id: "q5",
+      illustration: "m2-blind-spots",
+      text: "Why doesn't AI usually say 'I'm not sure about this' when it doesn't know something?",
+      options: [
+        { id: "a", text: "Because it's programmed to always appear confident" },
+        { id: "b", text: "Because confident, authoritative writing is the dominant pattern in its training data, so it defaults to that tone" },
+        { id: "c", text: "Because admitting uncertainty would make users stop trusting it" },
+        { id: "d", text: "Because it actually is sure about everything" }
+      ],
+      correctId: "b",
+      explanation: "AI learned from textbooks, articles, encyclopedias, and expert answers — all written with authority and confidence. Since that's the dominant pattern in its training data, AI naturally produces text that sounds certain. It has no internal 'confidence meter' to tell it when to be cautious."
+    },
+    {
+      id: "q6",
+      illustration: "m2-catch-ai",
+      text: "What's the best way to check whether a specific fact from AI is accurate?",
+      options: [
+        { id: "a", text: "Ask AI the same question again and see if it gives the same answer" },
+        { id: "b", text: "Assume it's correct if the AI sounds confident" },
+        { id: "c", text: "Do a quick independent search — Google the claim and check if credible sources confirm it" },
+        { id: "d", text: "Ask AI 'Are you sure?' — it will correct itself if wrong" }
+      ],
+      correctId: "c",
+      explanation: "The only reliable way to verify an AI-generated fact is to check it independently. Asking AI 'are you sure?' or asking the same question again doesn't reliably catch errors — the AI may simply double down on its wrong answer. A 30-second Google search is the gold standard."
+    },
+    {
+      id: "q7",
+      illustration: "m2-blind-spots",
+      text: "What does 'training cutoff' mean for AI?",
+      options: [
+        { id: "a", text: "The maximum number of questions you can ask per day" },
+        { id: "b", text: "A date after which the AI has no information, because its training data stopped there" },
+        { id: "c", text: "The point where AI stops learning from your conversation" },
+        { id: "d", text: "A feature that limits AI to certain topics" }
+      ],
+      correctId: "b",
+      explanation: "AI models are trained on data up to a specific date — the training cutoff. Anything that happened after that date is unknown to the model. If you ask about recent events, AI may not know, or worse, it may fabricate a plausible-sounding answer. Always be especially careful with time-sensitive questions."
+    },
+    {
+      id: "q8",
+      illustration: "m2-trust-scale",
+      text: "You're using AI to research a medical condition before a doctor's appointment. What's the right approach?",
+      options: [
+        { id: "a", text: "Use AI's answer as your diagnosis and skip the appointment" },
+        { id: "b", text: "Use AI to understand the basics of the condition, but rely on your doctor for diagnosis and treatment decisions" },
+        { id: "c", text: "Don't use AI for medical topics at all" },
+        { id: "d", text: "Only trust AI if it recommends the same treatment your friend suggested" }
+      ],
+      correctId: "b",
+      explanation: "AI is excellent at explaining medical concepts in plain language — helping you understand what a condition is, what common treatments exist, and what questions to ask your doctor. But for your specific situation, diagnosis, and treatment plan, a real doctor is irreplaceable. AI is a preparation tool, not a replacement for medical care."
+    },
+    {
+      id: "q9",
+      illustration: "m2-hallucination",
+      text: "Which type of question is AI MOST likely to hallucinate an answer to?",
+      options: [
+        { id: "a", text: "Explaining a common concept like 'how does compound interest work'" },
+        { id: "b", text: "A very specific, niche factual question like 'What year did this small local business open?'" },
+        { id: "c", text: "General brainstorming like 'give me 5 dinner ideas'" },
+        { id: "d", text: "Tone adjustment like 'make this email sound more professional'" }
+      ],
+      correctId: "b",
+      explanation: "The more specific and niche the fact, the more likely AI is to hallucinate. Common concepts have tons of training data behind them. But very specific details — exact dates, local businesses, niche statistics — may have thin or no coverage in the training data, making AI far more likely to fill in the blanks with fabricated details."
+    },
+    {
+      id: "q10",
+      illustration: "m2-catch-ai",
+      text: "What's the smartest one-sentence rule for using AI safely?",
+      options: [
+        { id: "a", text: "Never use AI for anything important" },
+        { id: "b", text: "Trust the structure, verify the specifics" },
+        { id: "c", text: "Always assume AI is wrong" },
+        { id: "d", text: "Only use AI for creative tasks" }
+      ],
+      correctId: "b",
+      explanation: "AI is great at structure — organizing ideas, drafting communication, explaining concepts. Where it stumbles is on specific facts, dates, names, and statistics. Trust the framework it gives you, but independently verify any specific claim before you repeat it or act on it."
+    }
+  ]}
+/>
+
+---
+
+## The One Sentence to Remember
+
+<Visual name="m2-one-sentence" />
+
+AI is extraordinarily useful for drafts, ideas, explanations, and getting started. It is **not** a replacement for verifying facts that actually matter.
+
+Trust the structure. Verify the specifics.
+
+---
+
+## Key Takeaway
+
+<Visual name="m2-l3-key-takeaway" />
+
+> **AI hallucination is real — it confidently makes things up sometimes, and it doesn't know when it's doing it. The fix isn't to stop using AI; it's to verify any specific fact before you repeat it. Ask for sources, Google the claim, and use common sense. AI gets you most of the way there. The last step is on you.**
+
+---
+
+<LessonComplete lessonId="lesson-3" nextLessonSlug="ai-for-everyday-tasks" xpReward={50} />

@@ -1,0 +1,41 @@
+<svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="m2bg" x1="0" y1="0" x2="480" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f5f3ff"/>
+      <stop offset="100%" stop-color="#ede9fe"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="320" rx="24" fill="url(#m2bg)"/>
+  <!-- Terminal window -->
+  <g transform="translate(100,35)">
+    <rect width="280" height="200" rx="16" fill="#1e1b4b" stroke="#4c1d95" stroke-width="2"/>
+    <!-- Title bar -->
+    <rect width="280" height="36" rx="16" fill="#2e1065"/>
+    <rect y="16" width="280" height="20" fill="#2e1065"/>
+    <circle cx="22" cy="18" r="5.5" fill="#f87171" opacity="0.8"/>
+    <circle cx="40" cy="18" r="5.5" fill="#fbbf24" opacity="0.8"/>
+    <circle cx="58" cy="18" r="5.5" fill="#4ade80" opacity="0.8"/>
+    <!-- Code lines -->
+    <rect x="18" y="48" width="44" height="8" rx="4" fill="#a78bfa" opacity="0.9"/>
+    <rect x="68" y="48" width="80" height="8" rx="4" fill="#c4b5fd" opacity="0.6"/>
+    <rect x="18" y="68" width="32" height="8" rx="4" fill="#a78bfa" opacity="0.9"/>
+    <rect x="56" y="68" width="96" height="8" rx="4" fill="#c4b5fd" opacity="0.6"/>
+    <rect x="158" y="68" width="48" height="8" rx="4" fill="#22d3ee" opacity="0.7"/>
+    <rect x="18" y="88" width="60" height="8" rx="4" fill="#6b7280" opacity="0.5"/>
+    <rect x="18" y="112" width="28" height="8" rx="4" fill="#a78bfa" opacity="0.9"/>
+    <rect x="52" y="112" width="72" height="8" rx="4" fill="#fde68a" opacity="0.7"/>
+    <rect x="18" y="132" width="50" height="8" rx="4" fill="#c4b5fd" opacity="0.6"/>
+    <rect x="74" y="132" width="36" height="8" rx="4" fill="#4ade80" opacity="0.7"/>
+    <rect x="18" y="156" width="70" height="8" rx="4" fill="#a78bfa" opacity="0.9"/>
+    <!-- Cursor -->
+    <rect x="94" y="153" width="3" height="14" rx="1" fill="#a78bfa" opacity="0.8"/>
+  </g>
+  <!-- Floating badges -->
+  <rect x="30" y="90" width="56" height="28" rx="14" fill="#8b5cf6" opacity="0.9"/>
+  <text x="58" y="109" font-size="10" fill="white" text-anchor="middle" font-family="system-ui" font-weight="600">Tokens</text>
+  <rect x="394" y="80" width="70" height="28" rx="14" fill="#7c3aed" opacity="0.9"/>
+  <text x="429" y="99" font-size="10" fill="white" text-anchor="middle" font-family="system-ui" font-weight="600">Models</text>
+  <!-- Label -->
+  <rect x="140" y="260" width="200" height="36" rx="18" fill="#8b5cf6"/>
+  <text x="240" y="283" font-size="13" fill="white" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600">Technical Literacy</text>
+</svg>

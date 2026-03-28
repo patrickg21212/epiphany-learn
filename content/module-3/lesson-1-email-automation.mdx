@@ -1,0 +1,243 @@
+---
+id: lesson-1
+moduleId: module-3
+slug: email-automation
+title: "AI That Handles Your Inbox"
+subtitle: "Stop drowning in email — let AI do the heavy lifting"
+estimatedMinutes: 7
+xpReward: 60
+---
+
+# AI That Handles Your Inbox
+
+![AI email automation](/images/generated/m3l1-intro.png)
+
+Picture this: you open your email after a long day and there are 63 unread messages. Your stomach drops a little. Most of them are probably nothing — newsletters, a shipping notification, your cousin forwarding a meme. But buried in there are two that actually matter, and you have to read every single one to find them.
+
+That is a genuinely terrible way to spend your time. And AI can fix it.
+
+---
+
+## What's Actually Going On With Your Inbox
+
+<Visual name="m3-inbox-overload" />
+
+Your email app already knows a lot about you. It knows which senders you reply to quickly. It knows what you delete without reading. Gmail has been quietly using AI to sort your mail for years — that's why newsletters end up in "Promotions" instead of your main inbox.
+
+But that's just the beginning. Modern AI can do much, much more.
+
+---
+
+## What AI Can Do For Your Personal Email
+
+<Visual name="m3-ai-email-powers" />
+
+<RevealCard
+  id="email-1"
+  label="Write the reply you don't want to write"
+  reveal="You know that email you've been avoiding for three days because you don't know how to phrase it? Copy it into ChatGPT and say 'help me write a polite response declining this invitation.' Done in 30 seconds. AI is genuinely great at drafting replies that are hard to write — the awkward 'no,' the complaint to a company, the follow-up that doesn't sound desperate."
+/>
+
+<RevealCard
+  id="email-2"
+  label="Summarize the long thread you don't want to read"
+  reveal="Got a 27-email back-and-forth about planning a family reunion? Copy the whole thing, paste it into ChatGPT, and ask 'what did people decide in this thread?' You'll get a 4-sentence summary instead of 20 minutes of re-reading. Works on newsletters, long announcements, medical information — anything that's more words than you feel like dealing with."
+/>
+
+<RevealCard
+  id="email-3"
+  label="Sort out what actually matters"
+  reveal="Gmail's Priority Inbox feature uses AI to float important messages to the top based on who you actually interact with. Turn it on under Settings > Inbox. It's not perfect, but after a week of training — just marking things as important or not — it gets surprisingly good at filtering your signal from the noise."
+/>
+
+<RevealCard
+  id="email-4"
+  label="Decode confusing messages"
+  reveal="Got a weird email from your landlord? An insurance notice you don't understand? Paste it into ChatGPT and ask 'what is this email actually asking me to do?' You'll get plain English. AI is fantastic at translating jargon, legalese, and corporate-speak into something a human can actually parse."
+/>
+
+---
+
+## Try It Right Now
+
+<Visual name="m3-try-it-email" />
+
+Here's the fastest way to see what AI can do with your email — takes about two minutes:
+
+1. Open your inbox and find an email you need to reply to but haven't gotten around to.
+2. Copy the whole email (or just the relevant part).
+3. Go to [chat.openai.com](https://chat.openai.com) or [claude.ai](https://claude.ai) — both are free.
+4. Paste the email and type: *"Write a friendly reply to this. Keep it short."*
+5. Read what it gives you. Edit anything that sounds off. Send it.
+
+That's it. Most people say their first reaction is something like "...why haven't I been doing this?"
+
+---
+
+## Before and After: A Real Inbox Day
+
+![Inbox before and after AI](/images/generated/hero-inbox-transform.png)
+
+**Before using AI:**
+
+You come home from work. There are 40 emails. You spend 25 minutes going through them, draft a reply to your kid's teacher (8 minutes getting the tone right), ignore three emails you'll deal with "later," and close your laptop feeling mildly stressed.
+
+**After using AI:**
+
+You scan the inbox — Gmail's Priority Inbox already pushed the important ones to the top. You paste the teacher's email into ChatGPT, get a draft in 10 seconds, tweak one sentence, and send it. Total email time: 12 minutes. Nothing is haunting you.
+
+The math isn't dramatic on any single day. Over a month? You've gotten back hours.
+
+---
+
+## Quick Check
+
+<Visual name="m3-inbox-quiz" />
+
+<Quiz
+  id="module3-lesson1-quiz"
+  questions={[
+    {
+      id: "q1",
+      illustration: "m3-ai-email-powers",
+      text: "What's the best use of AI for your personal email?",
+      options: [
+        { id: "a", text: "Having it read every email so you never have to open your inbox again" },
+        { id: "b", text: "Drafting hard-to-write replies, summarizing long threads, and decoding confusing messages" },
+        { id: "c", text: "Automatically deleting anything that looks like spam" },
+        { id: "d", text: "Sorting your email into hundreds of folders automatically" }
+      ],
+      correctId: "b",
+      explanation: "AI is best as your drafting and summarizing assistant — the things that take mental energy and time. You still need to read what matters and make judgment calls, but AI handles the tedious parts: the blank-page problem, the long thread you dread, the confusing notice you can't decode."
+    },
+    {
+      id: "q2",
+      illustration: "m3-inbox-overload",
+      text: "Someone sends you a 500-word email and you're not sure what they're actually asking. What's the fastest AI move?",
+      options: [
+        { id: "a", text: "Read it three times until it makes sense" },
+        { id: "b", text: "Write back asking them to clarify" },
+        { id: "c", text: "Paste it into ChatGPT and ask 'what is this person actually asking me to do?'" },
+        { id: "d", text: "Set up an automated email classifier" }
+      ],
+      correctId: "c",
+      explanation: "This is one of AI's superpowers — cutting through long, confusing text and giving you the plain-English version. Paste it in, ask the question, get your answer in seconds. No setup required."
+    },
+    {
+      id: "q3",
+      illustration: "m3-before-after-inbox",
+      text: "How does Gmail's Priority Inbox use AI to help you?",
+      options: [
+        { id: "a", text: "It deletes unimportant emails automatically" },
+        { id: "b", text: "It learns which senders you interact with and floats important messages to the top" },
+        { id: "c", text: "It responds to emails on your behalf" },
+        { id: "d", text: "It forwards important emails to your phone as text messages" }
+      ],
+      correctId: "b",
+      explanation: "Gmail's Priority Inbox watches your behavior — who you reply to, what you open, what you delete — and uses that to prioritize your inbox. It doesn't delete or respond to anything; it just surfaces what matters most so you see it first."
+    },
+    {
+      id: "q4",
+      illustration: "m3-try-it-email",
+      text: "You've been avoiding replying to a tricky email for three days because you can't get the tone right. What should you do?",
+      options: [
+        { id: "a", text: "Keep waiting until the perfect words come to you" },
+        { id: "b", text: "Send a one-word reply to get it over with" },
+        { id: "c", text: "Copy the email into an AI tool and ask it to draft a polite response" },
+        { id: "d", text: "Forward it to someone else and ask them to handle it" }
+      ],
+      correctId: "c",
+      explanation: "AI is perfect for the 'blank page problem' — when you know what you want to say but can't find the right words. Give it the original email and the tone you want ('polite but firm,' 'friendly decline'), and you'll have a solid draft in seconds that you can tweak and send."
+    },
+    {
+      id: "q5",
+      illustration: "m3-before-after-inbox",
+      text: "What's the most realistic time savings you can expect from using AI with your email?",
+      options: [
+        { id: "a", text: "You'll never need to check email again" },
+        { id: "b", text: "Gradual savings that add up — a few minutes per session, hours over a month" },
+        { id: "c", text: "AI will cut your email time by 90% on day one" },
+        { id: "d", text: "No real time savings — AI just makes it more fun" }
+      ],
+      correctId: "b",
+      explanation: "The lesson's example showed email time dropping from 25 minutes to 12 minutes on a given day. That's not dramatic, but over a month it adds up to hours reclaimed. AI doesn't eliminate email — it makes each interaction faster and less mentally draining."
+    },
+    {
+      id: "q6",
+      illustration: "m3-ai-email-powers",
+      text: "You get an insurance notice full of jargon you don't understand. Which AI prompt would help most?",
+      options: [
+        { id: "a", text: "'Is this insurance company trustworthy?'" },
+        { id: "b", text: "'Write me a new insurance policy'" },
+        { id: "c", text: "'What does this email actually mean and what action do I need to take?'" },
+        { id: "d", text: "'Delete all insurance emails from my inbox'" }
+      ],
+      correctId: "c",
+      explanation: "AI excels at translating jargon into plain English. The best prompts are direct and specific — asking 'what does this mean' and 'what should I do' gets you a clear summary and actionable next steps, which is exactly what you need when facing confusing official communications."
+    },
+    {
+      id: "q7",
+      illustration: "m3-inbox-overload",
+      text: "Which of these is NOT a good use of AI for email?",
+      options: [
+        { id: "a", text: "Summarizing a long email thread about planning a family event" },
+        { id: "b", text: "Giving AI full access to your inbox and letting it reply to everything automatically" },
+        { id: "c", text: "Drafting a difficult reply you've been putting off" },
+        { id: "d", text: "Translating a confusing corporate email into plain English" }
+      ],
+      correctId: "b",
+      explanation: "AI is a tool you use selectively — not an autopilot for your entire inbox. You still need to read what matters, make judgment calls about what to prioritize, and decide what to say. The value comes from using AI on specific emails that are hard, long, or confusing."
+    },
+    {
+      id: "q8",
+      illustration: "m3-try-it-email",
+      text: "A 27-email thread about a family reunion has been going on for weeks. What's the fastest way to catch up?",
+      options: [
+        { id: "a", text: "Read every email from the beginning to make sure you don't miss anything" },
+        { id: "b", text: "Just read the most recent email and hope it has context" },
+        { id: "c", text: "Copy the whole thread into AI and ask 'what did people decide?'" },
+        { id: "d", text: "Reply to the thread asking someone to summarize it for you" }
+      ],
+      correctId: "c",
+      explanation: "This is one of the most practical AI email tricks. Instead of reading 27 messages or bugging someone to summarize, paste the thread into an AI tool and ask for the key decisions. You'll get a 4-sentence summary in seconds instead of spending 20 minutes re-reading."
+    },
+    {
+      id: "q9",
+      illustration: "m3-ai-email-powers",
+      text: "When using AI to help draft an email reply, what's the most important final step?",
+      options: [
+        { id: "a", text: "Send it immediately — AI writes better than most people" },
+        { id: "b", text: "Read the draft, edit anything that doesn't sound like you, then send" },
+        { id: "c", text: "Run it through three different AI tools to get the best version" },
+        { id: "d", text: "Add a disclaimer that AI helped write the message" }
+      ],
+      correctId: "b",
+      explanation: "AI gives you a strong starting draft, but you should always review and edit before sending. Make sure it sounds like you, captures the right tone, and doesn't include anything inaccurate. The goal is to save time on the hard part (getting started), not to remove yourself from the process entirely."
+    },
+    {
+      id: "q10",
+      illustration: "m3-before-after-inbox",
+      text: "What's the biggest advantage of using AI for email compared to traditional email management tips like folders and filters?",
+      options: [
+        { id: "a", text: "AI replaces the need for folders entirely" },
+        { id: "b", text: "AI helps with the mental effort — drafting, understanding, and summarizing — not just organization" },
+        { id: "c", text: "AI is faster at creating email folders" },
+        { id: "d", text: "AI can read emails before they arrive in your inbox" }
+      ],
+      correctId: "b",
+      explanation: "Folders and filters organize your email, but they don't help with the part that actually takes energy: reading confusing messages, writing difficult replies, and making sense of long threads. AI tackles the cognitive load — the thinking part — which is where most people's email frustration actually lives."
+    }
+  ]}
+/>
+
+---
+
+## Key Takeaway
+
+<Visual name="m3-inbox-takeaway" />
+
+> **AI won't empty your inbox for you. But it will make every hard email easier and every confusing one clearer. Start with one email today — paste it in, ask for a reply. That's how the habit starts.**
+
+---
+
+<LessonComplete lessonId="lesson-1" nextLessonSlug="ai-scheduling" xpReward={60} />

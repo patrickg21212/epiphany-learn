@@ -1,0 +1,1524 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS — CSS CUSTOM PROPERTIES
+   epiphany.help | Kahoot-inspired dark-first design
+   Dark canvas. Bright accents. Game energy.
+   ============================================================ */
+
+/* ── Dark-first tokens (Kahoot palette) ────────────────────── */
+:root {
+  --bg-page: #050505;
+  --bg-card: #0A0A0A;
+  --bg-elevated: #111111;
+  --bg-hover: #1A1A1A;
+  --bg-overlay: rgba(10, 10, 10, 0.85);
+
+  --border-subtle: #3A1A7A;
+  --border-default: #4A2A8A;
+  --border-strong: #5A3A9A;
+
+  --text-primary: #F0EFEB;
+  --text-secondary: rgba(240, 239, 235, 0.7);
+  --text-muted: rgba(240, 239, 235, 0.4);
+  --text-faint: rgba(240, 239, 235, 0.2);
+
+  /* ── Kahoot accent palette ──────────────────────────────── */
+  --accent-red: #E21B3C;
+  --accent-blue: #1368CE;
+  --accent-gold: #FFA602;
+  --accent-green: #26890C;
+  --accent-cyan: #00C9B7;
+  --accent-magenta: #FF3EA5;
+  --accent-orange: #EB670F;
+
+  --brand: #1368CE;
+  --brand-dim: rgba(19, 104, 206, 0.12);
+  --brand-border: rgba(19, 104, 206, 0.25);
+
+  --accent: #00C9B7;
+  --accent-dim: rgba(0, 201, 183, 0.1);
+
+  --xp: #FFA602;
+  --xp-glow: rgba(255, 166, 2, 0.45);
+  --streak: #EB670F;
+  --streak-glow: rgba(235, 103, 15, 0.5);
+  --win: #26890C;
+  --win-glow: rgba(38, 137, 12, 0.4);
+  --lose: #E21B3C;
+  --lose-glow: rgba(226, 27, 60, 0.4);
+
+  --xp-bar-bg: #1A1A1A;
+  --xp-bar-track: rgba(255, 166, 2, 0.2);
+
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --shadow-modal: 0 32px 80px rgba(0, 0, 0, 0.7);
+
+  /* Kahoot CSS ref: 100-150ms transforms, fast micro-interactions */
+  --transition-fast: 100ms ease;
+  --transition-base: 150ms ease;
+  --transition-slow: 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-spring: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-cinematic: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Glass morphism ─────────────────────────────────────── */
+  --glass-bg: rgba(10, 10, 10, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-blur: blur(20px) saturate(180%);
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  /* Kahoot CSS ref: font-family: 'Montserrat', sans-serif; */
+  font-family: var(--font-montserrat), 'Montserrat', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 100dvh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand);
+}
+
+/* ============================================================
+   COMPONENT UTILITIES
+   ============================================================ */
+
+@layer components {
+
+  /* ── Cards ───────────────────────────────────────────────── */
+
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--brand-border);
+  }
+
+  .card-elevated {
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-glow {
+    background-color: var(--bg-card);
+    border: 1px solid var(--brand-border);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card), 0 0 0 1px var(--brand-border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--brand-dim);
+    pointer-events: none;
+  }
+
+  /* ── Buttons — Kahoot CSS ref: raised 3D with box-shadow ── */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0.25rem; /* Kahoot: 0.25rem for buttons */
+    padding: 0.75rem 1.5rem;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    border: none;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:active {
+    /* Kahoot: squish down on press */
+    transform: translateY(2px);
+  }
+
+  .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
+  .btn-md { padding: 0.625rem 1.25rem; font-size: 0.9375rem; }
+  .btn-lg { padding: 0.875rem 1.75rem; font-size: 1.0625rem; }
+  .btn-xl { padding: 1rem 2rem; font-size: 1.125rem; }
+
+  .btn-primary {
+    /* Kahoot: colored bg + darker box-shadow on bottom = 3D raised effect */
+    background-color: #26890C;
+    color: #ffffff;
+    box-shadow: 0 0.25rem #106B02;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.3rem #106B02;
+  }
+
+  .btn-primary:active {
+    transform: translateY(2px);
+    box-shadow: 0 0.125rem #106B02;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--brand);
+    border: 1.5px solid var(--brand-border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--brand-dim);
+    border-color: var(--brand);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+  }
+
+  .btn-ghost:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+
+  .btn-win {
+    background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.35);
+  }
+
+  .btn-win:hover {
+    box-shadow: 0 6px 24px rgba(34, 197, 94, 0.5);
+    transform: translateY(-1px);
+  }
+
+  /* ── XP Bar ──────────────────────────────────────────────── */
+
+  .xp-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--xp-bar-bg);
+    border-radius: 99px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b 0%, #fcd34d 50%, #fbbf24 100%);
+    border-radius: 99px;
+    position: relative;
+    overflow: hidden;
+    transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+  }
+
+  .xp-bar-fill::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: progressShimmer 2s linear infinite;
+  }
+
+  /* ── Streak Display ──────────────────────────────────────── */
+
+  .streak-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(220, 38, 38, 0.1) 100%);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    border-radius: 99px;
+    padding: 0.3rem 0.75rem;
+    font-weight: 700;
+    color: var(--streak);
+    font-size: 0.875rem;
+  }
+
+  .streak-flame {
+    display: inline-block;
+    animation: streakFlame 1.2s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 4px rgba(249, 115, 22, 0.6));
+  }
+
+  /* ── Badge Tier Glow Rings ───────────────────────────────── */
+
+  .badge-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badge-glow-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    animation: glowPulse 2.5s ease-in-out infinite;
+  }
+
+  .badge-bronze .badge-glow-ring  { background: radial-gradient(circle, rgba(180, 83, 9, 0.4), transparent 70%); }
+  .badge-silver .badge-glow-ring  { background: radial-gradient(circle, rgba(148, 163, 184, 0.4), transparent 70%); }
+  .badge-gold .badge-glow-ring    { background: radial-gradient(circle, rgba(251, 191, 36, 0.5), transparent 70%); }
+  .badge-platinum .badge-glow-ring { background: radial-gradient(circle, rgba(34, 211, 238, 0.45), transparent 70%); }
+  .badge-legendary .badge-glow-ring {
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.5), transparent 70%);
+    animation: glowPulse 1.5s ease-in-out infinite;
+  }
+
+  /* ── Progress Nodes (lesson map) ─────────────────────────── */
+
+  .progress-node {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform var(--transition-spring), box-shadow var(--transition-base);
+    cursor: pointer;
+  }
+
+  .progress-node:hover { transform: scale(1.1); }
+
+  .progress-node-locked {
+    background: var(--bg-elevated);
+    border: 2px solid var(--border-default);
+    color: var(--text-faint);
+  }
+
+  .progress-node-available {
+    background: linear-gradient(135deg, #1368CE 0%, #2B8BF5 100%);
+    border: 2px solid rgba(19, 104, 206, 0.4);
+    color: white;
+    box-shadow: 0 0 16px rgba(19, 104, 206, 0.4);
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  .progress-node-complete {
+    background: linear-gradient(135deg, #1D6B0F 0%, #26890C 100%);
+    border: 2px solid rgba(38, 137, 12, 0.4);
+    color: white;
+    box-shadow: 0 0 12px rgba(38, 137, 12, 0.35);
+  }
+
+  /* ── XP Burst (floating XP gain) ────────────────────────── */
+
+  .xp-burst {
+    position: fixed;
+    pointer-events: none;
+    font-weight: 800;
+    font-size: 1.125rem;
+    color: var(--xp);
+    text-shadow: 0 0 12px var(--xp-glow), 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: floatUpFade 1.2s ease-out forwards;
+    z-index: 400;
+    white-space: nowrap;
+  }
+
+  /* ── Toast Notifications ─────────────────────────────────── */
+
+  .toast {
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-modal);
+    padding: 1rem 1.25rem;
+    max-width: 22rem;
+  }
+
+  .toast-success { border-color: rgba(34, 197, 94, 0.3); box-shadow: var(--shadow-modal), 0 0 0 1px rgba(34, 197, 94, 0.15); }
+  .toast-error   { border-color: rgba(244, 63, 94, 0.3); box-shadow: var(--shadow-modal), 0 0 0 1px rgba(244, 63, 94, 0.15); }
+  .toast-xp      { border-color: rgba(251, 191, 36, 0.35); box-shadow: var(--shadow-modal), 0 0 0 1px rgba(251, 191, 36, 0.2); }
+
+  /* ── Answer Options (quiz) ───────────────────────────────── */
+
+  .answer-option {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border-radius: 0.875rem;
+    border: 2px solid var(--border-default);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .answer-option:hover:not(:disabled) {
+    border-color: var(--brand);
+    background: var(--brand-dim);
+    transform: translateY(-1px);
+  }
+
+  .answer-option:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .answer-option-selected {
+    border-color: var(--brand);
+    background: var(--brand-dim);
+  }
+
+  .answer-option-correct {
+    border-color: var(--win);
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--win);
+    animation: correctFlash 0.5s ease-out forwards;
+  }
+
+  .answer-option-wrong {
+    border-color: var(--lose);
+    background: rgba(244, 63, 94, 0.1);
+    color: var(--lose);
+    animation: wrongShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
+  /* ── Feedback Banner ─────────────────────────────────────── */
+
+  .feedback-banner {
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    border: 1.5px solid;
+    animation: slideUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .feedback-banner-correct {
+    background: rgba(34, 197, 94, 0.08);
+    border-color: rgba(34, 197, 94, 0.35);
+    color: var(--win);
+  }
+
+  .feedback-banner-wrong {
+    background: rgba(244, 63, 94, 0.08);
+    border-color: rgba(244, 63, 94, 0.35);
+    color: var(--lose);
+  }
+
+  /* ── Pill Labels ─────────────────────────────────────────── */
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .pill-brand  { background: var(--brand-dim); color: var(--brand); border: 1px solid var(--brand-border); }
+  .pill-xp     { background: rgba(245, 158, 11, 0.12); color: var(--xp); border: 1px solid rgba(245, 158, 11, 0.25); }
+  .pill-win    { background: rgba(34, 197, 94, 0.1); color: var(--win); border: 1px solid rgba(34, 197, 94, 0.25); }
+  .pill-streak { background: rgba(249, 115, 22, 0.1); color: var(--streak); border: 1px solid rgba(249, 115, 22, 0.25); }
+
+  /* ── Level Badge ─────────────────────────────────────────── */
+
+  .level-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, #1368CE 0%, #00C9B7 100%);
+    color: white;
+    font-weight: 800;
+    font-size: 0.875rem;
+    box-shadow: 0 0 12px rgba(19, 104, 206, 0.4);
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Lesson Prose ────────────────────────────────────────── */
+
+  .prose-lesson {
+    @apply text-base leading-relaxed;
+    color: var(--text-primary);
+  }
+
+  /* Staggered entrance for lesson sections */
+  .prose-lesson > h2,
+  .prose-lesson > h3,
+  .prose-lesson > p,
+  .prose-lesson > ul,
+  .prose-lesson > ol,
+  .prose-lesson > blockquote,
+  .prose-lesson > div {
+    animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .prose-lesson > :nth-child(1) { animation-delay: 0ms; }
+  .prose-lesson > :nth-child(2) { animation-delay: 50ms; }
+  .prose-lesson > :nth-child(3) { animation-delay: 100ms; }
+  .prose-lesson > :nth-child(4) { animation-delay: 150ms; }
+  .prose-lesson > :nth-child(5) { animation-delay: 200ms; }
+  .prose-lesson > :nth-child(6) { animation-delay: 250ms; }
+  .prose-lesson > :nth-child(7) { animation-delay: 300ms; }
+  .prose-lesson > :nth-child(8) { animation-delay: 350ms; }
+  .prose-lesson > :nth-child(n+9) { animation-delay: 400ms; }
+
+  /* Kahoot CSS ref: h1/h2 clamp(1.375rem, 2vmin, 1.5rem) weight 700
+     Hero titles: 2.75rem at 900px+. Body: 1rem, line-height 1.5 */
+
+  .prose-lesson h1 {
+    font-size: clamp(1.5rem, 3vw, 2.75rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .prose-lesson h1:first-child { margin-top: 0; }
+
+  .prose-lesson h2 {
+    font-size: clamp(1.375rem, 2vmin, 1.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+    color: var(--text-primary);
+  }
+
+  .prose-lesson h3 {
+    font-size: clamp(1rem, 1.5vmin, 1.125rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+    color: rgba(240, 239, 235, 0.85);
+  }
+
+  .prose-lesson p    { @apply mb-5; color: rgba(240, 239, 235, 0.72); font-size: 1rem; line-height: 1.5; }
+  .prose-lesson ul   { @apply list-disc pl-6 mb-5 space-y-2; }
+  .prose-lesson ol   { @apply list-decimal pl-6 mb-5 space-y-2; }
+  .prose-lesson li   { color: rgba(240, 239, 235, 0.72); font-size: 1rem; line-height: 1.5; }
+  .prose-lesson li::marker { color: var(--module-color, var(--brand)); }
+  .prose-lesson strong { @apply font-semibold; color: var(--text-primary); }
+  .prose-lesson em   { @apply italic; }
+
+  .prose-lesson hr {
+    border: none;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--module-color, var(--brand)) 50%, transparent 100%);
+    opacity: 0.25;
+    @apply my-10 rounded-full;
+  }
+
+  .prose-lesson blockquote {
+    border-left: 4px solid var(--module-color, var(--accent-cyan));
+    padding: 1.5rem 2rem;
+    border-radius: 0 1rem 1rem 0;
+    @apply my-8 not-italic;
+    color: var(--text-primary);
+    background: var(--module-bg-light, rgba(0,201,183,0.06));
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.7;
+    position: relative;
+    box-shadow: inset 4px 0 12px -4px var(--module-glow, rgba(0,201,183,0.3));
+  }
+
+  .prose-lesson blockquote::before {
+    content: "💡";
+    position: absolute;
+    top: -12px;
+    left: 12px;
+    font-size: 1.25rem;
+    background: var(--bg-page);
+    padding: 0 4px;
+    border-radius: 4px;
+  }
+
+  .prose-lesson blockquote p {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+
+  .prose-lesson blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  .prose-lesson blockquote strong {
+    color: var(--module-text-dark, var(--accent-cyan));
+  }
+
+  .prose-lesson code {
+    background: var(--bg-elevated);
+    color: var(--brand);
+    border: 1px solid var(--border-subtle);
+    @apply px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .prose-lesson pre {
+    background: #07070e;
+    border: 1px solid var(--border-subtle);
+    @apply p-4 rounded-xl overflow-x-auto mb-4 text-sm;
+  }
+
+  .prose-lesson a {
+    color: var(--module-color, var(--brand));
+    @apply underline underline-offset-2;
+    transition: opacity var(--transition-fast);
+  }
+
+  .prose-lesson a:hover { opacity: 0.75; }
+
+  /* Navigation buttons in completion slide — override prose link color */
+  .prose-lesson .lesson-nav-btn {
+    color: #fff !important;
+    text-decoration: none !important;
+  }
+
+  .prose-lesson .lesson-nav-btn:hover { opacity: 1 !important; }
+
+  /* ── Generated Images in Prose (Kahoot-style animated treatment) ── */
+
+  .prose-lesson img[src*="/images/generated/"] {
+    display: block;
+    width: 100%;
+    max-width: 42rem;
+    margin: 1.5rem auto;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.4),
+      0 0 40px var(--module-glow, rgba(19, 104, 206, 0.12));
+    animation:
+      imgEntrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) both,
+      imgFloat 8s ease-in-out 0.8s infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .prose-lesson img[src*="/images/generated/"]:hover {
+    transform: scale(1.03);
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.5),
+      0 0 60px var(--module-glow, rgba(19, 104, 206, 0.2));
+  }
+
+  /* Entrance: fade in + slide up */
+  @keyframes imgEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Ken Burns: gentle float + zoom */
+  @keyframes imgFloat {
+    0%, 100% {
+      transform: scale(1) translateY(0);
+    }
+    50% {
+      transform: scale(1.04) translateY(-6px);
+    }
+  }
+
+  /* Sync with slide stagger timing */
+  .slide-stagger-active > p > img[src*="/images/generated/"],
+  .slide-stagger-active > img[src*="/images/generated/"] {
+    animation-delay: 160ms, 960ms;
+  }
+
+  /* ── Visual Illustrations in Prose ─────────────────────────── */
+
+  .visual-figure {
+    animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .visual-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .visual-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 20px var(--module-glow, rgba(19,104,206,0.15));
+  }
+
+  /* ── Slide Mode — Matched to KAHOOT-css-reference.md ─────────
+     Font: Montserrat. Sizes: clamp() fluid. Weight: 700.
+     h1 hero: 2.75rem. h2: clamp(1.375rem, 2vmin, 1.5rem).
+     Body: 1rem, line-height 1.5.
+     ──────────────────────────────────────────────────────────── */
+
+  .slide-prose .visual-figure {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .slide-prose h1 {
+    /* Kahoot CSS ref: hero-title 2.75rem at 900px+ */
+    font-size: clamp(1.5rem, 3vw, 2.75rem);
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .slide-prose h2 {
+    /* Kahoot CSS ref: h1/h2 clamp(1.375rem, 2vmin, 1.5rem), weight 700 */
+    font-size: clamp(1.375rem, 2vmin, 1.5rem);
+    line-height: 1.3;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .slide-prose h3 {
+    /* Kahoot CSS ref: h3-h6 clamp(1rem, 1.5vmin, 1.125rem), weight 700 */
+    font-size: clamp(1rem, 1.5vmin, 1.125rem);
+    font-weight: 700;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .slide-prose p {
+    /* Kahoot CSS ref: body 1rem, line-height 1.5 */
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(240, 239, 235, 0.75);
+  }
+
+  .slide-prose ul,
+  .slide-prose ol {
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .slide-prose li {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .slide-prose strong {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .slide-prose em {
+    color: rgba(240, 239, 235, 0.85);
+  }
+
+  .slide-prose blockquote {
+    font-size: 1rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    /* Kahoot CSS ref: cards use 0.75rem border-radius */
+    border-radius: 0 0.75rem 0.75rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .slide-prose blockquote {
+      font-size: 1.375rem;
+    }
+  }
+
+  /* ── Slide Transitions — Kahoot-style fade+slide ─────────── */
+
+  .slide-transition-wrapper {
+    transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .slide-transition-visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+
+  .slide-transition-exit-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition-duration: 0.2s;
+  }
+
+  .slide-transition-exit-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition-duration: 0.2s;
+  }
+
+  .slide-transition-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* ── Stagger entrance — children animate in one by one ───── */
+
+  @keyframes slideElementIn {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-stagger-active > * {
+    animation: slideElementIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .slide-stagger-active > :nth-child(1) { animation-delay: 0ms; }
+  .slide-stagger-active > :nth-child(2) { animation-delay: 80ms; }
+  .slide-stagger-active > :nth-child(3) { animation-delay: 160ms; }
+  .slide-stagger-active > :nth-child(4) { animation-delay: 240ms; }
+  .slide-stagger-active > :nth-child(5) { animation-delay: 320ms; }
+  .slide-stagger-active > :nth-child(6) { animation-delay: 400ms; }
+  .slide-stagger-active > :nth-child(7) { animation-delay: 480ms; }
+  .slide-stagger-active > :nth-child(8) { animation-delay: 560ms; }
+  .slide-stagger-active > :nth-child(n+9) { animation-delay: 600ms; }
+
+  /* ── Stat Cards ──────────────────────────────────────────── */
+
+  .stat-card { @apply card p-5 flex flex-col gap-1; }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text-primary);
+  }
+
+  .stat-delta { font-size: 0.8125rem; color: var(--win); font-weight: 600; }
+
+  /* ── Shimmer Skeleton ────────────────────────────────────── */
+
+  .skeleton {
+    background: var(--bg-elevated);
+    border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: progressShimmer 1.6s linear infinite;
+  }
+
+  /* ── Module Card ─────────────────────────────────────────── */
+
+  .module-card {
+    @apply card flex items-start gap-4 p-5 cursor-pointer;
+    transition: all var(--transition-base);
+  }
+
+  .module-card:hover { transform: translateY(-2px); }
+  .module-card-locked { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+
+  /* ── Glass Module Card (homepage + modules listing) ─────── */
+
+  .module-card-glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: none;
+  }
+
+  .module-card-glass:hover {
+    box-shadow: 0 0 30px 0 var(--card-glow, rgba(19,104,206,0.3));
+    border-color: var(--card-accent, #1368CE);
+    transform: translateY(-2px) scale(1.01);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* ── Nav Bar ─────────────────────────────────────────────── */
+
+  .nav-bar {
+    background: var(--bg-overlay);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  /* ── Hero Section ────────────────────────────────────────── */
+
+  .hero-gradient {
+    background: radial-gradient(ellipse at top, #111111 0%, #050505 70%);
+  }
+
+  /* ── Hero Animated Background ──────────────────────────── */
+
+  .hero-animated-bg {
+    background: linear-gradient(135deg, #0F52A0, #050505, #00796B, #050505, #0F52A0);
+    background-size: 400% 400%;
+    animation: heroGradientShift 20s ease infinite;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    opacity: 0;
+    animation: orbFloat 8s ease-in-out infinite;
+  }
+
+  .hero-orb-1 {
+    width: 300px;
+    height: 300px;
+    background: rgba(19, 104, 206, 0.12);
+    top: 10%;
+    left: 15%;
+    animation-delay: 0s;
+    opacity: 0.6;
+  }
+
+  .hero-orb-2 {
+    width: 250px;
+    height: 250px;
+    background: rgba(0, 201, 183, 0.1);
+    bottom: 15%;
+    right: 10%;
+    animation-delay: -3s;
+    opacity: 0.5;
+  }
+
+  .hero-orb-3 {
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 166, 2, 0.06);
+    top: 50%;
+    left: 60%;
+    animation-delay: -6s;
+    opacity: 0.4;
+  }
+
+  /* ── Kahoot Answer Blocks — from KAHOOT-css-reference.md ── */
+
+  .kahoot-answer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 0.25rem; /* Kahoot CSS ref: 0.25rem */
+    border: none;
+    color: #ffffff;
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+    font-weight: 700; /* Kahoot CSS ref: 700 */
+    font-size: clamp(1rem, 2vw, 1.25rem); /* Kahoot CSS ref: fluid */
+    cursor: pointer;
+    box-shadow: 0 0.25rem rgba(0, 0, 0, 0.2); /* Kahoot: raised 3D */
+    transition: transform 0.1s ease, opacity 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kahoot-answer:hover { transform: translateY(-2px); }
+  .kahoot-answer:active {
+    transform: translateY(2px);
+    box-shadow: 0 0.125rem rgba(0, 0, 0, 0.2);
+  }
+
+  .kahoot-answer-red    { background: #E21B3C; }
+  .kahoot-answer-blue   { background: #1368CE; }
+  .kahoot-answer-gold   { background: #FFA602; }
+  .kahoot-answer-green  { background: #26890C; }
+
+  /* Kahoot CSS ref: dimmed non-selected answers after selection */
+  .kahoot-answer--dimmed {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .kahoot-shape {
+    flex-shrink: 0;
+    width: 1.5rem; /* Kahoot CSS ref: 1.5rem */
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    opacity: 0.9;
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #1368CE 0%, #00C9B7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-xp {
+    background: linear-gradient(90deg, #FFA602 0%, #FFD166 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-streak {
+    background: linear-gradient(180deg, #FFD166 0%, #EB670F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── 3D Flip Animation ─────────────────────────────────── */
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+  }
+
+  .flip-card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+
+  /* ── Glow Border ───────────────────────────────────────── */
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--module-color, var(--accent-cyan)), transparent, var(--module-color, var(--accent-cyan)));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0.5;
+    transition: opacity var(--transition-base);
+  }
+
+  .glow-border:hover::before { opacity: 1; }
+
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0); }
+  .tap-target { min-width: 44px; min-height: 44px; }
+  .will-animate { will-change: transform, opacity; }
+  .gpu-layer { transform: translateZ(0); backface-visibility: hidden; }
+}
+
+/* ============================================================
+   PHASE 2 ANIMATIONS
+   ============================================================ */
+
+@keyframes heroGradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 0%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: var(--orb-opacity, 0.5); }
+  33% { transform: translate(30px, -20px) scale(1.05); opacity: calc(var(--orb-opacity, 0.5) * 1.3); }
+  66% { transform: translate(-20px, 15px) scale(0.95); opacity: calc(var(--orb-opacity, 0.5) * 0.8); }
+}
+
+@keyframes questionPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1); }
+  50% { box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.06); }
+}
+
+@keyframes tapPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes checkScale {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes visualPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.03); }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+/* ============================================================
+   ADDITIONAL PAGE ANIMATIONS
+   ============================================================ */
+
+/* Staggered card entrance for grid layouts */
+@keyframes cardSlideIn {
+  0% { opacity: 0; transform: translateY(24px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Gradient border shimmer for stats bars */
+@keyframes borderShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle glow pulse for interactive elements */
+@keyframes subtleGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  50% { box-shadow: 0 0 20px 0 rgba(255,255,255,0.05); }
+}
+
+/* Icon spin for loading states */
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(-5deg); }
+  75% { transform: translateY(-2px) rotate(5deg); }
+}
+
+/* ============================================================
+   QUIZ — KAHOOT-STYLE ANIMATIONS
+   ============================================================ */
+
+/* ── Quiz Container ──────────────────────────────────────────── */
+
+.quiz-container {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05) inset;
+}
+
+/* ── Timer Bar ───────────────────────────────────────────────── */
+
+/* Kahoot CSS ref: height 0.375rem, background #E21B3C, border-radius 9999px */
+.quiz-timer-bar {
+  height: 0.375rem;
+  background: #E21B3C;
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-timer-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.3) 80%, transparent 100%);
+  animation: quizTimerShimmer 1s linear infinite;
+}
+
+@keyframes quizTimerShrink {
+  from { width: 100%; background-position: 100% 0; }
+  to { width: 0%; background-position: 0% 0; }
+}
+
+@keyframes quizTimerShimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(200%); }
+}
+
+.quiz-timer-urgent-pulse {
+  opacity: 0;
+  animation: quizTimerUrgent 0.5s ease-in-out infinite alternate;
+  animation-delay: 15s; /* shows up near the end */
+  background: linear-gradient(90deg, rgba(226,27,60,0.1), transparent 30%, transparent 70%, rgba(226,27,60,0.1));
+}
+
+@keyframes quizTimerUrgent {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Countdown Ring ──────────────────────────────────────────── */
+
+.quiz-countdown-ring {
+  animation: quizCountdownRing 0.9s linear forwards;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+@keyframes quizCountdownRing {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: var(--circumference); }
+}
+
+/* ── Answer Buttons ──────────────────────────────────────────── */
+
+.quiz-answer-btn {
+  box-shadow: 0 4px 0 rgba(0,0,0,0.3), 0 6px 20px rgba(0,0,0,0.2);
+  transform-origin: center;
+}
+
+.quiz-answer-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 0 rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.3);
+}
+
+.quiz-answer-btn:active:not(:disabled) {
+  box-shadow: 0 2px 0 rgba(0,0,0,0.3), 0 3px 12px rgba(0,0,0,0.2);
+  transform: scale(0.96) translateY(2px) !important;
+}
+
+.quiz-answer-correct-glow {
+  animation: quizCorrectGlow 0.8s ease-out both;
+}
+
+@keyframes quizCorrectGlow {
+  0% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+  30% { box-shadow: 0 0 40px rgba(255,255,255,0.3), 0 0 80px rgba(38,137,12,0.4); }
+  100% { box-shadow: 0 0 20px rgba(255,255,255,0.15), 0 0 40px rgba(38,137,12,0.2); }
+}
+
+/* ── Floating Emojis ─────────────────────────────────────────── */
+
+.quiz-emoji-float {
+  animation: quizEmojiFloat 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes quizEmojiFloat {
+  0% {
+    transform: translateY(0) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-40px) scale(1.1) rotate(-10deg);
+  }
+  100% {
+    transform: translateY(-220px) scale(0.6) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+/* ── Particle Burst ──────────────────────────────────────────── */
+
+.quiz-particle-burst {
+  animation: quizParticleBurst 0.8s ease-out forwards;
+}
+
+@keyframes quizParticleBurst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ── Screen Flash ────────────────────────────────────────────── */
+
+.quiz-screen-flash {
+  animation: quizScreenFlash 0.5s ease-out both;
+}
+
+@keyframes quizScreenFlash {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* ── Feedback Panels ─────────────────────────────────────────── */
+
+.quiz-feedback-correct {
+  background: rgba(38, 137, 12, 0.1);
+  border: 1px solid rgba(38, 137, 12, 0.25);
+  box-shadow: 0 0 20px rgba(38, 137, 12, 0.1), inset 0 0 20px rgba(38, 137, 12, 0.05);
+}
+
+.quiz-feedback-wrong {
+  background: rgba(255, 166, 2, 0.08);
+  border: 1px solid rgba(255, 166, 2, 0.2);
+}
+
+/* ── Points Badge ────────────────────────────────────────────── */
+
+.quiz-points-badge {
+  box-shadow: 0 0 12px rgba(255, 166, 2, 0.3);
+}
+
+/* ── Question Card (Kahoot-style: gray translucent card) ─────── */
+
+.quiz-question-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ── White Question Bar (text on light bg like Kahoot) ──────── */
+
+.quiz-question-bar {
+  background: rgba(255, 255, 255, 0.93);
+  color: #333;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Ken Burns Float Animation (Kahoot image float/zoom) ─────── */
+
+.quiz-illustration-float {
+  animation: quizIllustrationFloat 8s ease-in-out infinite;
+}
+
+@keyframes quizIllustrationFloat {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.05) translateY(-8px); }
+}
+
+/* ── Idle Background ─────────────────────────────────────────── */
+
+.quiz-idle-bg {
+  background: radial-gradient(ellipse at 50% 50%, rgba(19,104,206,0.08), transparent 60%);
+  animation: quizIdlePulse 4s ease-in-out infinite;
+}
+
+@keyframes quizIdlePulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ============================================================
+   INTERACTIVE COMPONENT UPGRADES
+   ============================================================ */
+
+/* ── Reveal Card Enhanced ────────────────────────────────────── */
+
+.reveal-card-shimmer {
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.06) 45%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 55%, transparent 60%);
+  background-size: 300% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.reveal-card-sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: white;
+  animation: revealSparkle 2s ease-in-out infinite;
+}
+
+@keyframes revealSparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 0.6; transform: scale(1); }
+}
+
+/* ── Drag/Drop Enhanced ──────────────────────────────────────── */
+
+.dragdrop-item-enter {
+  animation: dragdropSlideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes dragdropSlideIn {
+  0% { opacity: 0; transform: translateX(-16px) scale(0.95); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.dragdrop-category-btn {
+  transition: all 150ms ease;
+}
+
+.dragdrop-category-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.05);
+}
+
+.dragdrop-category-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.dragdrop-correct-flash {
+  animation: dragdropCorrectFlash 0.6s ease-out both;
+}
+
+@keyframes dragdropCorrectFlash {
+  0% { box-shadow: 0 0 0 rgba(38,137,12,0); }
+  40% { box-shadow: 0 0 20px rgba(38,137,12,0.4), inset 0 0 12px rgba(38,137,12,0.1); }
+  100% { box-shadow: 0 0 8px rgba(38,137,12,0.2); }
+}
+
+/* ── Match Terms Enhanced ────────────────────────────────────── */
+
+.match-term-btn {
+  transition: all 150ms ease;
+}
+
+.match-term-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.match-connection-line {
+  animation: matchLineGrow 0.3s ease-out both;
+}
+
+@keyframes matchLineGrow {
+  0% { opacity: 0; transform: scaleX(0); }
+  100% { opacity: 1; transform: scaleX(1); }
+}
+
+/* ── Fill Blank Enhanced ─────────────────────────────────────── */
+
+.fillblank-input {
+  transition: all 200ms ease;
+  caret-color: #00C9B7;
+}
+
+.fillblank-input:focus {
+  box-shadow: 0 2px 0 #1368CE, 0 0 12px rgba(19,104,206,0.2);
+}
+
+.fillblank-correct {
+  animation: fillblankCorrect 0.5s ease both;
+}
+
+@keyframes fillblankCorrect {
+  0% { background: transparent; }
+  30% { background: rgba(38,137,12,0.15); }
+  100% { background: rgba(38,137,12,0.05); }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .xp-bar-fill::after { display: none; }
+  .progress-node-available { animation: none; }
+  .streak-flame { animation: none; }
+  .hero-animated-bg { animation: none; }
+  .hero-orb { animation: none; opacity: 0 !important; }
+  .quiz-timer-bar::after { display: none; }
+  .quiz-emoji-float { display: none; }
+  .quiz-particle-burst { display: none; }
+}

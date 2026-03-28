@@ -1,0 +1,43 @@
+{
+  "id": "module-1",
+  "title": "What AI Actually Is",
+  "subtitle": "Cut through the hype and understand what's really going on",
+  "description": "In 4 short lessons, you'll learn what AI actually does (vs. what the marketing says), why it's different from regular software, how the language models behind tools like ChatGPT, Claude, and Gemini actually work, and where AI is already changing your daily life — whether you realize it or not.",
+  "estimatedMinutes": 30,
+  "xpReward": 200,
+  "badgeId": "ai-fundamentals",
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "slug": "ai-vs-hype",
+      "title": "AI vs. the Hype Machine",
+      "subtitle": "What it actually does — and doesn't do",
+      "estimatedMinutes": 7,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-2",
+      "slug": "ai-vs-automation",
+      "title": "AI vs. Automation: What's the Difference?",
+      "subtitle": "They're not the same thing — and it matters",
+      "estimatedMinutes": 6,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-3",
+      "slug": "how-llms-work",
+      "title": "How LLMs Work (Without the Jargon)",
+      "subtitle": "What's actually happening when you talk to AI",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-4",
+      "slug": "ai-in-daily-life",
+      "title": "AI Is Already Everywhere",
+      "subtitle": "Real examples hiding in plain sight",
+      "estimatedMinutes": 6,
+      "xpReward": 50
+    }
+  ]
+}

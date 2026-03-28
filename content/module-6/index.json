@@ -1,0 +1,43 @@
+{
+  "id": "module-6",
+  "title": "Try It Yourself",
+  "subtitle": "Your personal AI experiment — start small, see results",
+  "description": "You've learned how AI works, where it fails, and what to watch out for. Now it's time to actually use it. In 4 lessons, you'll pick your first AI experiment, try it for a week, figure out if it actually helped, and walk away knowing exactly what to do next. No tech background needed. No setup required. Just you, an AI tool, and something you want to get done.",
+  "estimatedMinutes": 32,
+  "xpReward": 200,
+  "badgeId": "ai-literate",
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "slug": "first-project",
+      "title": "Pick Your First AI Experiment",
+      "subtitle": "Find something fun or useful — and just try it",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-2",
+      "slug": "team-expectations",
+      "title": "Try It for a Week",
+      "subtitle": "What to expect day by day — including the awkward parts",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-3",
+      "slug": "measuring-success",
+      "title": "Did It Actually Help?",
+      "subtitle": "A simple honest check — no spreadsheets required",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-4",
+      "slug": "avoid-mistakes",
+      "title": "What's Next (You're Officially AI-Literate)",
+      "subtitle": "Celebrate what you've learned and figure out your next move",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    }
+  ]
+}

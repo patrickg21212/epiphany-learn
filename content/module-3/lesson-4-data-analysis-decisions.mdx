@@ -1,0 +1,278 @@
+---
+id: lesson-4
+moduleId: module-3
+slug: data-analysis-decisions
+title: "AI That Handles the Boring Stuff"
+subtitle: "Let AI deal with the tasks you keep putting off"
+estimatedMinutes: 8
+xpReward: 60
+---
+
+# AI That Handles the Boring Stuff
+
+![AI for tedious tasks](/images/generated/m3l4-intro.png)
+
+There's a specific category of task that everyone has. You know what it is. It's the stuff you keep moving to tomorrow on your to-do list. Not because it's hard, exactly. Because it's tedious, slightly confusing, and requires a kind of focused attention you never seem to have.
+
+Reading a 14-page insurance document. Comparing three different internet plans. Writing a complaint letter to a company that wronged you. Understanding your medical bill.
+
+AI is extremely good at these tasks. Better than you, frankly, because it doesn't mind them at all.
+
+---
+
+## Summarizing Things You Don't Want to Read
+
+<Visual name="m3-summarize-docs" />
+
+Long articles, terms and conditions, HOA rules, lease agreements, research papers, instruction manuals — AI can read any of these and give you the two-paragraph version.
+
+**How to do it:** Copy the text. Paste it into ChatGPT or Claude. Say "summarize this in plain English and tell me the most important things I need to know."
+
+That's it. You don't need to wade through 3,000 words to figure out if your rental insurance covers water damage. AI will tell you in 30 seconds.
+
+One caveat: for truly high-stakes documents (a legal contract you're about to sign, medical instructions from a doctor), use AI as a starting point and then verify the important parts with a professional. AI is great for understanding what you're dealing with — but a lawyer or doctor catches things AI can miss.
+
+---
+
+## Comparing Products Before You Buy
+
+<Visual name="m3-compare-products" />
+
+You want to buy a new laptop. There are 47 options. You've read three different "best of" lists and they all disagree. You have 14 browser tabs open and you feel more confused than when you started.
+
+Describe what you need to AI and ask it to help you decide.
+
+*"I need a laptop for everyday use — web browsing, video calls, Netflix, occasional Word documents. My budget is $600-800. I'm not a gamer or a designer. Which type should I look for and what specs actually matter for my use case?"*
+
+AI will cut through the noise and tell you what actually matters for your situation. It won't just list options — it'll explain the tradeoffs in plain language so you can make an informed decision rather than just picking whatever has the most stars on Amazon.
+
+---
+
+## Understanding Confusing Paperwork
+
+<Visual name="m3-confusing-paperwork" />
+
+This is possibly AI's most underrated superpower for everyday people.
+
+<RevealCard
+  id="boring-1"
+  label="Medical bills and insurance explanations"
+  reveal="Medical bills are notoriously incomprehensible. Copy the explanation of benefits or the bill, paste it in, and ask 'what does this mean and what am I actually being charged for?' AI can decode the billing codes, explain what insurance covered vs. what you owe, and flag anything that looks unusual. You still have to call the billing department, but at least you'll know what you're calling about."
+/>
+
+<RevealCard
+  id="boring-2"
+  label="Lease agreements and contracts"
+  reveal="Before you sign a lease, paste the relevant sections into AI and ask 'are there any unusual clauses I should know about?' or 'what does this paragraph actually mean?' It's particularly useful for things like security deposit terms, early termination fees, subletting rules — the parts people skip and then regret later."
+/>
+
+<RevealCard
+  id="boring-3"
+  label="Terms and conditions"
+  reveal="Nobody reads these. But sometimes it matters — when you're sharing your photos on a platform, when a free trial auto-charges you, when a service sells your data. Paste in the relevant section and ask 'what does this company get to do with my information?' You'll finally know what you agreed to."
+/>
+
+<RevealCard
+  id="boring-4"
+  label="Government forms and applications"
+  reveal="Tax forms, benefits applications, permit requests — government paperwork has its own language. Copy a confusing section and ask 'what is this asking for and what's the correct way to answer it?' AI can translate bureaucratic language into instructions a normal person can follow."
+/>
+
+---
+
+## Writing Letters You've Been Putting Off
+
+<Visual name="m3-writing-letters" />
+
+This is the task that lives on everyone's to-do list for months.
+
+The complaint to the airline that lost your luggage. The appeal to your insurance company after they denied a claim. The request to your landlord for a repair they've ignored. The polite but firm email to the neighbor with the dog that won't stop barking at 6am.
+
+These letters are hard to write because they require a specific tone: firm but not aggressive, detailed but not rambling, professional enough to be taken seriously.
+
+AI is very good at this.
+
+Just explain the situation — who, what happened, what you want them to do — and ask for a draft. Tell it the tone you want. "Polite but firm." "Professional, not emotional." "Strong enough to get action." It'll write something you can edit and send, instead of something you'll keep meaning to write and never do.
+
+---
+
+## Quick Check
+
+<Visual name="m3-boring-quiz" />
+
+<Quiz
+  id="module3-lesson4-quiz"
+  questions={[
+    {
+      id: "q1",
+      illustration: "m3-confusing-paperwork",
+      text: "You got a confusing medical bill with codes and charges you don't understand. What's the fastest AI move?",
+      options: [
+        { id: "a", text: "Just pay it and move on — medical bills are too complicated to question" },
+        { id: "b", text: "Call the hospital and ask them to explain every line item" },
+        { id: "c", text: "Paste the bill into ChatGPT and ask 'what does this mean and what am I actually being charged for?'" },
+        { id: "d", text: "Hire a medical billing advocate" }
+      ],
+      correctId: "c",
+      explanation: "AI is excellent at decoding confusing documents — medical bills, insurance paperwork, legal language. Paste it in, ask the question, get a plain-English explanation. You still might need to call the billing department, but you'll go into that call actually understanding what you're looking at."
+    },
+    {
+      id: "q2",
+      illustration: "m3-writing-letters",
+      text: "You need to write a complaint letter to a company that shipped you a broken product and isn't responding. You hate writing these. What do you do?",
+      options: [
+        { id: "a", text: "Post a negative review instead — that's faster" },
+        { id: "b", text: "Give up and accept the loss" },
+        { id: "c", text: "Describe the situation to AI and ask it to draft a firm, professional complaint letter" },
+        { id: "d", text: "Find a template online and fill in the blanks" }
+      ],
+      correctId: "c",
+      explanation: "AI is your ghostwriter for all the letters you never write. Give it the situation, tell it the tone you want, and it'll draft something far better than a generic template — and far more likely to get a real response. You spend 3 minutes instead of putting it off for 3 weeks."
+    },
+    {
+      id: "q3",
+      illustration: "m3-summarize-docs",
+      text: "What's the right way to use AI when reviewing an important contract?",
+      options: [
+        { id: "a", text: "Trust AI completely — if it says the contract is fine, sign it" },
+        { id: "b", text: "Use AI to understand what you're reading and flag unusual terms, then verify key points with a professional if stakes are high" },
+        { id: "c", text: "AI can't help with legal documents — skip it" },
+        { id: "d", text: "Only use AI if you can't afford a lawyer" }
+      ],
+      correctId: "b",
+      explanation: "AI is excellent for understanding documents — translating legal jargon, flagging unusual clauses, explaining what sections actually mean. But for high-stakes contracts, it's a starting point, not the final word. Use it to get informed, then verify what matters."
+    },
+    {
+      id: "q4",
+      illustration: "m3-compare-products",
+      text: "You want to buy a new laptop but have 14 browser tabs open and feel more confused than when you started. How can AI help?",
+      options: [
+        { id: "a", text: "AI can't help with shopping decisions" },
+        { id: "b", text: "Ask AI to pick the cheapest option and buy it" },
+        { id: "c", text: "Describe your needs and budget to AI and ask it to explain what specs actually matter for your use case" },
+        { id: "d", text: "Ask AI to read all 14 tabs for you" }
+      ],
+      correctId: "c",
+      explanation: "AI cuts through the noise of product comparisons. Instead of reading conflicting 'best of' lists, describe what you actually need and your budget. AI will tell you which specs matter for your situation and which are overkill — helping you make an informed decision instead of an overwhelmed one."
+    },
+    {
+      id: "q5",
+      illustration: "m3-summarize-docs",
+      text: "What's the one caveat the lesson gives about using AI to summarize important documents?",
+      options: [
+        { id: "a", text: "AI summaries are always inaccurate" },
+        { id: "b", text: "You should only summarize documents written in English" },
+        { id: "c", text: "For high-stakes documents like legal contracts or medical instructions, use AI as a starting point and verify with a professional" },
+        { id: "d", text: "AI can only summarize documents under 1,000 words" }
+      ],
+      correctId: "c",
+      explanation: "AI is great for understanding what you're dealing with, but for truly high-stakes documents — a contract you're about to sign, medical instructions — use AI to get oriented and then verify the important parts with a lawyer or doctor. AI is your first step, not your last."
+    },
+    {
+      id: "q6",
+      illustration: "m3-writing-letters",
+      text: "You need to write a firm but polite letter to your landlord about a repair they've been ignoring. What's the best approach with AI?",
+      options: [
+        { id: "a", text: "Let AI write the letter without any input from you" },
+        { id: "b", text: "Explain the situation — who, what happened, what you want — and tell AI the tone: 'firm but not aggressive'" },
+        { id: "c", text: "Copy a generic complaint template from the internet" },
+        { id: "d", text: "Write the letter yourself since AI can't match the right tone" }
+      ],
+      correctId: "b",
+      explanation: "AI is excellent at hitting specific tones that are hard to write. Give it the facts (who, what happened, what you want done) and the tone you're going for ('polite but firm,' 'professional, not emotional'). You'll get a draft in seconds that you can edit and send — instead of something you keep meaning to write and never do."
+    },
+    {
+      id: "q7",
+      illustration: "m3-confusing-paperwork",
+      text: "Which of these tasks is AI LEAST suited for handling on its own?",
+      options: [
+        { id: "a", text: "Summarizing a long article you bookmarked months ago" },
+        { id: "b", text: "Deciding whether you should sign a specific legal contract" },
+        { id: "c", text: "Explaining what the charges on your medical bill mean" },
+        { id: "d", text: "Drafting a complaint letter to a company" }
+      ],
+      correctId: "b",
+      explanation: "AI can summarize, explain, and draft with ease. But making the actual decision on a legal contract requires professional judgment about your specific situation, jurisdiction, and circumstances. AI helps you understand what you're looking at — the decision itself needs a human expert."
+    },
+    {
+      id: "q8",
+      illustration: "m3-summarize-docs",
+      text: "Your terms of service from a social media platform are 40 pages long. Nobody reads these. What's a smart AI move?",
+      options: [
+        { id: "a", text: "Paste it all in and ask 'what does this company get to do with my information?'" },
+        { id: "b", text: "Skip it — terms of service don't matter" },
+        { id: "c", text: "Read all 40 pages yourself to be thorough" },
+        { id: "d", text: "Ask AI to rewrite the terms in a way that favors you" }
+      ],
+      correctId: "a",
+      explanation: "Terms of service hide important details about how your data is used, what you're agreeing to let the company do, and what rights you're giving up. Pasting in the relevant sections and asking AI a specific question like 'what can they do with my photos?' gives you actionable knowledge in 30 seconds."
+    },
+    {
+      id: "q9",
+      illustration: "m3-writing-letters",
+      text: "What makes AI better than a generic template when writing complaint or appeal letters?",
+      options: [
+        { id: "a", text: "AI letters are legally binding, templates are not" },
+        { id: "b", text: "AI can tailor the letter to your specific situation, details, and desired tone — not just fill-in-the-blank" },
+        { id: "c", text: "AI always produces longer letters, which companies take more seriously" },
+        { id: "d", text: "Templates are actually better because they're written by professionals" }
+      ],
+      correctId: "b",
+      explanation: "Generic templates are one-size-fits-all. AI takes the specific details of your situation — what happened, when, what you want as a resolution — and crafts something personalized. It also nails the tone you ask for, whether that's 'firm but professional' or 'strong enough to get action.' The result is far more effective than a fill-in-the-blank form."
+    },
+    {
+      id: "q10",
+      illustration: "m3-stuff-piling-up",
+      text: "The lesson mentions five things AI could help you knock out this week. What do they all have in common?",
+      options: [
+        { id: "a", text: "They all require expensive AI subscriptions" },
+        { id: "b", text: "They're all tasks that have been sitting on your mental to-do list because they're tedious, not because they're hard" },
+        { id: "c", text: "They all take at least an hour each" },
+        { id: "d", text: "They all require technical expertise to complete" }
+      ],
+      correctId: "b",
+      explanation: "The lesson's key insight is that the boring stuff piles up not because it's difficult, but because it's tedious and slightly confusing. Reading a long article, comparing products, writing a complaint, decoding a document, learning something new — none take more than five minutes with AI, but without it, they sit on your list for weeks."
+    },
+    {
+      id: "q11",
+      illustration: "m3-confusing-paperwork",
+      text: "You got a government form that asks questions you don't understand. How should you use AI?",
+      options: [
+        { id: "a", text: "Have AI fill out the form for you and submit it" },
+        { id: "b", text: "Copy the confusing section and ask 'what is this asking for and what's the correct way to answer it?'" },
+        { id: "c", text: "Ignore the form — if it's too confusing it's probably not important" },
+        { id: "d", text: "Ask AI to create a new, simpler version of the form" }
+      ],
+      correctId: "b",
+      explanation: "Government paperwork has its own language. AI can translate bureaucratic jargon into plain instructions — telling you what each question actually means and how to answer it correctly. You still fill out the form yourself, but you finally understand what it's asking."
+    }
+  ]}
+/>
+
+---
+
+## The Stuff That Keeps Piling Up
+
+<Visual name="m3-stuff-piling-up" />
+
+Here are five things right now that are probably on your mental to-do list that AI could help you knock out this week:
+
+1. That article you bookmarked three months ago that you've been meaning to read — paste it, get the summary.
+2. The product comparison you can't quite finish — describe your needs, ask for a recommendation.
+3. The complaint letter you haven't sent — describe the situation, get a draft.
+4. The confusing document on your counter — paste the confusing part, get the translation.
+5. The thing you've been meaning to learn — ask AI to explain it, right now, at your level.
+
+None of these take more than five minutes.
+
+---
+
+## Key Takeaway
+
+<Visual name="m3-boring-takeaway" />
+
+> **The boring stuff isn't hard — it's just tedious. And tedious is exactly what AI doesn't mind. Use it as your personal assistant for the paperwork, the letters, the comparisons, and the confusing documents that have been living rent-free in your head. Clear the pile.**
+
+---
+
+<LessonComplete lessonId="lesson-4" nextLessonSlug="module-complete" xpReward={60} />

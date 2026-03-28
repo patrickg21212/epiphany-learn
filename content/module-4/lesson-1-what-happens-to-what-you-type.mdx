@@ -1,0 +1,271 @@
+---
+id: lesson-1
+moduleId: module-4
+slug: what-happens-to-what-you-type
+title: "What Happens to the Stuff You Type"
+subtitle: "Where your words go — and what you should never share"
+estimatedMinutes: 8
+xpReward: 50
+---
+
+# What Happens to the Stuff You Type
+
+![What happens to your data](/images/generated/m4l1-intro.png)
+
+You open ChatGPT, type a question, and get an answer. Simple. But in those few seconds, something happened that most people never think about.
+
+Your words went somewhere. Let's talk about where.
+
+---
+
+## It's Like Sending a Letter, Not Having a Conversation
+
+<Visual name="m4-data-letter" />
+
+When you talk to a friend in person, your words stay in the room. Nobody records them, nobody stores them, and the conversation is gone the moment it's over.
+
+Typing into an AI tool is more like sending a letter to a company headquarters. Your message travels across the internet, lands on their servers, gets processed by their computers, and a response comes back. That letter — your words — has now been received and logged by someone else's system.
+
+This isn't scary. It's just how the internet works. Every email you send, every Google search you type, every text message you send through an app does something similar. AI just feels more personal, so it's worth understanding.
+
+---
+
+## Free vs. Paid: The Real Tradeoff
+
+<Visual name="m4-free-vs-paid" />
+
+Here's the thing about free AI tools: the company still has to pay to run them. Those servers are expensive. So how do they make money?
+
+Often, the answer is that your conversations can be used to help improve the AI. Your questions, your answers, the way you phrase things — all of that is valuable data for making the next version of the AI smarter.
+
+Paid plans change the equation. When you're paying, the company has a direct financial reason to protect your privacy. Most paid tiers explicitly promise not to use your conversations for training. It's the difference between a free coffee shop loyalty app that sells your purchase history to advertisers, and a subscription service that needs to keep you happy to keep your money.
+
+---
+
+## What the Major AI Tools Actually Do With Your Data
+
+<Visual name="m4-data-tools" />
+
+<RevealCard
+  id="data-chatgpt"
+  label="ChatGPT (Free)"
+  reveal="Your conversations may be used to train future versions of the AI, by default. You can turn this off in Settings > Data Controls > 'Improve the model for everyone.' OpenAI also employs human reviewers who may read flagged conversations."
+/>
+
+<RevealCard
+  id="data-chatgpt-plus"
+  label="ChatGPT Plus / Team / Enterprise"
+  reveal="Paid plans offer stronger privacy. ChatGPT Plus still allows some data use, but Team and Enterprise plans don't use your conversations for training and give you more control over retention."
+/>
+
+<RevealCard
+  id="data-claude"
+  label="Claude (Anthropic)"
+  reveal="Free and Pro users' conversations may be reviewed by Anthropic staff for safety. The company says it may use conversations to improve its models unless you opt out. Claude for Work (business plan) has stricter privacy controls."
+/>
+
+<RevealCard
+  id="data-gemini"
+  label="Google Gemini"
+  reveal="Free Gemini conversations are reviewed by human reviewers and used to improve Google's products. If you're on Google Workspace (a paid Google account through work or school), your data is handled more privately and not used for general training."
+/>
+
+Click each card to see what that tool actually does.
+
+---
+
+## The Golden Rule: Treat AI Like a Stranger at a Coffee Shop
+
+<Visual name="m4-coffee-shop-stranger" />
+
+Imagine you're sitting at a coffee shop and a friendly stranger offers to help you draft an email or brainstorm ideas. They seem smart and helpful. Would you hand them your Social Security card? Your bank password? Your medical records?
+
+Of course not. They're helpful, but they're still a stranger.
+
+That's how to think about AI. Friendly, capable, and genuinely useful — but not someone you hand your most sensitive information.
+
+**Never type any of these into a free AI tool:**
+
+- Social Security numbers or government ID numbers
+- Passwords or PINs (not even "what's a good password for this format?")
+- Credit card numbers or bank account details
+- Someone else's private information without their permission
+- Medical diagnoses or sensitive health details tied to a real person
+- Legal details that might be confidential
+
+---
+
+## What's Totally Fine to Share
+
+<Visual name="m4-safe-to-share" />
+
+Most of what people use AI for is completely safe. Getting writing help, brainstorming ideas, asking questions, summarizing an article, planning a trip — none of that is a problem.
+
+The simple test: if you'd be comfortable typing it into a Google search bar, it's fine to type it into an AI chat. The standards are roughly the same.
+
+---
+
+## Quick Check
+
+<Visual name="m4-quiz-check-1" />
+
+<Quiz
+  id="lesson-1-quiz"
+  questions={[
+    {
+      id: "q1",
+      illustration: "m4-data-letter",
+      text: "When you type something into a free AI tool, where does it go?",
+      options: [
+        { id: "a", text: "It stays on your device and is never sent anywhere" },
+        { id: "b", text: "It travels to the company's servers, where it's processed and may be stored" },
+        { id: "c", text: "It goes to a government database for monitoring" },
+        { id: "d", text: "It's encrypted and immediately deleted after you get your answer" }
+      ],
+      correctId: "b",
+      explanation: "AI tools are cloud-based services. Your words travel over the internet to the company's servers to be processed — the same way email or Google searches work. It's not sinister, but it does mean your words leave your device."
+    },
+    {
+      id: "q2",
+      illustration: "m4-safe-to-share",
+      text: "Which of these is safe to type into a free AI tool?",
+      options: [
+        { id: "a", text: "Your Social Security number to check if a document looks right" },
+        { id: "b", text: "A client's private medical records to help write a summary" },
+        { id: "c", text: "Your bank password because you want to check its strength" },
+        { id: "d", text: "A request to help you write a birthday card for your friend" }
+      ],
+      correctId: "d",
+      explanation: "Writing help for personal communication is exactly what free AI tools are great for — no sensitive information involved. The other three all involve data you should never hand to a third party: SSNs, medical records, and passwords are off-limits."
+    },
+    {
+      id: "q3",
+      illustration: "m4-free-vs-paid",
+      text: "What is the main difference between free and paid AI plans when it comes to privacy?",
+      options: [
+        { id: "a", text: "Paid plans use better AI models, but privacy is identical" },
+        { id: "b", text: "Free plans are actually more private because fewer people work on them" },
+        { id: "c", text: "Paid plans typically promise not to use your conversations for AI training and offer stronger data controls" },
+        { id: "d", text: "There is no privacy difference — all AI tools are equally private" }
+      ],
+      correctId: "c",
+      explanation: "When you're paying, the company has a financial incentive to protect your data. Most paid/business tiers explicitly opt you out of training data use and give you more control over how long your data is stored."
+    },
+    {
+      id: "q4",
+      illustration: "m4-data-letter",
+      text: "The lesson compares typing into AI to which everyday activity?",
+      options: [
+        { id: "a", text: "Talking to a friend in person" },
+        { id: "b", text: "Sending a letter to a company headquarters" },
+        { id: "c", text: "Writing in a private diary" },
+        { id: "d", text: "Whispering a secret in an empty room" }
+      ],
+      correctId: "b",
+      explanation: "The lesson compares using AI to sending a letter — your message travels across the internet, lands on a company's servers, gets processed, and a response comes back. Unlike a conversation in a room, your words leave your device and are received and logged by someone else's system."
+    },
+    {
+      id: "q5",
+      illustration: "m4-free-vs-paid",
+      text: "How do free AI tools typically make money if they don't charge you?",
+      options: [
+        { id: "a", text: "They run ads inside the AI responses" },
+        { id: "b", text: "They charge the government for access" },
+        { id: "c", text: "Your conversations can be used to improve the AI — your data is valuable training material" },
+        { id: "d", text: "They don't make money — they're run by nonprofits" }
+      ],
+      correctId: "c",
+      explanation: "Running AI servers is expensive. Free tools often use your conversations — your questions, how you phrase things, what you ask about — to train and improve future versions of the AI. Your data becomes their product improvement pipeline. Paid plans usually opt you out of this."
+    },
+    {
+      id: "q6",
+      illustration: "m4-coffee-shop-stranger",
+      text: "You want to check if a password you created is strong enough. Is it safe to type it into a free AI tool?",
+      options: [
+        { id: "a", text: "Yes — AI tools are encrypted and secure" },
+        { id: "b", text: "No — never type passwords into AI tools, even to test their strength" },
+        { id: "c", text: "Only if you change the password right after" },
+        { id: "d", text: "Only if you use a paid AI plan" }
+      ],
+      correctId: "b",
+      explanation: "Passwords should never be typed into any AI tool, free or paid. Your input is sent to external servers and may be stored or reviewed. Use a dedicated password strength checker or a password manager instead — those are specifically designed to handle sensitive credentials securely."
+    },
+    {
+      id: "q7",
+      illustration: "m4-safe-to-share",
+      text: "Which of these is the simplest test for whether something is safe to type into an AI chat?",
+      options: [
+        { id: "a", text: "If it's less than 100 words, it's fine" },
+        { id: "b", text: "If you'd be comfortable typing it into a Google search bar, it's fine for AI too" },
+        { id: "c", text: "If it doesn't contain numbers, it's safe" },
+        { id: "d", text: "If you're using it for work, it's always safe" }
+      ],
+      correctId: "b",
+      explanation: "The lesson gives a simple rule: if you'd type it into Google, it's fine for AI. Both send your input to external servers. The standard is the same — don't share anything you wouldn't want a stranger to see, like passwords, financial details, or other people's private information."
+    },
+    {
+      id: "q8",
+      illustration: "m4-coffee-shop-stranger",
+      text: "A coworker pastes a client's medical records into ChatGPT to help write a summary. What's wrong with this?",
+      options: [
+        { id: "a", text: "Nothing — AI is faster than writing a summary by hand" },
+        { id: "b", text: "Medical records contain sensitive personal information that should never be shared with a third-party AI tool without permission" },
+        { id: "c", text: "It's only a problem if they use the free version" },
+        { id: "d", text: "It's fine as long as they delete the conversation after" }
+      ],
+      correctId: "b",
+      explanation: "Someone else's private medical information should never be pasted into a free AI tool. That data is sent to external servers, may be stored, and could be reviewed by human employees. This applies to any sensitive personal data about another person — medical records, financial info, legal details."
+    },
+    {
+      id: "q9",
+      illustration: "m4-data-tools",
+      text: "In ChatGPT's free version, who might read your conversations besides the AI?",
+      options: [
+        { id: "a", text: "Nobody — conversations are completely private" },
+        { id: "b", text: "Only other ChatGPT users" },
+        { id: "c", text: "Human reviewers employed by OpenAI who may read flagged conversations" },
+        { id: "d", text: "Government agencies monitoring AI usage" }
+      ],
+      correctId: "c",
+      explanation: "OpenAI employs human reviewers who may read flagged conversations as part of their safety and quality processes. This means your words aren't just processed by a machine — real people might see them too. This is one reason to avoid sharing sensitive information in free AI tools."
+    },
+    {
+      id: "q10",
+      illustration: "m4-safe-to-share",
+      text: "You want to ask AI to help plan a surprise birthday trip for your spouse. Is this safe to type?",
+      options: [
+        { id: "a", text: "No — travel plans are too personal to share with AI" },
+        { id: "b", text: "Yes — trip planning involves no sensitive personal data and is exactly the kind of thing AI is great for" },
+        { id: "c", text: "Only if you don't mention your spouse's name" },
+        { id: "d", text: "Only if you use a paid AI plan" }
+      ],
+      correctId: "b",
+      explanation: "Trip planning, brainstorming ideas, getting recommendations — these are perfectly safe and exactly what AI tools are built for. No sensitive data is involved. The things to avoid are financial details, passwords, government IDs, and other people's private information."
+    },
+    {
+      id: "q11",
+      illustration: "m4-data-tools",
+      text: "How can you turn off ChatGPT's use of your conversations for training on the free plan?",
+      options: [
+        { id: "a", text: "You can't — it's part of the terms of service" },
+        { id: "b", text: "Delete your account and create a new one" },
+        { id: "c", text: "Go to Settings > Data Controls and toggle off 'Improve the model for everyone'" },
+        { id: "d", text: "Switch to a different browser" }
+      ],
+      correctId: "c",
+      explanation: "ChatGPT does let you opt out of having your conversations used for training. The setting is under Settings > Data Controls > 'Improve the model for everyone.' Turning this off means your conversations won't be used to train future versions, even on the free plan."
+    }
+  ]}
+/>
+
+---
+
+## Key Takeaway
+
+<Visual name="m4-key-takeaway-1" />
+
+> **Think of AI like a helpful stranger at a coffee shop — friendly and useful, but not the place to share your wallet, your passwords, or anyone's private information. Free tools may use your words to improve their AI. Paid plans are generally more private. When in doubt, leave it out.**
+
+---
+
+<LessonComplete lessonId="lesson-1" nextLessonSlug="spotting-ai-fakes" xpReward={50} />

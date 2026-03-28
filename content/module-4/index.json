@@ -1,0 +1,43 @@
+{
+  "id": "module-4",
+  "title": "Staying Safe and Smart with AI",
+  "subtitle": "What you need to know to protect yourself",
+  "description": "In 4 lessons, you'll learn what actually happens to the stuff you type into AI tools, how to spot AI-generated fakes and scams, when NOT to trust AI for important decisions, and how to have the AI safety conversation with your family. No paranoia — just practical knowledge that actually matters.",
+  "estimatedMinutes": 32,
+  "xpReward": 200,
+  "badgeId": "ai-safety-smart",
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "slug": "what-happens-to-what-you-type",
+      "title": "What Happens to the Stuff You Type",
+      "subtitle": "Where your words go — and what you should never share",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-2",
+      "slug": "spotting-ai-fakes",
+      "title": "Spotting AI Fakes",
+      "subtitle": "Deepfakes, scam calls, and how to tell what's real",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-3",
+      "slug": "when-not-to-trust-ai",
+      "title": "When NOT to Trust AI",
+      "subtitle": "The line between helpful starting point and dangerous final answer",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    },
+    {
+      "id": "lesson-4",
+      "slug": "teaching-your-family-about-ai",
+      "title": "Teaching Your Family About AI",
+      "subtitle": "How to be the AI-smart person everyone turns to",
+      "estimatedMinutes": 8,
+      "xpReward": 50
+    }
+  ]
+}

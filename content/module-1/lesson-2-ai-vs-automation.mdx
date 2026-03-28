@@ -1,0 +1,242 @@
+---
+id: lesson-2
+moduleId: module-1
+slug: ai-vs-automation
+title: "AI vs. Automation: What's the Difference?"
+subtitle: "One follows rules. The other makes judgment calls. Here's how to tell which is which."
+estimatedMinutes: 6
+xpReward: 50
+---
+
+# AI vs. Automation: What's the Difference?
+
+![AI vs automation](/images/generated/m1l2-intro.png)
+
+People throw both words around like they mean the same thing. They don't. And knowing the difference will save you a lot of confusion — and probably some money.
+
+Let's use your kitchen to explain this.
+
+---
+
+## Your Dishwasher vs. Your Chef
+
+<Visual name="m1-dishwasher-vs-chef" />
+
+Your dishwasher is automation. You load it, hit start, and it runs the exact same cycle every single time. Hot water, detergent, rinse, dry. It doesn't care what's in there. It doesn't adjust if you put in a delicate wine glass. It follows its program — and that's it.
+
+Now imagine a chef. You walk into her kitchen and say "I'm really tired and kind of sad, can you make me something comforting?" She looks at what's in the fridge, thinks about what you might like, and makes a decision. She used *judgment*.
+
+That's the difference.
+
+**Automation** is your dishwasher. It executes the same steps, in the same order, every time. Clear rules, predictable results.
+
+**AI** is the chef. It takes in messy, unpredictable input and figures out what to do with it — because it's seen a lot of similar situations before and learned how to handle them.
+
+---
+
+## Automation in Real Life
+
+<Visual name="m1-automation-real-life" />
+
+Automation is everywhere, and it's incredibly useful. It just follows rules someone wrote in advance.
+
+Examples you encounter all the time:
+
+- Your thermostat turns the heat on when the temperature drops below 68 degrees
+- Your bank sends you a text every time a purchase over $500 hits your account
+- A website sends a welcome email the moment someone signs up
+- Traffic lights cycle through green, yellow, red on a timer
+
+None of these require judgment. Someone figured out the rules, programmed them in, and now the system runs them perfectly and repeatably forever.
+
+That's the superpower of automation: **it never gets tired, never forgets, and never does it differently.** The limitation: it only handles exactly what it was programmed for. Throw something unexpected at it and it either breaks or ignores it.
+
+---
+
+## AI in Real Life
+
+<Visual name="m1-ai-real-life" />
+
+AI kicks in when the situation is too unpredictable to write rules for.
+
+- A customer sends an angry email — but their complaint is unusual and doesn't fit any standard template. AI reads it, understands the tone, and drafts a response.
+- You tell Netflix you're in the mood for something funny but not stupid. Netflix picks something that fits your specific taste, not just "popular comedies."
+- You upload a photo of a rash and an app gives you possible explanations — because it's been trained on thousands of similar photos, not because someone wrote a rule for every possible rash.
+
+The thing these all share: **there's no clean rule to follow.** The input is messy. The right answer depends on context. You need something that can exercise judgment rather than just execute instructions.
+
+---
+
+## Sort These Out
+
+<Visual name="m1-sort-these-out" />
+
+Let's see if you've got the feel for this.
+
+<DragDrop
+  id="auto-vs-ai"
+  instruction="Sort each task into 'Automation' or 'AI'"
+  categories={["Automation", "AI"]}
+  items={[
+    { id: "d1", text: "Send a birthday discount email every year on a customer's birthday", correctCategory: "Automation" },
+    { id: "d2", text: "Read a customer complaint and figure out if they're upset, confused, or just asking a question", correctCategory: "AI" },
+    { id: "d3", text: "Move every PDF attachment in your email to a specific folder", correctCategory: "Automation" },
+    { id: "d4", text: "Suggest which of your photos would make the best profile picture", correctCategory: "AI" },
+    { id: "d5", text: "Charge a customer's credit card on the first of every month", correctCategory: "Automation" },
+    { id: "d6", text: "Listen to a voicemail and summarize what the caller wanted", correctCategory: "AI" },
+  ]}
+/>
+
+---
+
+## Why This Matters to You
+
+<Visual name="m1-why-matters-automation" />
+
+Here's the practical reason to care about this distinction:
+
+If you need something done **the same way every single time** — use automation. It's cheaper, faster, and more reliable for rule-based stuff.
+
+If you need something to **handle variety, language, or judgment** — that's where AI earns its keep.
+
+A lot of businesses overpay for AI when simple automation would do the job. And a lot of businesses under-use AI on the messy stuff that's genuinely hard to write rules for.
+
+Knowing the difference puts you ahead of most people making decisions about these tools.
+
+---
+
+## Quick Check
+
+<Visual name="m1-quick-check-l2" />
+
+<Quiz questions={[
+  {
+    id: "auto-q1",
+    illustration: "m1-automation-real-life",
+    text: "Your gym sends an automatic text reminder 24 hours before every appointment. This is:",
+    options: [
+      { id: "a", text: "AI, because it's software doing something automatically" },
+      { id: "b", text: "Automation, because it follows a simple time-based rule" },
+      { id: "c", text: "AI, because it knows when your appointment is" },
+      { id: "d", text: "Both AI and automation working together" },
+    ],
+    correctId: "b",
+    explanation: "A 24-hour reminder is pure automation — there's a rule ('send text 24 hours before the appointment time') and the system executes it exactly the same way every time. No judgment needed, no language understanding required. Simple and reliable.",
+  },
+  {
+    id: "auto-q2",
+    illustration: "m1-dishwasher-vs-chef",
+    text: "Which of these tasks genuinely needs AI rather than simple automation?",
+    options: [
+      { id: "a", text: "Sending a receipt email every time a purchase is made" },
+      { id: "b", text: "Locking your account after 5 wrong password attempts" },
+      { id: "c", text: "Reading customer reviews and flagging the ones that seem fake" },
+      { id: "d", text: "Backing up your files every night at midnight" },
+    ],
+    correctId: "c",
+    explanation: "Spotting fake reviews requires judgment — understanding subtle language patterns, evaluating whether a review sounds authentic, comparing it to other patterns. You can't write a rule for that. The other three are textbook automation: they follow clear, predictable rules every time.",
+  },
+  {
+    id: "auto-q3",
+    illustration: "m1-automation-real-life",
+    text: "A restaurant uses a system that automatically turns off the oven after 60 minutes. This is:",
+    options: [
+      { id: "a", text: "AI, because it makes a decision about when to turn off" },
+      { id: "b", text: "Automation, because it follows a fixed time-based rule" },
+      { id: "c", text: "AI, because it involves kitchen equipment" },
+      { id: "d", text: "Neither — it's just a timer" },
+    ],
+    correctId: "b",
+    explanation: "A timer that triggers an action after a set duration is pure automation. There's no judgment involved — it follows one simple rule every single time. Timers, scheduled tasks, and fixed triggers are the backbone of automation.",
+  },
+  {
+    id: "auto-q4",
+    illustration: "m1-dishwasher-vs-chef",
+    text: "What is the main limitation of automation compared to AI?",
+    options: [
+      { id: "a", text: "Automation is slower than AI" },
+      { id: "b", text: "Automation can only handle situations it was specifically programmed for" },
+      { id: "c", text: "Automation costs more money to run" },
+      { id: "d", text: "Automation requires human supervision at all times" },
+    ],
+    correctId: "b",
+    explanation: "Automation executes predefined rules perfectly, but throw something unexpected at it and it either breaks or ignores it. AI can handle messy, unpredictable input because it learned from many similar situations. That flexibility is AI's advantage — and automation's limitation.",
+  },
+  {
+    id: "auto-q5",
+    illustration: "m1-ai-real-life",
+    text: "A company wants to automatically sort incoming support emails into categories like 'billing,' 'technical,' and 'general.' Which approach makes more sense?",
+    options: [
+      { id: "a", text: "Automation — set up rules based on specific keywords in the subject line" },
+      { id: "b", text: "AI — because emails are written in unpredictable language and need judgment to categorize accurately" },
+      { id: "c", text: "Neither — a human should read every email" },
+      { id: "d", text: "Automation — because email sorting is always simple" },
+    ],
+    correctId: "b",
+    explanation: "Customers write in wildly different ways. Someone might write 'I was charged twice' (billing) without using the word 'billing' at all. Keyword-based rules would miss many emails or mis-sort them. AI reads the meaning of the message and categorizes based on understanding, not just keywords.",
+  },
+  {
+    id: "auto-q6",
+    illustration: "m1-why-matters-automation",
+    text: "Why might a business choose automation over AI for a task, even if AI could technically do it?",
+    options: [
+      { id: "a", text: "Automation is always more accurate" },
+      { id: "b", text: "Automation is cheaper, simpler, and more reliable for tasks with clear, predictable rules" },
+      { id: "c", text: "AI is illegal for business use" },
+      { id: "d", text: "Businesses prefer older technology" },
+    ],
+    correctId: "b",
+    explanation: "If a task follows clear rules every time, automation is the better choice — it's cheaper to run, simpler to set up, and 100% predictable. Using AI for a rule-based task is like hiring a chef to toast bread. It works, but it's overkill. Smart businesses match the tool to the task.",
+  },
+  {
+    id: "auto-q7",
+    illustration: "m1-sort-these-out",
+    text: "Which of these is the best example of AI and automation working together?",
+    options: [
+      { id: "a", text: "A thermostat that turns heat on at 68 degrees" },
+      { id: "b", text: "AI reads customer feedback to detect complaints, and automation routes those complaints to the support team" },
+      { id: "c", text: "A website that displays a 'sold out' banner when inventory hits zero" },
+      { id: "d", text: "An alarm clock that goes off at 7 AM every day" },
+    ],
+    correctId: "b",
+    explanation: "This is the sweet spot: AI handles the judgment call (is this a complaint?) and automation handles the predictable action (route it to the right team). Most good modern systems combine both — AI for the messy parts, automation for the reliable execution.",
+  },
+  {
+    id: "auto-q8",
+    illustration: "m1-ai-real-life",
+    text: "A photo app automatically adjusts the brightness, contrast, and colors in your pictures to make them look better. Is this AI or automation?",
+    options: [
+      { id: "a", text: "Automation — it applies the same filter to every photo" },
+      { id: "b", text: "AI — it analyzes each unique photo and makes different adjustments based on what it sees" },
+      { id: "c", text: "Neither — it's just a camera feature" },
+      { id: "d", text: "Automation — because it happens without you pressing a button" },
+    ],
+    correctId: "b",
+    explanation: "Auto-enhancement that adapts to each individual photo is AI. It analyzes the specific content — lighting, faces, scenery — and makes different judgment calls for each image. A fixed filter applied identically to every photo would be automation. The key difference: does it adapt to the input, or treat every input the same?",
+  },
+  {
+    id: "auto-q9",
+    illustration: "m1-ai-real-life",
+    text: "Your bank blocks your credit card because you made a purchase in an unusual location. This is most likely:",
+    options: [
+      { id: "a", text: "Automation — it blocks all out-of-state purchases" },
+      { id: "b", text: "AI — it compared this purchase against your normal spending patterns and judged it suspicious" },
+      { id: "c", text: "A bank employee manually reviewing your account" },
+      { id: "d", text: "Automation — it follows a rule that blocks purchases over a certain amount" },
+    ],
+    correctId: "b",
+    explanation: "Fraud detection uses AI because it needs to understand your unique spending patterns — where you normally shop, typical amounts, usual times. It's making a judgment call about whether this specific transaction fits your specific behavior. A simple rule ('block all purchases over $500') would be automation, but real fraud detection is far more nuanced.",
+  },
+]} />
+
+---
+
+## Key Takeaway
+
+<Visual name="m1-key-takeaway-l2" />
+
+> **Automation is a light switch — it does one thing, perfectly, every time. AI is a judgment call. Most good systems use both: automation for the predictable stuff, AI for everything else.**
+
+---
+
+<LessonComplete lessonId="lesson-2" nextLessonSlug="how-llms-work" xpReward={50} />

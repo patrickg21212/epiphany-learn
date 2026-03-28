@@ -1,0 +1,237 @@
+---
+id: lesson-3
+moduleId: module-1
+slug: how-llms-work
+title: "How LLMs Work (Without the Jargon)"
+subtitle: "What's actually happening when you talk to AI"
+estimatedMinutes: 8
+xpReward: 50
+---
+
+# How LLMs Work (Without the Jargon)
+
+![How AI actually works](/images/generated/m1l3-intro.png)
+
+You've probably used ChatGPT, Claude, or Gemini — or at least heard enough about them that it feels like you have. But most people have no idea what's actually happening when they type a question and get an answer back.
+
+These tools all run on the same kind of technology: a **large language model** (LLM). Different companies build their own — OpenAI makes ChatGPT, Anthropic makes Claude, Google makes Gemini — but under the hood, they all work the same way.
+
+Here's the honest, jargon-free version. No computer science degree required.
+
+---
+
+## It's a Very Well-Read Parrot
+
+<Visual name="m1-wellread-parrot" />
+
+Imagine a parrot that spent its entire life listening to humans talk. Not just one human — every human. Billions of conversations, books, articles, instructions, stories, arguments, recipes, love letters, legal documents.
+
+This parrot never understood any of it. Parrots don't understand language. But after hearing enough patterns — "good morning" always appears at the start of the day, "thank you" appears after someone does something nice, "the capital of France is" almost always gets followed by "Paris" — the parrot gets *really* good at continuing any sentence you start.
+
+You say "The weather today is—" and the parrot says "sunny and warm" because that's what usually comes next.
+
+That parrot is basically how every AI chatbot works — ChatGPT, Claude, Gemini, all of them.
+
+The technical name is a "large language model" (LLM). The core idea is simple: it predicts what word comes next. That's it. Over and over, one word at a time, until it's built a full response.
+
+---
+
+## Why It's So Good at Sounding Human
+
+<Visual name="m1-sounding-human" />
+
+The reason it sounds so convincing isn't because it's thinking. It's because it learned from an almost incomprehensible amount of human writing.
+
+Think about how much text humans have produced. Every book ever written. Every website ever published. Reddit threads, news articles, Wikipedia, cooking blogs, movie scripts, scientific papers. Billions and billions of examples of how humans use language.
+
+The AI studied all of that — at machine speed — and found the patterns. How sentences are structured. How arguments unfold. How people explain things, apologize, tell jokes, give directions.
+
+When you ask it a question, it draws on all those patterns to predict what a good answer would look like. And because humans have written millions of good answers to millions of questions, it usually lands somewhere reasonable.
+
+---
+
+## Why It Sometimes Makes Stuff Up
+
+<Visual name="m1-makes-stuff-up" />
+
+Here's the part that trips people up, and it's important to understand.
+
+These tools don't look things up. They're not searching the internet when you ask a question (unless you specifically turned that feature on). They're pulling from what they learned during training — which happened months or years ago and then stopped.
+
+So when it doesn't know something — or the pattern isn't clear from what it learned — it does the only thing it knows how to do: it predicts what a plausible-sounding answer would look like.
+
+And it does this confidently. Because confident language is what it saw most often in its training.
+
+This is what people call "hallucination" — when AI makes up facts that sound completely real. It's not lying. It genuinely can't tell the difference between "I know this" and "I'm predicting this." It's always predicting.
+
+Click each card below to understand why this happens:
+
+<RevealCard
+  id="llm-1"
+  label="Why does it make stuff up?"
+  reveal="Because it's predicting text, not recalling facts. When it hits a gap in what it knows, it fills in what sounds plausible — the same way autocomplete confidently finishes your sentence even when it's completely wrong. The output looks real. The content might not be. Always double-check anything that actually matters."
+/>
+
+<RevealCard
+  id="llm-2"
+  label="Why does it sound so confident when it's wrong?"
+  reveal="Confident, clear writing is extremely common in the text it learned from. Textbooks, articles, answers to questions — they're all written with authority. The AI learned that confident = normal. It has no internal sense of 'I'm not sure about this,' so it delivers everything the same way: with total conviction."
+/>
+
+<RevealCard
+  id="llm-3"
+  label="Why does it 'forget' things in a long conversation?"
+  reveal="Think of AI like someone with a very short notepad. It can only see a certain amount of text at once — everything currently in the conversation. When the conversation gets really long, the oldest parts fall off the notepad. It's not being rude. It literally can't see what it wrote earlier anymore."
+/>
+
+---
+
+## What This Means When You Use It
+
+<Visual name="m1-how-to-use-it" />
+
+Understanding this changes how you use AI — in ways that actually matter day-to-day.
+
+**Give it more context, not less.** The more specific you are, the better it can pattern-match to something useful. "Write me an email" gets you something generic. "Write me a friendly but professional email declining a meeting request — I'm too busy this week but want to reschedule for early next month" gets you something actually usable.
+
+**Verify anything important.** If you ask it about medication dosages, historical facts, legal rules, or anything where being wrong actually costs you — check. Not because it's always wrong, but because it can't tell you when it is.
+
+**Treat it like a smart first draft, not a final answer.** It's excellent at getting you 80% of the way there, fast. The last 20% — the verification, the judgment, the context only you have — is still your job.
+
+---
+
+## Quick Check
+
+<Visual name="m1-quick-check-l3" />
+
+<Quiz questions={[
+  {
+    id: "llm-q1",
+    illustration: "m1-wellread-parrot",
+    text: "When you ask an AI like ChatGPT or Claude a question, what is it actually doing?",
+    options: [
+      { id: "a", text: "Searching the internet for the best answer" },
+      { id: "b", text: "Looking up your question in a built-in encyclopedia" },
+      { id: "c", text: "Predicting what words should come next based on patterns it learned" },
+      { id: "d", text: "Thinking through the problem step by step like a person would" },
+    ],
+    correctId: "c",
+    explanation: "LLMs generate responses by predicting the most likely next word, one word at a time, based on patterns absorbed from enormous amounts of human writing. They're not searching, looking things up, or reasoning the way a person does — they're predicting what a good response looks like.",
+  },
+  {
+    id: "llm-q2",
+    illustration: "m1-makes-stuff-up",
+    text: "An AI tool tells you a specific law passed in a specific year — and does it confidently. You should:",
+    options: [
+      { id: "a", text: "Trust it completely — it has access to all published text" },
+      { id: "b", text: "Assume it's definitely wrong since AI always makes stuff up" },
+      { id: "c", text: "Verify it, because AI can sound confident even when the underlying detail is wrong" },
+      { id: "d", text: "Ask it to double-check itself — it will give you the right answer the second time" },
+    ],
+    correctId: "c",
+    explanation: "AI can and does produce convincing-sounding wrong answers — and asking it to 'check itself' doesn't reliably fix this, since it's still just predicting text. The smart move is a quick independent verification of anything that actually matters: a search, a primary source, a person who knows.",
+  },
+  {
+    id: "llm-q3",
+    illustration: "m1-makes-stuff-up",
+    text: "What does 'hallucination' mean when people talk about AI?",
+    options: [
+      { id: "a", text: "The AI is experiencing a malfunction or bug" },
+      { id: "b", text: "The AI generates plausible-sounding information that is actually fabricated" },
+      { id: "c", text: "The AI is intentionally lying to mislead users" },
+      { id: "d", text: "The AI is displaying visual glitches on screen" },
+    ],
+    correctId: "b",
+    explanation: "Hallucination is when AI produces confident, realistic-sounding text that turns out to be wrong or completely made up. It's not a bug or intentional deception — it's a natural consequence of how prediction-based language models work. When the model doesn't have a clear pattern to follow, it fills in the gap with what sounds plausible.",
+  },
+  {
+    id: "llm-q4",
+    illustration: "m1-wellread-parrot",
+    text: "Why do AI tools sometimes 'forget' things you told them earlier in a long conversation?",
+    options: [
+      { id: "a", text: "It gets bored and stops paying attention" },
+      { id: "b", text: "It has a limited context window — like a short notepad — and older parts of the conversation drop off" },
+      { id: "c", text: "It deliberately ignores earlier messages to save energy" },
+      { id: "d", text: "It only remembers the first and last messages" },
+    ],
+    correctId: "b",
+    explanation: "AI can only 'see' a limited amount of text at once — its context window. In a very long conversation, the earliest parts fall off this window and the AI literally cannot see them anymore. It's not being careless; it has a structural limitation on how much conversation it can hold at once.",
+  },
+  {
+    id: "llm-q5",
+    illustration: "m1-makes-stuff-up",
+    text: "What is the best way to think about an LLM's relationship to facts?",
+    options: [
+      { id: "a", text: "It has a database of all facts and looks them up when asked" },
+      { id: "b", text: "It learned patterns from text that contained facts, but it can't distinguish between what it 'knows' and what it's guessing" },
+      { id: "c", text: "It only states facts it's 100% sure about" },
+      { id: "d", text: "It connects to Wikipedia in real time to verify everything" },
+    ],
+    correctId: "b",
+    explanation: "LLMs absorbed facts as patterns during training, not as verified database entries. They have no internal confidence meter — they can't tell the difference between a well-supported fact and a plausible-sounding guess. That's why they deliver both with the same confident tone.",
+  },
+  {
+    id: "llm-q6",
+    illustration: "m1-how-to-use-it",
+    text: "Why does giving AI more specific context improve its responses?",
+    options: [
+      { id: "a", text: "It searches a larger database when you give it more words" },
+      { id: "b", text: "More specific input narrows down the patterns it draws from, leading to more relevant predictions" },
+      { id: "c", text: "It rewards users who type longer prompts" },
+      { id: "d", text: "It doesn't — shorter prompts always work better" },
+    ],
+    correctId: "b",
+    explanation: "Since AI works by predicting what comes next based on patterns, a vague prompt gives it too many possible directions. A specific prompt narrows the field dramatically. 'Write me an email' could go anywhere. 'Write a polite email declining a meeting request' gives the AI much clearer patterns to follow.",
+  },
+  {
+    id: "llm-q7",
+    illustration: "m1-how-to-use-it",
+    text: "What's the smartest way to use AI-generated output?",
+    options: [
+      { id: "a", text: "Copy and paste whatever it gives you without reading it" },
+      { id: "b", text: "Treat it as a smart first draft that you review, edit, and verify" },
+      { id: "c", text: "Only use it if the answer matches what you already know" },
+      { id: "d", text: "Never use it for anything important" },
+    ],
+    correctId: "b",
+    explanation: "AI is excellent at getting you 80% of the way to a good result, fast. But the final 20% — verification, personal judgment, and context only you have — is your job. Treating AI output as a first draft to refine gives you the speed benefit without the risk of blindly trusting it.",
+  },
+  {
+    id: "llm-q8",
+    illustration: "m1-sounding-human",
+    text: "What does 'LLM' stand for, and what does it mean in plain English?",
+    options: [
+      { id: "a", text: "Large Learning Machine — a computer that learns on its own" },
+      { id: "b", text: "Large Language Model — a system trained on massive amounts of text to predict language" },
+      { id: "c", text: "Live Logic Module — a system that reasons in real time" },
+      { id: "d", text: "Linked Library Memory — a database of stored answers" },
+    ],
+    correctId: "b",
+    explanation: "LLM stands for Large Language Model. 'Large' refers to the enormous amount of text it was trained on and the size of the model itself. 'Language Model' means its job is to model (predict) language — figuring out what words are most likely to come next in any given context.",
+  },
+  {
+    id: "llm-q9",
+    illustration: "m1-makes-stuff-up",
+    text: "If an LLM was trained on data up to a certain date, what happens when you ask about events after that date?",
+    options: [
+      { id: "a", text: "It searches the internet to find the answer" },
+      { id: "b", text: "It tells you honestly that it doesn't know" },
+      { id: "c", text: "It might make up a plausible-sounding answer based on what it expects would have happened" },
+      { id: "d", text: "It gives you a perfectly accurate answer from its backup database" },
+    ],
+    correctId: "c",
+    explanation: "When asked about events beyond its training cutoff, AI often fabricates a response that sounds reasonable based on patterns it knows. It doesn't always say 'I don't know' — sometimes it confidently describes events that didn't happen. This is one of the most important things to watch for when using AI.",
+  },
+]} />
+
+---
+
+## Key Takeaway
+
+<Visual name="m1-key-takeaway-l3" />
+
+> **Every AI chatbot — ChatGPT, Claude, Gemini — is a very well-read parrot predicting what comes next, not a thinking machine. That's why they're so useful, and why you should always verify the things that matter.**
+
+---
+
+<LessonComplete lessonId="lesson-3" nextLessonSlug="ai-in-daily-life" xpReward={50} />
