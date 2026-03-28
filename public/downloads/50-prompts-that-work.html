@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 Prompts That Actually Work — Epiphany Dynamics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #00C9B7;
+    --accent-light: #33E8D8;
+    --accent-dim: rgba(0,201,183,0.12);
+    --accent-border: rgba(0,201,183,0.3);
+    --accent-glow: rgba(0,201,183,0.15);
+    --bg: #050505;
+    --bg-card: #0A0A0A;
+    --bg-elevated: #111111;
+    --text-primary: #F0EFEB;
+    --text-secondary: rgba(240,239,235,0.7);
+    --text-muted: rgba(240,239,235,0.4);
+    --text-faint: rgba(240,239,235,0.2);
+    --border: rgba(255,255,255,0.06);
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, #009E90 0%, #00C9B7 50%, #33E8D8 100%);
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -30px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    z-index: 1;
+  }
+  .header .module-label {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .header .earned {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 36px 48px 48px;
+    background: var(--bg);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-left: 40px;
+  }
+
+  /* ─── PROMPT CARDS ─── */
+  .terms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .term-card {
+    display: flex;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .term-card:hover {
+    border-color: var(--accent-border);
+  }
+  .term-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    min-width: 180px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .term-def {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-border), transparent);
+    margin: 32px 0;
+  }
+
+  /* ─── CALLOUT BOX ─── */
+  .callout {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .callout h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .callout p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .footer-brand a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-faint);
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: #050505; }
+    .page { max-width: 100%; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .term-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .section { break-inside: avoid; }
+    .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .header {
+      padding: 28px 20px 24px;
+    }
+    .header h1 {
+      font-size: 24px;
+    }
+    .header .subtitle {
+      font-size: 14px;
+    }
+    .header .module-label {
+      position: static;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .header .earned {
+      font-size: 12px;
+    }
+    .content {
+      padding: 24px 16px 32px;
+    }
+    .section-subtitle {
+      padding-left: 0;
+    }
+    .term-card {
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 14px;
+    }
+    .term-name {
+      min-width: unset;
+      font-size: 14px;
+    }
+    .term-def {
+      font-size: 13px;
+    }
+    .callout {
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .footer {
+      padding: 20px 16px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 10px;
+      min-width: 100px;
+    }
+    .score-grid, .pricing-grid, .verdict-cards, .ideas-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+
+  /* ─── MOBILE EXTRA FIXES ─── */
+  @media (max-width: 640px) {
+    [class*="card"], [class*="item"], [class*="row"] {
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    [style*="min-width"] {
+      min-width: unset !important;
+    }
+    [style*="display: flex"], [style*="display:flex"] {
+      flex-direction: column !important;
+    }
+    .page {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    * {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="module-label">Module 2 Reward</span>
+    <div class="header-badge">💬 Cheat Sheet</div>
+    <h1>50 Prompts That Actually Work</h1>
+    <p class="subtitle">Copy-paste prompts for everyday tasks</p>
+    <p class="earned">Congratulations on completing Module 2. You earned this.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SECTION 1: Writing & Communication -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">1</span>
+        <span class="section-title">Writing &amp; Communication</span>
+      </div>
+      <p class="section-subtitle">Emails, messages, and professional writing — done right.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Decline a meeting politely</div>
+          <div class="term-def">"Write a polite email declining a meeting request. I already have a conflict at that time but want to stay on good terms. Keep it short and professional."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Write a complaint letter</div>
+          <div class="term-def">"Write a firm but professional complaint letter to a company about a product I received that was damaged. I want a refund or replacement. My order number is [ORDER NUMBER]."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Follow up on a job application</div>
+          <div class="term-def">"Write a brief follow-up email for a job application I submitted two weeks ago. I want to express continued interest without coming across as pushy. The position is [JOB TITLE] at [COMPANY NAME]."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Thank-you note after an interview</div>
+          <div class="term-def">"Write a sincere thank-you note to send after a job interview. I interviewed for a [JOB TITLE] role and want to reference that we talked about [TOPIC]. Keep it under 150 words."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Ask a neighbor about noise</div>
+          <div class="term-def">"Help me write a message to my neighbor asking them to keep the noise down at night. I want to be friendly and not start a conflict. Just a few sentences."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Birthday message for a coworker</div>
+          <div class="term-def">"Write a warm but professional birthday message for a coworker I don't know very well. Keep it genuine and brief."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Apologize professionally by email</div>
+          <div class="term-def">"Help me write an email apologizing to a client for missing a deadline. I want to acknowledge the mistake, explain briefly without making excuses, and reassure them it won't happen again."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Ask for a reference</div>
+          <div class="term-def">"Write an email asking a former manager to be a professional reference for me. I want to remind them of my work and make it easy for them to say yes. Keep it short and respectful."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Respond to a negative review</div>
+          <div class="term-def">"Write a professional response to a negative online review for my small business. The customer complained about [ISSUE]. I want to acknowledge their experience and invite them to contact me directly."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Cover letter opening paragraph</div>
+          <div class="term-def">"Write an engaging opening paragraph for a cover letter for a [JOB TITLE] position at [COMPANY NAME]. I have [X] years of experience in [FIELD]. Make it sound confident without being arrogant."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: Research & Learning -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">2</span>
+        <span class="section-title">Research &amp; Learning</span>
+      </div>
+      <p class="section-subtitle">Use AI as your personal explainer — for anything you don't fully understand.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Explain something in plain English</div>
+          <div class="term-def">"Explain [TOPIC] like I'm a complete beginner with no technical background. Use simple words and an everyday analogy to make it click."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Compare two options</div>
+          <div class="term-def">"I'm trying to decide between [OPTION A] and [OPTION B]. Give me a straightforward comparison of the pros and cons of each. My main priorities are [PRIORITY 1] and [PRIORITY 2]."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Summarize a long article</div>
+          <div class="term-def">"Here is an article I want you to summarize. Give me the 5 most important points in plain language: [PASTE ARTICLE TEXT]"</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Help understand a medical term</div>
+          <div class="term-def">"My doctor mentioned [TERM/DIAGNOSIS]. Can you explain what this means in everyday language? I'm not a medical professional — just help me understand the basics."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Research a company before an interview</div>
+          <div class="term-def">"I have a job interview at [COMPANY NAME]. What are the most important things I should know about this company going in? What questions might they ask me?"</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Break down a confusing document</div>
+          <div class="term-def">"I'm going to paste a document that is confusing me. Please read it and explain what it's saying in simple, plain language: [PASTE DOCUMENT]"</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Explain a current event simply</div>
+          <div class="term-def">"Can you explain [CURRENT EVENT OR NEWS TOPIC] in simple terms? I've heard about it but don't fully understand what's going on or why it matters."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Help my kid understand a school topic</div>
+          <div class="term-def">"My [AGE]-year-old is struggling to understand [SCHOOL TOPIC] for class. Can you explain it in a way that makes sense for their age, with a simple example?"</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">See both sides of a debate</div>
+          <div class="term-def">"What are the strongest arguments on both sides of the debate about [TOPIC]? I want to understand the issue fairly before forming my own opinion."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: Planning & Organization -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">3</span>
+        <span class="section-title">Planning &amp; Organization</span>
+      </div>
+      <p class="section-subtitle">From road trips to budgets — AI handles the logistics so you don't have to.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Plan a road trip</div>
+          <div class="term-def">"Help me plan a [NUMBER]-day road trip from [STARTING CITY] to [DESTINATION]. Suggest a daily route with stops, and flag any must-see spots along the way."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Build a weekly meal plan</div>
+          <div class="term-def">"Create a 5-day meal plan for a family of [NUMBER]. We like [CUISINE PREFERENCES] and try to avoid [DIETARY RESTRICTIONS]. Include a shopping list at the end."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Make a packing list</div>
+          <div class="term-def">"Create a packing list for a [NUMBER]-day trip to [DESTINATION] in [MONTH]. The trip will include [TYPE OF ACTIVITIES, e.g., hiking, beach, business meetings]."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Build a simple budget</div>
+          <div class="term-def">"Help me build a simple monthly budget. My take-home income is [AMOUNT]. My main expenses are rent ([AMOUNT]), groceries, utilities, and transportation. Help me see where my money is going and where I might save."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Create a morning routine</div>
+          <div class="term-def">"Help me design a realistic morning routine for someone who has to leave the house by [TIME]. I want to include exercise, a healthy breakfast, and some quiet time. I'm not a morning person."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Plan a birthday party</div>
+          <div class="term-def">"Help me plan a birthday party for a [AGE]-year-old who loves [INTERESTS]. We have a budget of around $[AMOUNT] and expect about [NUMBER] guests. Give me a theme, activity, and food ideas."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Write a to-do list from chaos</div>
+          <div class="term-def">"I'm overwhelmed with everything I need to do. Here's my brain dump: [LIST EVERYTHING ON YOUR MIND]. Help me organize this into a prioritized to-do list with a reasonable order to tackle it."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Plan a home project</div>
+          <div class="term-def">"I want to [HOME PROJECT, e.g., paint my living room / organize my garage]. Break it down into a simple step-by-step plan I can actually follow on weekends."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4: Creative & Fun -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <span class="section-title">Creative &amp; Fun</span>
+      </div>
+      <p class="section-subtitle">AI is surprisingly good at the fun stuff — gifts, toasts, date nights, and more.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Generate gift ideas</div>
+          <div class="term-def">"Suggest 10 gift ideas for a [AGE]-year-old who is interested in [INTERESTS/HOBBIES]. Budget is around $[AMOUNT]. Mix practical and fun ideas."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Start a conversation with someone new</div>
+          <div class="term-def">"Give me 5 interesting conversation starters I can use when meeting new people at a [TYPE OF EVENT, e.g., networking event, neighborhood cookout, wedding]. Nothing cheesy."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Write a funny wedding toast</div>
+          <div class="term-def">"Help me write a short, funny wedding toast for my [RELATIONSHIP, e.g., best friend, brother]. I want to tell a quick story about [MEMORY], make the room laugh, and end on something heartfelt. Keep it under 2 minutes."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Come up with a creative date night</div>
+          <div class="term-def">"Suggest 5 creative date night ideas for a couple who has been together for a while and wants to do something different. We're in [CITY/TYPE OF AREA] and our budget is around $[AMOUNT]."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Write a short story with a kid</div>
+          <div class="term-def">"I want to write a short story with my [AGE]-year-old. Start us off with an exciting opening paragraph about a [ANIMAL OR CHARACTER] who discovers [SOMETHING MAGICAL OR SURPRISING]. Keep it age-appropriate and fun."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Suggest a movie or book</div>
+          <div class="term-def">"Recommend 5 [movies/books] I might enjoy if I loved [TITLE YOU LIKED]. Explain in one sentence why each one is similar."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Plan a themed dinner party</div>
+          <div class="term-def">"Help me plan a [THEME] dinner party for [NUMBER] people. Give me a menu, a simple decoration idea, and one activity or game that fits the theme."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Create a fun quiz for game night</div>
+          <div class="term-def">"Create a 10-question trivia quiz for family game night. Include a mix of easy, medium, and hard questions about [TOPIC, e.g., 90s movies, nature, world capitals]. Include the answers at the end."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 5: Work & Professional -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">5</span>
+        <span class="section-title">Work &amp; Professional</span>
+      </div>
+      <p class="section-subtitle">Prep for meetings, write bios, brainstorm, and handle work tasks faster.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Prepare for a tough meeting</div>
+          <div class="term-def">"I have a meeting with [PERSON/TEAM] about [TOPIC]. Help me prepare by listing the key points I should be ready to discuss and the tough questions they might ask me."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Outline a presentation</div>
+          <div class="term-def">"Create an outline for a 10-minute presentation about [TOPIC] for an audience of [AUDIENCE, e.g., my team, new clients, school board]. I want it to have a clear structure with an intro, 3 main points, and a strong close."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Summarize a long email thread</div>
+          <div class="term-def">"I'm going to paste an email thread. Please summarize what has been discussed and what the current action items or open questions are: [PASTE EMAIL THREAD]"</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Brainstorm ideas for a project</div>
+          <div class="term-def">"I need to brainstorm ideas for [PROJECT/CHALLENGE]. The goal is [GOAL]. The audience is [AUDIENCE]. Give me 10 different ideas ranging from simple to ambitious."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Write a professional bio</div>
+          <div class="term-def">"Write a short professional bio for me. I'm a [JOB TITLE] with [X] years of experience in [FIELD]. I've worked on [NOTABLE ACHIEVEMENTS]. Keep it to 3-4 sentences and write it in third person."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Prepare questions for a vendor call</div>
+          <div class="term-def">"I have a call with a vendor selling [PRODUCT/SERVICE]. I want to evaluate whether it's worth the cost. Give me 8 sharp questions to ask them."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Turn meeting notes into action items</div>
+          <div class="term-def">"I'm going to paste rough notes from a meeting. Please organize them into a clean summary with clear action items, who owns each one, and any decisions that were made: [PASTE NOTES]"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 6: Problem Solving -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">6</span>
+        <span class="section-title">Problem Solving</span>
+      </div>
+      <p class="section-subtitle">Stuck on a decision or a tricky situation? AI is a great thinking partner.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Make a pros and cons list</div>
+          <div class="term-def">"Help me think through a decision I'm facing: [DESCRIBE THE DECISION]. List the pros and cons of each option, and flag anything I might not have considered."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Troubleshoot a problem</div>
+          <div class="term-def">"I'm having a problem with [DESCRIBE ISSUE, e.g., my WiFi keeps dropping, my dishwasher isn't draining]. Walk me through the most common causes and how to check each one, starting with the simplest fixes."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Prepare for a negotiation</div>
+          <div class="term-def">"I'm going to negotiate [SITUATION, e.g., my rent, a salary offer, a car price]. Give me a strategy: what to say, how to open, what to push back on, and how to walk away gracefully if needed."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Handle a difficult conversation</div>
+          <div class="term-def">"I need to have a difficult conversation with [PERSON] about [ISSUE]. Help me figure out what to say. I want to stay calm, be clear, and not make it worse. Give me a script to start with."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Questions to ask a doctor</div>
+          <div class="term-def">"I have a doctor's appointment about [HEALTH CONCERN]. Help me prepare a list of questions to ask so I understand my situation and options. I want to make the most of my time."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Evaluate a contract or agreement</div>
+          <div class="term-def">"I'm going to paste a [TYPE OF DOCUMENT, e.g., lease agreement, service contract]. Can you summarize the key terms, flag anything that seems unusual, and highlight anything I should ask about before signing? [PASTE DOCUMENT]"</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Decide between two big life choices</div>
+          <div class="term-def">"I'm trying to decide between [CHOICE A] and [CHOICE B]. My priorities are [LIST YOUR PRIORITIES]. Help me think through this clearly — I don't need someone to decide for me, just help me see it more clearly."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 7: Health & Wellness -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">7</span>
+        <span class="section-title">Health &amp; Wellness</span>
+      </div>
+      <p class="section-subtitle">From workout plans to sleep tips — practical health help, no jargon required.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Build a beginner workout plan</div>
+          <div class="term-def">"Create a beginner workout plan for someone who wants to [GOAL, e.g., lose weight, build strength, just move more]. I have [X] days per week available and [X] minutes per session. No gym membership — just [EQUIPMENT YOU HAVE, e.g., no equipment, dumbbells, resistance bands]."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Find a calming breathing exercise</div>
+          <div class="term-def">"Teach me a simple breathing or relaxation exercise I can do in under 5 minutes when I'm feeling anxious or overwhelmed. Walk me through it step by step."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Get tips for better sleep</div>
+          <div class="term-def">"I've been struggling to fall asleep and stay asleep. Give me a list of practical, evidence-based tips for improving my sleep. Nothing complicated — things I can actually start doing tonight."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Create a healthy meal from what's in my fridge</div>
+          <div class="term-def">"I have these ingredients in my fridge and pantry: [LIST WHAT YOU HAVE]. Suggest 2-3 healthy meals I can make with what's here. Keep it simple — I'm not a great cook."</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Understand a nutrition label</div>
+          <div class="term-def">"I'm trying to eat healthier and I'm confused by nutrition labels. Can you explain what the most important numbers are, what to watch out for, and what's mostly marketing noise?"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <h3>Pro tip: specificity is everything.</h3>
+      <p>The more specific you are, the better the response. Add details like your situation, tone, audience, and desired length. Replace anything in [BRACKETS] with your real information before pasting. A vague prompt gets a vague answer — a detailed prompt gets something you can actually use.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      A free resource from <a href="https://epiphanydynamics.ai">Epiphany Dynamics</a> <img src="ed-icon.png" alt="Epiphany Dynamics" style="width: 56px; height: auto; vertical-align: middle; margin-left: 4px;" />
+    </div>
+    <div class="footer-tagline">"The right prompt gets you the right answer."</div>
+  </div>
+
+</div>
+</body>
+</html>

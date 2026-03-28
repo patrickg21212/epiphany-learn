@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Bill of Rights — Epiphany Dynamics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #E21B3C;
+    --accent-light: #FF6B7A;
+    --accent-dim: rgba(226,27,60,0.12);
+    --accent-border: rgba(226,27,60,0.3);
+    --accent-glow: rgba(226,27,60,0.15);
+    --bg: #050505;
+    --bg-card: #0A0A0A;
+    --bg-elevated: #111111;
+    --text-primary: #F0EFEB;
+    --text-secondary: rgba(240,239,235,0.7);
+    --text-muted: rgba(240,239,235,0.4);
+    --text-faint: rgba(240,239,235,0.2);
+    --border: rgba(255,255,255,0.06);
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, #B3152F 0%, #E21B3C 50%, #FF4757 100%);
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -30px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    z-index: 1;
+  }
+  .header .module-label {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .header .earned {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 36px 48px 48px;
+    background: var(--bg);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-left: 40px;
+  }
+
+  /* ─── TERM CARDS ─── */
+  .terms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .term-card {
+    display: flex;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .term-card:hover {
+    border-color: var(--accent-border);
+  }
+  .term-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    min-width: 180px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .term-def {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── PLATFORM CARDS ─── */
+  .platform-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .platform-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .platform-card:hover {
+    border-color: var(--accent-border);
+  }
+  .platform-header {
+    background: var(--accent-dim);
+    border-bottom: 1px solid var(--accent-border);
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+  }
+  .platform-body {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .platform-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .platform-item-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 160px;
+    flex-shrink: 0;
+    padding-top: 1px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .platform-item-value {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .platform-item-value code {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-light);
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+
+  /* ─── WARNING CARDS ─── */
+  .warning-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .warning-card {
+    display: flex;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid rgba(226,27,60,0.2);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .warning-card:hover {
+    border-color: var(--accent-border);
+    border-left-color: var(--accent);
+  }
+  .warning-number {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent);
+    flex-shrink: 0;
+    min-width: 20px;
+    padding-top: 1px;
+  }
+  .warning-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+  .warning-text strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  /* ─── CONTACT CARDS ─── */
+  .contact-group {
+    margin-bottom: 20px;
+  }
+  .contact-group-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    padding-left: 4px;
+  }
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .contact-card {
+    display: flex;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.2s;
+  }
+  .contact-card:hover {
+    border-color: var(--accent-border);
+  }
+  .contact-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    min-width: 200px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .contact-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .contact-desc a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .contact-desc a:hover {
+    text-decoration: underline;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-border), transparent);
+    margin: 32px 0;
+  }
+
+  /* ─── CALLOUT BOX ─── */
+  .callout {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .callout h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .callout p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .callout p + p {
+    margin-top: 6px;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .footer-brand a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-faint);
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: #050505; }
+    .page { max-width: 100%; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .term-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .platform-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .warning-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .contact-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .section { break-inside: avoid; }
+    .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .header {
+      padding: 28px 20px 24px;
+    }
+    .header h1 {
+      font-size: 24px;
+    }
+    .header .subtitle {
+      font-size: 14px;
+    }
+    .header .module-label {
+      position: static;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .header .earned {
+      font-size: 12px;
+    }
+    .content {
+      padding: 24px 16px 32px;
+    }
+    .section-subtitle {
+      padding-left: 0;
+    }
+    .term-card {
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 14px;
+    }
+    .term-name {
+      min-width: unset;
+      font-size: 14px;
+    }
+    .term-def {
+      font-size: 13px;
+    }
+    .callout {
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .footer {
+      padding: 20px 16px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 10px;
+      min-width: 100px;
+    }
+    .score-grid, .pricing-grid, .verdict-cards, .ideas-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+
+  /* ─── MOBILE EXTRA FIXES ─── */
+  @media (max-width: 640px) {
+    [class*="card"], [class*="item"], [class*="row"] {
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    [style*="min-width"] {
+      min-width: unset !important;
+    }
+    [style*="display: flex"], [style*="display:flex"] {
+      flex-direction: column !important;
+    }
+    .page {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    * {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="module-label">Module 7 Reward</span>
+    <div class="header-badge">⚖️ Cheat Sheet</div>
+    <h1>Your AI Bill of Rights</h1>
+    <p class="subtitle">What you should demand — and how to protect yourself</p>
+    <p class="earned">Congratulations on completing Module 7. You earned this.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SECTION 1: 10 AI Rights -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">1</span>
+        <span class="section-title">Your 10 AI Rights</span>
+      </div>
+      <p class="section-subtitle">Every person who interacts with AI has these rights. Most people don't know them.</p>
+      <div class="terms-grid">
+
+        <div class="term-card">
+          <div class="term-name">1. The Right to Know</div>
+          <div class="term-def">You deserve to know when you're talking to AI, not a human. If you're interacting with a customer service agent, a healthcare assistant, or any automated system, the company is obligated to disclose that AI is involved. If you're unsure, ask directly: "Am I talking to a person or an automated system?"</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">2. The Right to Privacy</div>
+          <div class="term-def">Your conversations with AI should not be used to train models without your consent. Look for privacy settings that let you opt out. Never type sensitive personal information — medical details, financial data, legal matters — into free AI tools unless you've read the privacy policy and understand what happens to your inputs.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">3. The Right to an Explanation</div>
+          <div class="term-def">If AI makes a decision that affects you, you can ask why. When an AI system influences a decision about your job application, insurance rate, loan, or medical care, you have the right to ask how that decision was reached. "An algorithm decided" is not an acceptable answer. Ask: What factors were considered? What data was used? Who is accountable?</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">4. The Right to Opt Out</div>
+          <div class="term-def">You can choose not to use AI. No one should force AI on you. AI is a tool — not a requirement. If you're uncomfortable with an AI-driven process, you have the right to request an alternative. Ask for a human representative. Ask for a paper-based option. Ask for a different pathway. You always have the right to ask.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">5. The Right to Accuracy</div>
+          <div class="term-def">AI should not present guesses as facts. You deserve honest uncertainty. A well-designed AI tool will acknowledge when it is uncertain, when its information may be outdated, or when you should verify with a professional. If an AI states uncertain information as definite fact with no caveats, that is a failure of design — and a signal to verify what you've been told.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">6. The Right to Human Review</div>
+          <div class="term-def">For important decisions — medical, legal, financial — you can always request a human. AI can inform and assist professionals. It should not replace them for high-stakes decisions. If a healthcare provider, financial institution, or government agency uses AI in a process that affects you, you have the right to request that a qualified human professional review the outcome.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">7. The Right to Your Data</div>
+          <div class="term-def">You should be able to see, download, and delete what AI knows about you. Major AI platforms are required to let you access, export, and delete your personal data. This is law in many jurisdictions (GDPR in Europe, CCPA in California). Go into privacy or account settings and look for "Download my data," "Data export," or "Delete account."</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">8. The Right to Fair Treatment</div>
+          <div class="term-def">AI should not discriminate based on race, gender, age, religion, disability, or background. AI systems learn from historical data, and historical data reflects historical bias. If you believe an AI-driven decision treated you unfairly based on a protected characteristic, you have legal recourse in most jurisdictions. Document the decision and contact the relevant authorities.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">9. The Right to Be Forgotten</div>
+          <div class="term-def">You can ask AI companies to delete your data permanently. Most major AI platforms offer account deletion and data erasure options. Deleting your account is not enough — you may need to separately request deletion of your data under privacy settings. In jurisdictions with strong privacy laws, companies are legally required to honor this request within a specific timeframe.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">10. The Right to Understand</div>
+          <div class="term-def">AI tools should be explainable in plain language, not hidden behind jargon. You don't need a computer science degree to understand how an AI system is affecting your life. You have the right to ask for plain-language explanations. If a company can't explain what their AI is doing without resorting to jargon that obscures rather than clarifies, that is a transparency problem — not an intelligence gap on your part.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: How to Exercise Your Rights -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">2</span>
+        <span class="section-title">How to Exercise Your Rights Today</span>
+      </div>
+      <p class="section-subtitle">Platform-specific steps for ChatGPT, Claude, and Gemini.</p>
+      <div class="platform-grid">
+
+        <div class="platform-card">
+          <div class="platform-header">ChatGPT (OpenAI)</div>
+          <div class="platform-body">
+            <div class="platform-item">
+              <div class="platform-item-label">Opt out of training</div>
+              <div class="platform-item-value"><code>Settings → Data Controls</code> → Toggle off "Improve the model for everyone"</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Download your data</div>
+              <div class="platform-item-value"><code>Settings → Data Controls → Export data</code> → OpenAI emails you a download link within hours</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Delete your account</div>
+              <div class="platform-item-value"><code>Settings → Data Controls → Delete account</code> — permanent, cannot be undone</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Temporary chats</div>
+              <div class="platform-item-value">Click your profile icon → <code>Temporary Chat</code> to have a conversation not stored or used for training</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">Claude (Anthropic)</div>
+          <div class="platform-body">
+            <div class="platform-item">
+              <div class="platform-item-label">Privacy settings</div>
+              <div class="platform-item-value"><code>Claude.ai → Settings → Privacy</code> — review what is and isn't stored</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Delete conversations</div>
+              <div class="platform-item-value">Individual chats can be deleted from your conversation history at any time</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Delete your account</div>
+              <div class="platform-item-value"><code>Claude.ai → Settings → Account → Delete account</code> — Anthropic processes deletion per their privacy policy</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Third-party apps</div>
+              <div class="platform-item-value">If you use Claude through a third-party app, that app's privacy policy governs your data — not Anthropic's directly. Check both.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">Gemini (Google)</div>
+          <div class="platform-body">
+            <div class="platform-item">
+              <div class="platform-item-label">Manage AI activity</div>
+              <div class="platform-item-value"><code>myactivity.google.com → Gemini Apps Activity</code> → Turn off to stop saving conversations</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Delete past activity</div>
+              <div class="platform-item-value"><code>myactivity.google.com</code> → Filter by "Gemini Apps" → Delete individual entries or all history</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Opt out of human review</div>
+              <div class="platform-item-value">Gemini Apps Activity settings → Turn off "Allow Gemini Apps to use your activity to improve AI models"</div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item-label">Download or delete all data</div>
+              <div class="platform-item-value"><code>myaccount.google.com → Data & Privacy</code> → Download or delete all Google data, including Gemini history</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: Red Flags -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">3</span>
+        <span class="section-title">Red Flags: When Your Rights Are Being Violated</span>
+      </div>
+      <p class="section-subtitle">Watch for these warning signs. They indicate a system that is not respecting your rights.</p>
+      <div class="warning-grid">
+
+        <div class="warning-card">
+          <div class="warning-number">1</div>
+          <div class="warning-text"><strong>You weren't told you were talking to AI.</strong> A company that conceals AI use in customer-facing interactions is violating your right to know — and potentially breaking the law in many jurisdictions.</div>
+        </div>
+
+        <div class="warning-card">
+          <div class="warning-number">2</div>
+          <div class="warning-text"><strong>There is no privacy policy, or it is impossible to find.</strong> A legitimate AI tool will always have a clear, accessible privacy policy. If you cannot find one in under 60 seconds, treat the tool as untrustworthy.</div>
+        </div>
+
+        <div class="warning-card">
+          <div class="warning-number">3</div>
+          <div class="warning-text"><strong>There is no way to delete your data.</strong> Every legitimate platform offers a path to data deletion. If you cannot find it, contact support and request it explicitly. If they refuse, that is a red flag worth reporting.</div>
+        </div>
+
+        <div class="warning-card">
+          <div class="warning-number">4</div>
+          <div class="warning-text"><strong>AI is making decisions about you with no human oversight available.</strong> High-stakes decisions — employment, credit, healthcare, legal matters — require human accountability in the loop. An AI-only process with no escalation path is a structural failure.</div>
+        </div>
+
+        <div class="warning-card">
+          <div class="warning-number">5</div>
+          <div class="warning-text"><strong>You are required to use AI with no alternative offered.</strong> Being forced into an AI-only process with no human option — especially for something important — is coercive. You always have the right to request an alternative pathway, even if it takes longer.</div>
+        </div>
+
+        <div class="warning-card">
+          <div class="warning-number">6</div>
+          <div class="warning-text"><strong>The AI presents false information confidently with no caveats.</strong> If an AI system routinely states uncertain or incorrect information as definite fact, the company has a responsibility problem. Verify important claims independently and consider switching tools.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4: Who to Contact -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <span class="section-title">Who to Contact</span>
+      </div>
+      <p class="section-subtitle">If you believe your AI rights have been violated, these organizations can help.</p>
+
+      <div class="contact-group">
+        <div class="contact-group-label">United States — Government</div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-name">Federal Trade Commission (FTC)</div>
+            <div class="contact-desc"><a href="https://ftc.gov/complaint">ftc.gov/complaint</a> — Handles deceptive practices, privacy violations, and consumer protection issues involving AI and technology companies.</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-name">State Attorney General</div>
+            <div class="contact-desc">Most states have consumer protection divisions. Search "[your state] attorney general consumer complaint" to find the right office.</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-name">Consumer Financial Protection Bureau (CFPB)</div>
+            <div class="contact-desc"><a href="https://consumerfinance.gov/complaint">consumerfinance.gov/complaint</a> — Specifically for AI-related issues in banking, credit, and financial services.</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-name">HHS Office for Civil Rights</div>
+            <div class="contact-desc"><a href="https://hhs.gov/ocr/complaints">hhs.gov/ocr/complaints</a> — For healthcare-related AI issues and HIPAA violations.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-group">
+        <div class="contact-group-label">Report to the Company Directly</div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-name">Privacy or Trust & Safety Team</div>
+            <div class="contact-desc">Most major AI companies have a dedicated privacy or trust-and-safety team. Look for a "Contact Privacy Team" or "Report a Concern" link in the product's privacy policy. Document your complaint in writing and keep a copy.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-group">
+        <div class="contact-group-label">Consumer Advocacy Organizations</div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-name">Electronic Frontier Foundation (EFF)</div>
+            <div class="contact-desc"><a href="https://eff.org">eff.org</a> — Digital rights advocacy and legal support.</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-name">Center for Democracy & Technology (CDT)</div>
+            <div class="contact-desc"><a href="https://cdt.org">cdt.org</a> — Policy advocacy on AI, privacy, and civil liberties.</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-name">Consumer Reports</div>
+            <div class="contact-desc"><a href="https://consumerreports.org">consumerreports.org</a> — Investigates and reports on technology practices affecting consumers.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <h3>Technology should serve people, not the other way around.</h3>
+      <p>Knowing your rights is the first step to making sure it does.</p>
+      <p>Keep this reference handy. Share it with anyone who uses AI tools and doesn't know they have these protections.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      A free resource from <a href="https://epiphanydynamics.ai">Epiphany Dynamics</a> <img src="ed-icon.png" alt="Epiphany Dynamics" style="width: 56px; height: auto; vertical-align: middle; margin-left: 4px;" />
+    </div>
+    <div class="footer-tagline">"Understanding AI starts with knowing your rights."</div>
+  </div>
+
+</div>
+</body>
+</html>

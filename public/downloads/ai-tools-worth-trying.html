@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools Worth Trying — Epiphany Dynamics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #26890C;
+    --accent-light: #4CD929;
+    --accent-dim: rgba(38,137,12,0.12);
+    --accent-border: rgba(38,137,12,0.3);
+    --accent-glow: rgba(38,137,12,0.15);
+    --bg: #050505;
+    --bg-card: #0A0A0A;
+    --bg-elevated: #111111;
+    --text-primary: #F0EFEB;
+    --text-secondary: rgba(240,239,235,0.7);
+    --text-muted: rgba(240,239,235,0.4);
+    --text-faint: rgba(240,239,235,0.2);
+    --border: rgba(255,255,255,0.06);
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, #1D6B0F 0%, #26890C 50%, #3CB518 100%);
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -30px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    z-index: 1;
+  }
+  .header .module-label {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .header .earned {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 36px 48px 48px;
+    background: var(--bg);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-left: 40px;
+  }
+
+  /* ─── TOOL CARDS ─── */
+  .tools-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tool-card {
+    display: flex;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .tool-card:hover {
+    border-color: var(--accent-border);
+  }
+  .tool-left {
+    min-width: 180px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .tool-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .tool-url {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .tool-url:hover {
+    color: var(--accent-light);
+  }
+  .tool-right {
+    flex: 1;
+  }
+  .tool-desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .tool-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tool-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    color: var(--accent-light);
+  }
+  .tool-tag-label {
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-right: 2px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-border), transparent);
+    margin: 32px 0;
+  }
+
+  /* ─── CALLOUT BOX ─── */
+  .callout {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .callout h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .callout ul {
+    list-style: none;
+    padding: 0;
+  }
+  .callout ul li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .callout ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-light);
+    font-size: 11px;
+    top: 5px;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .footer-brand a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-faint);
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: #050505; }
+    .page { max-width: 100%; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .tool-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .section { break-inside: avoid; }
+    .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .header {
+      padding: 28px 20px 24px;
+    }
+    .header h1 {
+      font-size: 24px;
+    }
+    .header .subtitle {
+      font-size: 14px;
+    }
+    .header .module-label {
+      position: static;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .header .earned {
+      font-size: 12px;
+    }
+    .content {
+      padding: 24px 16px 32px;
+    }
+    .section-subtitle {
+      padding-left: 0;
+    }
+    .term-card {
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 14px;
+    }
+    .term-name {
+      min-width: unset;
+      font-size: 14px;
+    }
+    .term-def {
+      font-size: 13px;
+    }
+    .callout {
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .footer {
+      padding: 20px 16px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 10px;
+      min-width: 100px;
+    }
+    .score-grid, .pricing-grid, .verdict-cards, .ideas-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+
+  /* ─── MOBILE EXTRA FIXES ─── */
+  @media (max-width: 640px) {
+    [class*="card"], [class*="item"], [class*="row"] {
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    [style*="min-width"] {
+      min-width: unset !important;
+    }
+    [style*="display: flex"], [style*="display:flex"] {
+      flex-direction: column !important;
+    }
+    .page {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    * {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="module-label">Module 3 Reward</span>
+    <div class="header-badge">🛠 Cheat Sheet</div>
+    <h1>AI Tools Worth Trying</h1>
+    <p class="subtitle">A curated list of free AI tools organized by what you actually want to do</p>
+    <p class="earned">Congratulations on completing Module 3. You earned this.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SECTION 1: Writing & Editing -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">1</span>
+        <span class="section-title">Writing &amp; Editing</span>
+      </div>
+      <p class="section-subtitle">Tools that help you write better, faster, and with less effort.</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">ChatGPT</span>
+            <a class="tool-url" href="https://chat.openai.com" target="_blank">chat.openai.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Writes, edits, summarizes, and answers questions in plain English.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> GPT-4o mini unlimited; GPT-4o daily limits</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Drafting emails, rewriting awkward text, brainstorming</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Claude</span>
+            <a class="tool-url" href="https://claude.ai" target="_blank">claude.ai</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Conversational AI that's especially good at long documents and nuanced writing.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Limited daily messages on Claude Sonnet</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Summarizing long articles, writing that needs careful tone</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Grammarly</span>
+            <a class="tool-url" href="https://grammarly.com" target="_blank">grammarly.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Checks grammar, spelling, tone, and clarity as you type — anywhere on the web.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Core grammar &amp; spelling; tone detection in browser extension</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Proofreading emails and assignments before you hit send</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">QuillBot</span>
+            <a class="tool-url" href="https://quillbot.com" target="_blank">quillbot.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Paraphrases, summarizes, and rewrites sentences in different styles.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Paraphraser (125 words), summarizer (1,200 words), grammar check</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Rewriting for clarity, summarizing an article fast</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Hemingway Editor</span>
+            <a class="tool-url" href="https://hemingwayapp.com" target="_blank">hemingwayapp.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Highlights sentences that are too long, passive voice, and hard-to-read phrases.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Full editing in browser — no account required</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Making your writing easier to read for any audience</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: Image Creation -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">2</span>
+        <span class="section-title">Image Creation</span>
+      </div>
+      <p class="section-subtitle">Turn a text description into a real image — no design skills needed.</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Adobe Firefly</span>
+            <a class="tool-url" href="https://firefly.adobe.com" target="_blank">firefly.adobe.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Generates images from text descriptions using Adobe's AI.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 25 generative credits per month; no subscription required</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Clean, professional-looking images without design skills</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Microsoft Designer</span>
+            <a class="tool-url" href="https://designer.microsoft.com" target="_blank">designer.microsoft.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Generates images from text using DALL-E; also makes social media graphics.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Generous daily boosts; free with a Microsoft account</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Quick social posts, greeting cards, or visual ideas — fast and easy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Canva AI</span>
+            <a class="tool-url" href="https://canva.com" target="_blank">canva.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Generates images and designs from text inside Canva's full design tool.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Limited AI image credits per month on the free plan</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Designing AND generating images in one place</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Google ImageFX</span>
+            <a class="tool-url" href="https://aitestkitchen.withgoogle.com/tools/image-fx" target="_blank">aitestkitchen.withgoogle.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Generates high-quality images from text prompts using Google's AI.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Free with a Google account</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Experimenting with creative image ideas — very accessible interface</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: Research & Learning -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">3</span>
+        <span class="section-title">Research &amp; Learning</span>
+      </div>
+      <p class="section-subtitle">Find information faster and actually understand what you're reading.</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Perplexity AI</span>
+            <a class="tool-url" href="https://perplexity.ai" target="_blank">perplexity.ai</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Answers questions like a search engine but with cited, summarized responses.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Unlimited standard searches; limited Pro searches per day</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Researching topics and seeing where the information comes from</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Google NotebookLM</span>
+            <a class="tool-url" href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Lets you upload your own documents and then ask questions about them.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Fully free with Google account; up to 50 sources per notebook</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Studying a book, understanding a long report, reviewing meeting notes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Consensus</span>
+            <a class="tool-url" href="https://consensus.app" target="_blank">consensus.app</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Searches academic research papers and summarizes what the science actually says.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Limited searches per day; enough for most everyday questions</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Fact-checking health claims, understanding research without full papers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Explainpaper</span>
+            <a class="tool-url" href="https://explainpaper.com" target="_blank">explainpaper.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Upload a research paper and ask it to explain confusing parts in plain English.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Basic explanations are free</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Understanding a study without a science background</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4: Productivity & Organization -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <span class="section-title">Productivity &amp; Organization</span>
+      </div>
+      <p class="section-subtitle">Work smarter. Let AI handle the scheduling, note-taking, and follow-through.</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Notion AI</span>
+            <a class="tool-url" href="https://notion.so" target="_blank">notion.so</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Adds AI writing, summarizing, and task assistance inside Notion's workspace.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Notion itself is free; AI features have a limited free trial</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Notion users who want AI to help draft or summarize notes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Reclaim.ai</span>
+            <a class="tool-url" href="https://reclaim.ai" target="_blank">reclaim.ai</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Automatically schedules your tasks, habits, and focus time around your calendar.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 1 calendar, basic task scheduling, and habit tracking</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Anyone who struggles to find time between meetings</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Otter.ai</span>
+            <a class="tool-url" href="https://otter.ai" target="_blank">otter.ai</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Records meetings and conversations and turns them into searchable transcripts.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 300 minutes of transcription per month; up to 3 audio imports</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Taking notes in meetings or lectures without missing anything</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Mem</span>
+            <a class="tool-url" href="https://mem.ai" target="_blank">mem.ai</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">AI-powered note-taking that automatically connects related notes over time.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Basic notes are free; AI features require paid plan</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Heavy note-takers who want AI to surface connections</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 5: Video & Audio -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">5</span>
+        <span class="section-title">Video &amp; Audio</span>
+      </div>
+      <p class="section-subtitle">Transcribe, edit, and create audio and video without the headache.</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">ElevenLabs</span>
+            <a class="tool-url" href="https://elevenlabs.io" target="_blank">elevenlabs.io</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Converts text into realistic spoken audio in many voices and languages.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 10,000 characters per month (~10 minutes of audio)</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Voiceovers, listening to articles read aloud, accessibility</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Descript</span>
+            <a class="tool-url" href="https://descript.com" target="_blank">descript.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Edit audio and video by editing the transcript — like editing a document.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Up to 1 hour of transcription per month; watermark-free basic exports</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Podcasters and video creators who want to cut filler words fast</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">CapCut</span>
+            <a class="tool-url" href="https://capcut.com" target="_blank">capcut.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Video editing with AI features including auto-captions, background removal, and effects.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Very generous — most features free; no watermark on most exports</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Short-form social media video editing — no experience needed</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 6: Presentations & Documents -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">6</span>
+        <span class="section-title">Presentations &amp; Documents</span>
+      </div>
+      <p class="section-subtitle">Go from blank page to polished presentation in minutes.</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Gamma</span>
+            <a class="tool-url" href="https://gamma.app" target="_blank">gamma.app</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Creates polished presentations, documents, and web pages from a text prompt.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 400 AI credits on signup — enough for several full presentations</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Building a presentation from scratch in minutes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Beautiful.ai</span>
+            <a class="tool-url" href="https://beautiful.ai" target="_blank">beautiful.ai</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Smart slides that automatically adjust layout and design as you add content.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Unlimited presentations with Beautiful.ai branding; basic templates</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Professional-looking slides without design work</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">ChatPDF</span>
+            <a class="tool-url" href="https://chatpdf.com" target="_blank">chatpdf.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Upload any PDF and ask it questions in plain English.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 2 PDFs per day, up to 120 pages each; 50 questions per PDF</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Understanding contracts, summarizing manuals, reviewing reports</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Slides AI</span>
+            <a class="tool-url" href="https://slidesai.io" target="_blank">slidesai.io</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Turns text or a topic into a full Google Slides presentation automatically.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 3 presentations per month</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Google Slides users who want AI to do the first draft</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 7: Coding & Technical -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">7</span>
+        <span class="section-title">Coding &amp; Technical</span>
+      </div>
+      <p class="section-subtitle">You don't need to be a developer to use these — they're great for beginners too.</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">GitHub Copilot</span>
+            <a class="tool-url" href="https://github.com/features/copilot" target="_blank">github.com/features/copilot</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Suggests code as you type, explains code in plain English, and fixes errors.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Free for individuals — 2,000 code completions/month on free plan</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Beginners who want help understanding what they're typing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Replit AI</span>
+            <a class="tool-url" href="https://replit.com" target="_blank">replit.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Browser-based coding environment with AI that helps you write and debug code.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Free account with limited compute; AI features on free tier</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Trying coding without installing anything on your computer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Claude</span>
+            <a class="tool-url" href="https://claude.ai" target="_blank">claude.ai</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Explains code, helps debug, and walks beginners through technical concepts.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Limited daily messages on the free plan</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Asking "what does this code do?" or "how do I fix this error?"</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 8: Fun & Creative -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">8</span>
+        <span class="section-title">Fun &amp; Creative</span>
+      </div>
+      <p class="section-subtitle">Just because it's AI doesn't mean it has to be serious. These are genuinely fun.</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Suno</span>
+            <a class="tool-url" href="https://suno.com" target="_blank">suno.com</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Generates full songs — lyrics, melody, instruments, vocals — from a text prompt.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 50 credits per day (~10 songs); non-commercial use on free plan</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Creating birthday songs, experimenting with music, or just having fun</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Character.ai</span>
+            <a class="tool-url" href="https://character.ai" target="_blank">character.ai</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Chat with AI versions of fictional characters, historical figures, or custom personas.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> Fully free with an account; some wait times during peak hours</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Creative writing, practicing conversations, entertainment</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-left">
+            <span class="tool-name">Nightcafe</span>
+            <a class="tool-url" href="https://nightcafe.studio" target="_blank">nightcafe.studio</a>
+          </div>
+          <div class="tool-right">
+            <div class="tool-desc">Generates art in different artistic styles from text descriptions.</div>
+            <div class="tool-meta">
+              <span class="tool-tag"><span class="tool-tag-label">Free:</span> 5 free credits per day; earn more by participating in the community</span>
+              <span class="tool-tag"><span class="tool-tag-label">Best for:</span> Exploring art styles — impressionist, oil painting, digital art, and more</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CALLOUT: Disclaimer -->
+    <div class="callout">
+      <h3>A few things to keep in mind</h3>
+      <ul>
+        <li><strong>Free tiers change.</strong> Companies adjust what they offer for free all the time. If something listed as free now costs money, that's normal — check the tool's website.</li>
+        <li><strong>Your data matters.</strong> Most free tools use your inputs to improve their models. Avoid typing sensitive personal information (passwords, financial details, private medical info) into any AI tool.</li>
+        <li><strong>AI makes mistakes.</strong> Every tool on this list will occasionally be wrong. Always double-check anything important.</li>
+        <li><strong>You don't need to try them all.</strong> Pick one or two that match something you actually do. That's enough to get started.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      A free resource from <a href="https://epiphanydynamics.ai">Epiphany Dynamics</a> <img src="ed-icon.png" alt="Epiphany Dynamics" style="width: 56px; height: auto; vertical-align: middle; margin-left: 4px;" />
+    </div>
+    <div class="footer-tagline">"Tools change fast. What matters is knowing where to start."</div>
+  </div>
+
+</div>
+</body>
+</html>

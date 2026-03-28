@@ -27,14 +27,32 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Epiphany Learn — AI for Everyone",
+  title: "AI for Everyone — Epiphany Dynamics",
   description:
-    "Learn AI in 30-minute modules. Cut through the hype and build real skills you can use every day.",
+    "Learn AI in 30-minute modules. Cut through the hype and build real skills you can use every day. Free, gamified, no signup required.",
   metadataBase: new URL("https://epiphany.help"),
   openGraph: {
-    title: "Epiphany Learn — AI for Everyone",
-    description: "Learn AI in 30-minute modules.",
-    siteName: "Epiphany Learn",
+    title: "Learn AI Without the Hype — Free, Gamified Modules",
+    description:
+      "7 modules, 29 lessons, 300+ quiz questions. Earn XP, unlock badges, and actually understand AI. Built for regular people, not engineers.",
+    siteName: "Epiphany Dynamics",
+    url: "https://epiphany.help",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1536,
+        height: 1024,
+        alt: "Epiphany Learn — AI education for everyone",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Learn AI Without the Hype — Free, Gamified Modules",
+    description:
+      "7 modules, 29 lessons, 300+ quiz questions. Earn XP, unlock badges, and actually understand AI.",
+    images: ["/images/og-image.png"],
   },
 };
 

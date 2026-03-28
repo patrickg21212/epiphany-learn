@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Jargon Decoder — Epiphany Dynamics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #1368CE;
+    --accent-light: #4DA3FF;
+    --accent-dim: rgba(19,104,206,0.12);
+    --accent-border: rgba(19,104,206,0.3);
+    --accent-glow: rgba(19,104,206,0.15);
+    --bg: #050505;
+    --bg-card: #0A0A0A;
+    --bg-elevated: #111111;
+    --text-primary: #F0EFEB;
+    --text-secondary: rgba(240,239,235,0.7);
+    --text-muted: rgba(240,239,235,0.4);
+    --text-faint: rgba(240,239,235,0.2);
+    --border: rgba(255,255,255,0.06);
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, #0F52A0 0%, #1368CE 50%, #2B8BF5 100%);
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -30px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    z-index: 1;
+  }
+  .header .module-label {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .header .earned {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 36px 48px 48px;
+    background: var(--bg);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-left: 40px;
+  }
+
+  /* ─── TERM CARDS ─── */
+  .terms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .term-card {
+    display: flex;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .term-card:hover {
+    border-color: var(--accent-border);
+  }
+  .term-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    min-width: 180px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .term-def {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-border), transparent);
+    margin: 32px 0;
+  }
+
+  /* ─── CALLOUT BOX ─── */
+  .callout {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .callout h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .callout p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .footer-brand a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-faint);
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: #050505; }
+    .page { max-width: 100%; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .term-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .section { break-inside: avoid; }
+    .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .header {
+      padding: 28px 20px 24px;
+    }
+    .header h1 {
+      font-size: 24px;
+    }
+    .header .subtitle {
+      font-size: 14px;
+    }
+    .header .module-label {
+      position: static;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .header .earned {
+      font-size: 12px;
+    }
+    .content {
+      padding: 24px 16px 32px;
+    }
+    .section-subtitle {
+      padding-left: 0;
+    }
+    .term-card {
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 14px;
+    }
+    .term-name {
+      min-width: unset;
+      font-size: 14px;
+    }
+    .term-def {
+      font-size: 13px;
+    }
+    .callout {
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .footer {
+      padding: 20px 16px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 10px;
+      min-width: 100px;
+    }
+    .score-grid, .pricing-grid, .verdict-cards, .ideas-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+
+  /* ─── MOBILE EXTRA FIXES ─── */
+  @media (max-width: 640px) {
+    [class*="card"], [class*="item"], [class*="row"] {
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    [style*="min-width"] {
+      min-width: unset !important;
+    }
+    [style*="display: flex"], [style*="display:flex"] {
+      flex-direction: column !important;
+    }
+    .page {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    * {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="module-label">Module 1 Reward</span>
+    <div class="header-badge">📖 Cheat Sheet</div>
+    <h1>AI Jargon Decoder</h1>
+    <p class="subtitle">A Plain-English Reference Card for Real People</p>
+    <p class="earned">Congratulations on completing Module 1. You earned this.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SECTION 1 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">1</span>
+        <span class="section-title">The Basics</span>
+      </div>
+      <p class="section-subtitle">The words you hear most often, finally explained.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">AI (Artificial Intelligence)</div>
+          <div class="term-def">Software that can do tasks we normally associate with human thinking — like understanding language, recognizing faces, or making decisions. It's not magic, and it's not alive. It's a very sophisticated program.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">ChatGPT</div>
+          <div class="term-def">An AI chatbot made by OpenAI. One of the first AI tools most people ever tried. The "GPT" part refers to the type of technology under the hood.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Claude</div>
+          <div class="term-def">An AI assistant made by Anthropic, a company focused on building AI safely. Similar to ChatGPT — you can have conversations with it, ask questions, and get help with writing or research.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Gemini</div>
+          <div class="term-def">Google's AI assistant. Same idea as ChatGPT and Claude — a conversational AI — just built by Google and connected to Google's services.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Generative AI</div>
+          <div class="term-def">AI that creates new things — text, images, music, video — rather than just analyzing existing data. ChatGPT, Claude, and image tools like DALL-E all fall under this umbrella.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Prompt</div>
+          <div class="term-def">The message or instruction you type to an AI. "Write me a birthday card for my mom" is a prompt. The better your prompt, the better the response.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Model</div>
+          <div class="term-def">The actual AI "brain" — the trained software that generates responses. When a company releases "GPT-4" or "Claude 3," they're releasing a new model. Think of it like a new edition of a textbook.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">2</span>
+        <span class="section-title">How It Works</span>
+      </div>
+      <p class="section-subtitle">You don't need to be an engineer to understand this. Promise.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">LLM (Large Language Model)</div>
+          <div class="term-def">The type of AI that powers most chatbots. It learned language by reading enormous amounts of text and learned to predict what words come next. "Large" means it has billions of internal settings tuned during training.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">GPT</div>
+          <div class="term-def">Stands for "Generative Pre-trained Transformer." Generative = creates new content. Pre-trained = learned from a huge dataset before you used it. Transformer = the architecture that makes it work. You don't need to memorize this.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Training Data</div>
+          <div class="term-def">The massive collection of text, images, or content the AI learned from. If an AI seems to know a lot about cooking but not much about a recent event, it's because of what was (or wasn't) in its training data.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Neural Network</div>
+          <div class="term-def">The structure inside an AI that loosely mimics how brain cells connect. Information flows through many layers of connections, and the AI adjusts those connections as it learns.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Machine Learning</div>
+          <div class="term-def">AI that learns from examples rather than being given explicit rules. "If you see enough cat photos, learn what a cat looks like" — that's machine learning.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Deep Learning</div>
+          <div class="term-def">A more advanced form of machine learning that uses neural networks with many layers. Most modern AI, including ChatGPT and image recognition, runs on deep learning.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Parameters</div>
+          <div class="term-def">The millions (or billions) of internal settings inside a model, adjusted during training. More parameters generally means more nuance. "A 70 billion parameter model" describes its size and complexity.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Token</div>
+          <div class="term-def">The small chunks AI breaks text into before processing. A token is roughly ¾ of a word. "Hello, how are you?" is about 6 tokens. AI tools often limit how many tokens you can use per conversation.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Context Window</div>
+          <div class="term-def">The amount of text an AI can "see" at once during a conversation. If a conversation gets very long, the AI may "forget" earlier parts — because old text has left its context window.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Inference</div>
+          <div class="term-def">When an AI uses its trained model to generate a response to your prompt. Training = the learning phase (expensive, done once). Inference = the using phase (happens every time you send a message).</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Fine-tuning</div>
+          <div class="term-def">Additional training on a specific, smaller dataset to make a model better at a particular job. Like sending a general assistant to a specialized workshop.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">NLP (Natural Language Processing)</div>
+          <div class="term-def">The field of AI focused on helping computers understand human language — reading, writing, summarizing, translating. Chatbots, spell-check, and voice assistants all use NLP.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">3</span>
+        <span class="section-title">What Can Go Wrong</span>
+      </div>
+      <p class="section-subtitle">Every tool has limits. Knowing these makes you a smarter user.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Hallucination</div>
+          <div class="term-def">When an AI confidently states something that is completely made up. It might invent a fake study, a wrong date, or a person who doesn't exist — and sound totally sure. Always verify important facts from AI.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Bias (in AI)</div>
+          <div class="term-def">AI can inherit prejudices from its training data. If the data over-represented certain groups or viewpoints, the AI's responses may reflect that unevenly. Not intentional — a side effect of learning from human content.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <span class="section-title">Buzzwords Decoded</span>
+      </div>
+      <p class="section-subtitle">Terms you'll see in headlines and tech conversations.</p>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term-name">Open Source (AI)</div>
+          <div class="term-def">The AI's code and sometimes the model itself is publicly available for anyone to use or modify. Examples: Llama (Meta), Mistral. Transparency is the main benefit.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">Closed Source (AI)</div>
+          <div class="term-def">A "black box" — the company controls it and doesn't share how it works. Examples: GPT-4 (OpenAI), Claude (Anthropic). Common for commercial products.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-name">API</div>
+          <div class="term-def">A way for one program to talk to another. When a business "uses AI via API," they've connected their app to an AI service. Think of it as a drive-through window — you order without going into the kitchen.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <h3>Still confused? That's completely normal.</h3>
+      <p>AI terminology is genuinely messy — even people in the industry use these words loosely. The goal isn't to memorize every term. It's to feel less lost when you see them, and to know where to look when you need a refresher. Keep this card handy.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      A free resource from <a href="https://epiphanydynamics.ai">Epiphany Dynamics</a> <img src="ed-icon.png" alt="Epiphany Dynamics" style="width: 56px; height: auto; vertical-align: middle; margin-left: 4px;" />
+    </div>
+    <div class="footer-tagline">"Understanding AI starts with understanding the words."</div>
+  </div>
+
+</div>
+</body>
+</html>

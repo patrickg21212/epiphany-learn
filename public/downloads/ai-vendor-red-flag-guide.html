@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Vendor Red Flag Guide — Epiphany Dynamics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #FF3EA5;
+    --accent-light: #FF6FC0;
+    --accent-dim: rgba(255,62,165,0.12);
+    --accent-border: rgba(255,62,165,0.3);
+    --accent-glow: rgba(255,62,165,0.15);
+    --bg: #050505;
+    --bg-card: #0A0A0A;
+    --bg-elevated: #111111;
+    --text-primary: #F0EFEB;
+    --text-secondary: rgba(240,239,235,0.7);
+    --text-muted: rgba(240,239,235,0.4);
+    --text-faint: rgba(240,239,235,0.2);
+    --border: rgba(255,255,255,0.06);
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, #D92D8A 0%, #FF3EA5 50%, #FF6FC0 100%);
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -30px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    z-index: 1;
+  }
+  .header .module-label {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .header .earned {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 36px 48px 48px;
+    background: var(--bg);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-left: 40px;
+  }
+
+  /* ─── TERM CARDS (reused for all card types) ─── */
+  .terms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .term-card {
+    display: flex;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .term-card:hover {
+    border-color: var(--accent-border);
+  }
+  .term-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    min-width: 220px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .term-def {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── RED FLAG CARDS ─── */
+  .redflag-card {
+    display: flex;
+    gap: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .redflag-card:hover {
+    border-color: var(--accent-border);
+  }
+  .redflag-left {
+    padding: 14px 16px;
+    min-width: 240px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border);
+    background: rgba(255,62,165,0.06);
+  }
+  .redflag-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .redflag-claim {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .redflag-right {
+    padding: 14px 16px;
+    flex: 1;
+  }
+  .redflag-translation-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .redflag-translation {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── QUESTION CARDS ─── */
+  .question-card {
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .question-card:hover {
+    border-color: var(--accent-border);
+  }
+  .question-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 10px;
+  }
+  .answer-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .answer-block {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+  .answer-good {
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.2);
+  }
+  .answer-bad {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.2);
+  }
+  .answer-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .answer-label.good { color: rgba(34,197,94,0.8); }
+  .answer-label.bad { color: rgba(239,68,68,0.8); }
+
+  /* ─── DIAGNOSTIC TABLE ─── */
+  .diagnostic-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .diagnostic-table th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .diagnostic-table th:first-child {
+    width: 40%;
+  }
+  .diagnostic-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .diagnostic-table td:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .diagnostic-table td.yes-cell {
+    color: rgba(34,197,94,0.85);
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .diagnostic-table td.no-cell {
+    color: rgba(239,68,68,0.85);
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .diagnostic-table tr:last-child td {
+    border-bottom: none;
+  }
+  .diagnostic-table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .diagnostic-verdict {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .verdict-card {
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+  .verdict-card strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .verdict-card.highlight {
+    background: var(--accent-dim);
+    border-color: var(--accent-border);
+  }
+  .verdict-card.highlight strong {
+    color: var(--accent-light);
+  }
+
+  /* ─── PRICING CARDS ─── */
+  .pricing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pricing-card {
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .pricing-card:hover {
+    border-color: var(--accent-border);
+  }
+  .pricing-model-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 6px;
+  }
+  .pricing-description {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .pricing-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .pricing-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    line-height: 1.4;
+  }
+  .pricing-tag.works-well {
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.2);
+    color: rgba(34,197,94,0.85);
+  }
+  .pricing-tag.watch-out {
+    background: rgba(251,191,36,0.1);
+    border: 1px solid rgba(251,191,36,0.25);
+    color: rgba(251,191,36,0.85);
+  }
+  .pricing-tag-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .pricing-meta-col {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-border), transparent);
+    margin: 32px 0;
+  }
+
+  /* ─── CALLOUT BOX ─── */
+  .callout {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .callout h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .callout p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .footer-brand a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-faint);
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: #050505; }
+    .page { max-width: 100%; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .term-card,
+    .redflag-card,
+    .question-card,
+    .pricing-card,
+    .verdict-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .section { break-inside: avoid; }
+    .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .diagnostic-table-wrapper { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .header {
+      padding: 28px 20px 24px;
+    }
+    .header h1 {
+      font-size: 24px;
+    }
+    .header .subtitle {
+      font-size: 14px;
+    }
+    .header .module-label {
+      position: static;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .header .earned {
+      font-size: 12px;
+    }
+    .content {
+      padding: 24px 16px 32px;
+    }
+    .section-subtitle {
+      padding-left: 0;
+    }
+    .term-card {
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 14px;
+    }
+    .term-name {
+      min-width: unset;
+      font-size: 14px;
+    }
+    .term-def {
+      font-size: 13px;
+    }
+    .callout {
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .footer {
+      padding: 20px 16px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 10px;
+      min-width: 100px;
+    }
+    .score-grid, .pricing-grid, .verdict-cards, .ideas-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+
+  /* ─── MOBILE EXTRA FIXES ─── */
+  @media (max-width: 640px) {
+    [class*="card"], [class*="item"], [class*="row"] {
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    [style*="min-width"] {
+      min-width: unset !important;
+    }
+    [style*="display: flex"], [style*="display:flex"] {
+      flex-direction: column !important;
+    }
+    .page {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    * {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="module-label">Module 5 Reward</span>
+    <div class="header-badge">🚩 Cheat Sheet</div>
+    <h1>AI Vendor Red Flag Guide</h1>
+    <p class="subtitle">A plain-English buyer's checklist for evaluating AI tools and vendors</p>
+    <p class="earned">Congratulations on completing Module 5. You earned this.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SECTION 1: Red Flags -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">1</span>
+        <span class="section-title">10 Red Flags in AI Sales Pitches</span>
+      </div>
+      <p class="section-subtitle">What vendors say — and what it actually means.</p>
+      <div class="terms-grid">
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"Our AI is powered by proprietary technology."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">We built a wrapper around an existing AI model (usually OpenAI, Google, or Anthropic) and aren't telling you that. Ask directly: what foundation model powers this? If they won't answer, that's your answer.</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"It learns and improves automatically."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">Most hosted AI tools don't actually retrain on your data. What they usually mean is your past conversations get stored as context. Ask exactly how personalization works: is it fine-tuning, document retrieval, or just conversation history?</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"99% accuracy."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">Every AI system makes mistakes. An accuracy claim without context is meaningless. Ask: accurate at what specific task? Measured on what data? Tested by the vendor or an independent party? If they can't answer all three, the number is marketing, not a specification.</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"It replaces [X] employees."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">Under ideal conditions, with a skilled person operating it, the tool can handle some tasks those employees do. The realistic version: it handles routine parts, still needs oversight, and your team needs to learn how to use it. Ask what the average implementation looks like, not the best-case story.</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"Set it and forget it."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">There is no such thing as a "set it and forget it" AI tool. Every deployment requires setup, testing, periodic review, and course corrections. Plan for ongoing maintenance time, not just an initial launch.</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"We integrate with everything."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">We connect to the 15–20 most popular tools via their standard APIs. Ask for your specific integration to be demonstrated live, with your actual data. Ask what happens when the integration breaks. "Native integration" often means a one-way data push with no error handling.</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"Our AI understands your industry."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">The underlying model is general-purpose — what's industry-specific are the prompts and curated knowledge base built on top of it. Ask what happens when it produces wrong industry-specific information and whether there's a human review process.</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"No technical setup required — works out of the box."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">The default demo works immediately. Getting the tool to actually work for your business — connecting your data, configuring workflows, setting guardrails, testing edge cases — takes real work. Plan for at least one to four weeks of setup for any serious deployment.</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"ROI guarantee — 10x your output in 30 days."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">This is a best-case result, selected from the most successful customer in their portfolio. Ask what the average time-to-value is across all customers, not just the success stories. Ask what the onboarding timeline looks like step by step before that ROI kicks in.</div>
+          </div>
+        </div>
+
+        <div class="redflag-card">
+          <div class="redflag-left">
+            <div class="redflag-label">They say</div>
+            <div class="redflag-claim">"This feature is coming in Q3."</div>
+          </div>
+          <div class="redflag-right">
+            <div class="redflag-translation-label">What it means</div>
+            <div class="redflag-translation">That's an aspiration, not a commitment. Roadmap slides are not contracts. If a feature is important to your decision, get a written guarantee with a refund clause, or wait until it ships. Buying based on roadmap promises is how businesses end up paying for tools that don't yet do what they need.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: Questions to Ask -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">2</span>
+        <span class="section-title">12 Questions to Ask Before You Buy</span>
+      </div>
+      <p class="section-subtitle">What a good answer looks like — and what a bad one sounds like.</p>
+      <div class="terms-grid">
+
+        <div class="question-card">
+          <div class="question-text">1. What happens to my data?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              "Your data is not used to train the model. Here's our Data Processing Agreement." Check the actual privacy policy for "may be used to improve the service" — that often means your data trains the model unless you opt out.
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "We take privacy seriously." — with no specifics.
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">2. What does it actually cost after the trial — and at 3x my current usage?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              A clear pricing table with usage tiers and overage rates. AI pricing often scales aggressively — a $99/month tool can reach $800/month if you actually rely on it.
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "We'll figure out a plan that works for you."
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">3. Can I export all my data if I leave?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              "Yes — here's how, and here's what format it exports in." The best vendors make this easy because they're confident you'll stay.
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "Our team can help you with that process." If you can't export independently, you're locked in.
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">4. What does it do when it doesn't know the answer?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              "Here's how errors surface — the tool shows a confidence score and flags when it's uncertain."
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "It rarely gets things wrong." Every AI tool is wrong sometimes. A good vendor explains how errors are handled, not whether errors happen.
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">5. How often does it need human oversight?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              "For this type of task, you should review outputs before they go out — here's what that workflow looks like."
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "The AI handles it automatically — no review needed." Any vendor claiming their AI never needs a second set of eyes is not being honest with you.
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">6. Is my data used to train the model?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              "No — and here's the signed Data Processing Agreement that confirms it." Check the Terms of Service directly.
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "We follow all standard privacy practices." For consumer AI tools, opting out of training data use is often buried in settings — not the default.
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">7. What does cancellation look like?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              "Cancel anytime, 30 days notice, your data is exportable for 60 days after cancellation."
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              Unclear, or requires a conversation with a "customer success manager." If the cancellation path is convoluted, it's designed to keep you paying.
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">8. Can I talk to two or three actual customers in my situation?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              "Absolutely — here are three customers in similar businesses who opted in to speak with prospects." Unscripted conversations reveal what doesn't work.
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "We have these case studies on our website." Case studies are curated. If a vendor won't connect you with references, they're hiding something.
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">9. What's your uptime track record?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              A publicly accessible status page showing 90-plus days of uptime history.
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "We have enterprise-grade infrastructure." If the tool becomes part of your daily operations, its downtime is your downtime.
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">10. What does a failed implementation look like — and how common is it?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              "Here are the most common reasons it doesn't work and what we do differently when we recognize those patterns." Honest vendors have learned from failures.
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              Discomfort, deflection, or "it always works when customers follow the process."
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">11. What does onboarding actually involve, step by step?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              A clear timeline — kickoff, data connection, configuration, testing, go-live — with realistic durations. Ask: who does the work — you, their team, or a third-party partner?
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "You'll be up in minutes."
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-text">12. What does this cost at 10x my current usage?</div>
+          <div class="answer-row">
+            <div class="answer-block answer-good">
+              <div class="answer-label good">Good answer</div>
+              A clear answer with specific numbers at higher volume. The question isn't what it costs today — it's what it costs if the tool actually works and you use it heavily.
+            </div>
+            <div class="answer-block answer-bad">
+              <div class="answer-label bad">Bad answer</div>
+              "We have plans for businesses of all sizes." Understand the pricing ceiling before you get there.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: Do You Actually Need AI -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">3</span>
+        <span class="section-title">Do You Actually Need AI?</span>
+      </div>
+      <p class="section-subtitle">Answer these five questions honestly before buying or building anything.</p>
+
+      <div class="diagnostic-table-wrapper">
+        <table class="diagnostic-table">
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Yes</th>
+              <th>No</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Is the task repetitive?</strong> You do it often, in roughly the same way each time.</td>
+              <td class="yes-cell">AI might help</td>
+              <td class="no-cell">You probably just need better organization</td>
+            </tr>
+            <tr>
+              <td><strong>Does it involve language or text?</strong> Writing, summarizing, answering questions, sorting documents, drafting responses.</td>
+              <td class="yes-cell">AI might help</td>
+              <td class="no-cell">AI may not be the right tool for this</td>
+            </tr>
+            <tr>
+              <td><strong>Is good enough better than nothing?</strong> The task is currently not done at all, or done slowly and inconsistently.</td>
+              <td class="yes-cell">AI might help</td>
+              <td class="no-cell">If accuracy is critical, the cost of AI errors may exceed the benefit</td>
+            </tr>
+            <tr>
+              <td><strong>Do you have examples of good output?</strong> You can describe or show what a correct result looks like.</td>
+              <td class="yes-cell">AI might help</td>
+              <td class="no-cell">Without examples, you can't train, test, or verify the AI's work</td>
+            </tr>
+            <tr>
+              <td><strong>Can you verify the output?</strong> Someone on your team can review AI results and catch mistakes before they cause problems.</td>
+              <td class="yes-cell">AI might help</td>
+              <td class="no-cell">If no one can verify it, AI errors will be invisible until they cause damage</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="diagnostic-verdict">
+        <div class="verdict-card">
+          <strong>Answered Yes to most:</strong>
+          AI is worth exploring. Start with a low-commitment trial on one specific task before rolling it out broadly.
+        </div>
+        <div class="verdict-card">
+          <strong>Answered No to most:</strong>
+          You may not have an AI problem. You may have a process problem. Better workflows, clearer responsibilities, or simpler tools might solve it faster and cheaper.
+        </div>
+        <div class="verdict-card highlight">
+          <strong>One more question first:</strong>
+          Is this task being done poorly because of missing technology — or because of missing time, unclear ownership, or inconsistent processes? AI layered on top of a broken process produces broken results faster. Fix the process first.
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4: Pricing Models -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <span class="section-title">Pricing Models Decoded</span>
+      </div>
+      <p class="section-subtitle">A quick reference for the most common AI pricing structures.</p>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <div class="pricing-model-name">Per Seat / Per User</div>
+          <div class="pricing-description">You pay a fixed monthly fee for each person who has access. Example: $50 per user per month.</div>
+          <div class="pricing-meta">
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Works well when</div>
+              <div class="pricing-tag works-well">Adoption is high and all users actively use the tool</div>
+            </div>
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Watch out for</div>
+              <div class="pricing-tag watch-out">Paying for inactive seats — half your team rarely opens it, half your spend is wasted</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-model-name">Per API Call / Per Token</div>
+          <div class="pricing-description">You pay based on what you actually use. Example: $0.002 per 1,000 words processed.</div>
+          <div class="pricing-meta">
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Works well when</div>
+              <div class="pricing-tag works-well">Usage is variable or hard to predict upfront</div>
+            </div>
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Watch out for</div>
+              <div class="pricing-tag watch-out">Surprise bills — one large batch job can generate a very large bill overnight. Always set a spending cap first.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-model-name">Flat Monthly Fee</div>
+          <div class="pricing-description">One price for access up to a defined limit (or "unlimited," with conditions). Example: $299 per month.</div>
+          <div class="pricing-meta">
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Works well when</div>
+              <div class="pricing-tag works-well">High, consistent usage and predictable cost is the priority</div>
+            </div>
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Watch out for</div>
+              <div class="pricing-tag watch-out">What "unlimited" actually means — most plans have a soft limit where throttling or overage charges kick in</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-model-name">Usage-Based / Metered (Tiered)</div>
+          <div class="pricing-description">A flat rate at each usage tier, with step-up pricing as you grow. Example: $49/month up to 5,000 messages, $299/month for 5,001–25,000 messages.</div>
+          <div class="pricing-meta">
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Works well when</div>
+              <div class="pricing-tag works-well">Starting small as a low-commitment entry point</div>
+            </div>
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Watch out for</div>
+              <div class="pricing-tag watch-out">Steep jumps between tiers — your cost can jump 5x with one month of growth. Project at 3x and 10x usage before committing.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-model-name">"Free Forever"</div>
+          <div class="pricing-description">The core product is free. The features you actually need are paid add-ons. By the time you've added everything you need, the "free" tool often costs more than a competing product with transparent flat-rate pricing.</div>
+          <div class="pricing-meta">
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Works well when</div>
+              <div class="pricing-tag works-well">Your needs are genuinely covered by the free tier — rare</div>
+            </div>
+            <div class="pricing-meta-col">
+              <div class="pricing-tag-label">Watch out for</div>
+              <div class="pricing-tag watch-out">Factor all add-ons into your comparison, not just the headline price. The demo is free. Useful features are not.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card" style="border-color: var(--accent-border); background: var(--accent-dim);">
+          <div class="pricing-model-name">The Cost the Pricing Page Never Shows</div>
+          <div class="pricing-description" style="color: var(--text-secondary);">Whatever the pricing page says, the real first-year cost is higher. A $99/month tool that takes 40 hours of setup has a real first-year cost thousands of dollars higher than the subscription alone.</div>
+          <div class="terms-grid" style="margin-top: 10px; gap: 4px;">
+            <div class="term-card" style="padding: 8px 12px;">
+              <div class="term-def">Time to set it up and configure it for your business</div>
+            </div>
+            <div class="term-card" style="padding: 8px 12px;">
+              <div class="term-def">Time to connect it to your existing tools</div>
+            </div>
+            <div class="term-card" style="padding: 8px 12px;">
+              <div class="term-def">Time to train your team</div>
+            </div>
+            <div class="term-card" style="padding: 8px 12px;">
+              <div class="term-def">Time spent reviewing and correcting AI outputs</div>
+            </div>
+            <div class="term-card" style="padding: 8px 12px;">
+              <div class="term-def">The cost of switching to something else if it doesn't work out</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <h3>The best AI vendors welcome hard questions.</h3>
+      <p>They've built real products for real customers, they know where the edges are, and they're confident enough in what they've built to be honest about what it doesn't do. If asking any of these questions makes a vendor uncomfortable, defensive, or evasive — that tells you everything you need to know.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      A free resource from <a href="https://epiphanydynamics.ai">Epiphany Dynamics</a> <img src="ed-icon.png" alt="Epiphany Dynamics" style="width: 56px; height: auto; vertical-align: middle; margin-left: 4px;" />
+    </div>
+    <div class="footer-tagline">"The best vendors welcome hard questions."</div>
+  </div>
+
+</div>
+</body>
+</html>

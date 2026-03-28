@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Safety Checklist — Epiphany Dynamics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #EB670F;
+    --accent-light: #FF9F5C;
+    --accent-dim: rgba(235,103,15,0.12);
+    --accent-border: rgba(235,103,15,0.3);
+    --accent-glow: rgba(235,103,15,0.15);
+    --bg: #050505;
+    --bg-card: #0A0A0A;
+    --bg-elevated: #111111;
+    --text-primary: #F0EFEB;
+    --text-secondary: rgba(240,239,235,0.7);
+    --text-muted: rgba(240,239,235,0.4);
+    --text-faint: rgba(240,239,235,0.2);
+    --border: rgba(255,255,255,0.06);
+
+    /* Zone colors */
+    --red-bg: rgba(220,38,38,0.1);
+    --red-border: rgba(220,38,38,0.3);
+    --red-label: #F87171;
+    --yellow-bg: rgba(202,138,4,0.1);
+    --yellow-border: rgba(202,138,4,0.28);
+    --yellow-label: #FCD34D;
+    --green-bg: rgba(22,163,74,0.1);
+    --green-border: rgba(22,163,74,0.28);
+    --green-label: #4ADE80;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, #C7520A 0%, #EB670F 50%, #FF8A3D 100%);
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -30px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    z-index: 1;
+  }
+  .header .module-label {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .header .earned {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 36px 48px 48px;
+    background: var(--bg);
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .section-number.red-zone {
+    background: #DC2626;
+  }
+  .section-number.yellow-zone {
+    background: #CA8A04;
+  }
+  .section-number.green-zone {
+    background: #16A34A;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-left: 40px;
+  }
+
+  /* ─── CHECKLIST CARDS (default accent) ─── */
+  .terms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .term-card {
+    display: flex;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .term-card:hover {
+    border-color: var(--accent-border);
+  }
+
+  /* ─── RED ZONE CARDS ─── */
+  .term-card.red {
+    background: var(--red-bg);
+    border-color: var(--red-border);
+  }
+  .term-card.red:hover {
+    border-color: rgba(220,38,38,0.55);
+  }
+  .term-card.red .term-name {
+    color: var(--red-label);
+  }
+
+  /* ─── YELLOW ZONE CARDS ─── */
+  .term-card.yellow {
+    background: var(--yellow-bg);
+    border-color: var(--yellow-border);
+  }
+  .term-card.yellow:hover {
+    border-color: rgba(202,138,4,0.5);
+  }
+  .term-card.yellow .term-name {
+    color: var(--yellow-label);
+  }
+
+  /* ─── GREEN ZONE CARDS ─── */
+  .term-card.green {
+    background: var(--green-bg);
+    border-color: var(--green-border);
+  }
+  .term-card.green:hover {
+    border-color: rgba(22,163,74,0.5);
+  }
+  .term-card.green .term-name {
+    color: var(--green-label);
+  }
+
+  .term-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    min-width: 220px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .term-def {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── ZONE RULE-OF-THUMB BOX ─── */
+  .zone-note {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+  .zone-note.red {
+    background: var(--red-bg);
+    border: 1px solid var(--red-border);
+    color: rgba(248,113,113,0.85);
+  }
+  .zone-note.yellow {
+    background: var(--yellow-bg);
+    border: 1px solid var(--yellow-border);
+    color: rgba(252,211,77,0.8);
+  }
+
+  /* ─── STEPS (verification routine) ─── */
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .step-card {
+    display: flex;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .step-card:hover {
+    border-color: var(--accent-border);
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-light);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-body .step-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 4px;
+  }
+  .step-body .step-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── FAKE-SPOTTING SUBSECTIONS ─── */
+  .subsection {
+    margin-bottom: 20px;
+  }
+  .subsection-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 8px;
+    padding-left: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  /* ─── PRIVACY TABLE ─── */
+  .privacy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .privacy-table th {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--accent-light);
+    font-size: 12px;
+  }
+  .privacy-table td {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    color: var(--text-secondary);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .privacy-table tr:hover td {
+    border-color: var(--accent-border);
+  }
+  .privacy-table .row-label {
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 140px;
+  }
+  .table-note {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-border), transparent);
+    margin: 32px 0;
+  }
+
+  /* ─── CALLOUT BOX ─── */
+  .callout {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .callout h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .callout p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .footer-brand a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-faint);
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: #050505; }
+    .page { max-width: 100%; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .term-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .section { break-inside: avoid; }
+    .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .privacy-table th, .privacy-table td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .zone-note { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .header {
+      padding: 28px 20px 24px;
+    }
+    .header h1 {
+      font-size: 24px;
+    }
+    .header .subtitle {
+      font-size: 14px;
+    }
+    .header .module-label {
+      position: static;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .header .earned {
+      font-size: 12px;
+    }
+    .content {
+      padding: 24px 16px 32px;
+    }
+    .section-subtitle {
+      padding-left: 0;
+    }
+    .term-card {
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 14px;
+    }
+    .term-name {
+      min-width: unset;
+      font-size: 14px;
+    }
+    .term-def {
+      font-size: 13px;
+    }
+    .callout {
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .footer {
+      padding: 20px 16px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 10px;
+      min-width: 100px;
+    }
+    .score-grid, .pricing-grid, .verdict-cards, .ideas-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+
+  /* ─── MOBILE EXTRA FIXES ─── */
+  @media (max-width: 640px) {
+    [class*="card"], [class*="item"], [class*="row"] {
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    [style*="min-width"] {
+      min-width: unset !important;
+    }
+    [style*="display: flex"], [style*="display:flex"] {
+      flex-direction: column !important;
+    }
+    .page {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    * {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="module-label">Module 4 Reward</span>
+    <div class="header-badge">🛡️ Cheat Sheet</div>
+    <h1>AI Safety Checklist</h1>
+    <p class="subtitle">Your practical guide to using AI confidently</p>
+    <p class="earned">Congratulations on completing Module 4. You earned this.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SECTION 1: Never Share -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number red-zone">1</span>
+        <span class="section-title">Never Share With AI</span>
+      </div>
+      <p class="section-subtitle">These items should never be typed into any AI chatbot — free or paid.</p>
+      <div class="terms-grid">
+        <div class="term-card red">
+          <div class="term-name">Social Security Number (SSN)</div>
+          <div class="term-def">No legitimate AI task requires it. Keep this offline entirely.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Passwords or PINs</div>
+          <div class="term-def">For any account, device, or system. No exceptions.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Bank / Routing Numbers</div>
+          <div class="term-def">Bank account or routing numbers of any kind.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Credit / Debit Card Numbers</div>
+          <div class="term-def">Including CVV codes. There is no valid reason to give these to an AI.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Medical Records / Diagnoses</div>
+          <div class="term-def">Symptoms are usually fine; full records are not. Don't paste charts or lab results.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Private Photos of Others</div>
+          <div class="term-def">Especially photos of minors. You do not own their data.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Confidential Work Documents</div>
+          <div class="term-def">Contracts, internal memos, client data, trade secrets — off limits.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Passport / License Numbers</div>
+          <div class="term-def">Government ID numbers of any kind belong offline.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Immigration Status</div>
+          <div class="term-def">This information is sensitive in any context. Keep it out of AI tools entirely.</div>
+        </div>
+        <div class="term-card red">
+          <div class="term-name">Login Credentials</div>
+          <div class="term-def">Email, banking, social media — never type these into an AI chatbox.</div>
+        </div>
+      </div>
+      <div class="zone-note red">
+        <strong>Why:</strong> Even well-designed AI systems store conversation data for training and review. There is no guarantee your input stays private.
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: Think Twice -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number yellow-zone">2</span>
+        <span class="section-title">Think Twice Before Sharing</span>
+      </div>
+      <p class="section-subtitle">These are okay in some situations, but carry real risk depending on context and platform.</p>
+      <div class="terms-grid">
+        <div class="term-card yellow">
+          <div class="term-name">Full Name + Location Together</div>
+          <div class="term-def">Either alone is usually fine; combined they create a searchable profile of you.</div>
+        </div>
+        <div class="term-card yellow">
+          <div class="term-name">Employer + Internal Details</div>
+          <div class="term-def">Mentioning your industry is low risk; specific project names or client names may violate NDAs.</div>
+        </div>
+        <div class="term-card yellow">
+          <div class="term-name">Children's Names / School Details</div>
+          <div class="term-def">Vague references are fine; specifics build a profile of a minor without their consent.</div>
+        </div>
+        <div class="term-card yellow">
+          <div class="term-name">Ongoing Legal Situations</div>
+          <div class="term-def">AI can explain general law; sharing case-specific details is risky and potentially harmful.</div>
+        </div>
+        <div class="term-card yellow">
+          <div class="term-name">Details About Other People</div>
+          <div class="term-def">Asking AI to help draft a message about a coworker shares their information without their knowledge or consent.</div>
+        </div>
+        <div class="term-card yellow">
+          <div class="term-name">Family Members' Health Conditions</div>
+          <div class="term-def">General questions are fine; detailed family medical history is not yours to share.</div>
+        </div>
+        <div class="term-card yellow">
+          <div class="term-name">Financial Situation Specifics</div>
+          <div class="term-def">General budgeting questions are fine; exact income, debt amounts, or account balances are not.</div>
+        </div>
+      </div>
+      <div class="zone-note yellow">
+        <strong>Rule of thumb:</strong> Ask yourself — "If this conversation were printed and left on a coffee shop table, would I be uncomfortable?" If yes, leave it out.
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: Generally Safe -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number green-zone">3</span>
+        <span class="section-title">Generally Safe to Share</span>
+      </div>
+      <p class="section-subtitle">These types of information carry low risk and are what AI tools are designed to help with.</p>
+      <div class="terms-grid">
+        <div class="term-card green">
+          <div class="term-name">General How-To Questions</div>
+          <div class="term-def">"How do I write a cover letter?" or "What's the best way to cook chicken?" — totally fine.</div>
+        </div>
+        <div class="term-card green">
+          <div class="term-name">Creative Writing and Fiction</div>
+          <div class="term-def">Characters, plots, made-up worlds — AI thrives here. No personal data involved.</div>
+        </div>
+        <div class="term-card green">
+          <div class="term-name">Publicly Available Information</div>
+          <div class="term-def">Things you'd find on Wikipedia or in a news article. Already out there.</div>
+        </div>
+        <div class="term-card green">
+          <div class="term-name">Hypothetical Scenarios</div>
+          <div class="term-def">"What would happen if a city banned cars?" or "Write a story about a robot."</div>
+        </div>
+        <div class="term-card green">
+          <div class="term-name">Learning and Research Topics</div>
+          <div class="term-def">History, science, math, languages — this is where AI genuinely excels.</div>
+        </div>
+        <div class="term-card green">
+          <div class="term-name">Your General Profession or Industry</div>
+          <div class="term-def">"I work in healthcare" or "I'm a small business owner" — no sensitive specifics attached.</div>
+        </div>
+        <div class="term-card green">
+          <div class="term-name">Editing and Proofreading</div>
+          <div class="term-def">Drafts of emails, resumes, or letters that contain no sensitive data or other people's information.</div>
+        </div>
+        <div class="term-card green">
+          <div class="term-name">Ideas and Brainstorming</div>
+          <div class="term-def">Product names, event planning, gift ideas — AI is a great sounding board here.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4: Spot AI Fakes -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">4</span>
+        <span class="section-title">How to Spot AI-Generated Fakes</span>
+      </div>
+      <p class="section-subtitle">The tells are consistent. Once you know them, they're hard to unsee.</p>
+
+      <div class="subsection">
+        <div class="subsection-title">Fake Images — Look For:</div>
+        <div class="terms-grid">
+          <div class="term-card">
+            <div class="term-name">Wrong Number of Fingers</div>
+            <div class="term-def">AI frequently gets hands wrong. Count them — extra fingers, missing joints, or merged digits are dead giveaways.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Blurry or Nonsensical Text</div>
+            <div class="term-def">Any text inside a generated image will be blurry, misspelled, or completely made-up when you zoom in.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Impossible Backgrounds</div>
+            <div class="term-def">Architecture that curves oddly, trees that merge into each other, floors that don't line up.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Asymmetrical Details</div>
+            <div class="term-def">Ears, hair, and jewelry that are lopsided or seem to dissolve into the background around the edges.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Glassy Eyes / Wrong Reflections</div>
+            <div class="term-def">Eyes that look slightly artificial, or reflect light from two completely different directions.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Generator Watermarks</div>
+            <div class="term-def">Faint logos from image generators — look in corners or along the edges of the image.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">Fake Text and Articles — Look For:</div>
+        <div class="terms-grid">
+          <div class="term-card">
+            <div class="term-name">No Author, Date, or Source</div>
+            <div class="term-def">Missing any of these is a red flag. Real journalism has real bylines and real timestamps.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Unnaturally Smooth Writing</div>
+            <div class="term-def">Never uses contractions or casual phrases. Human writing has rhythm, imperfections, and personality. AI writing is often frictionless in a way that feels off.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Claims With No Evidence Links</div>
+            <div class="term-def">Sounds plausible, but every factual claim floats free with nothing to verify it against.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Unverifiable Stats or Quotes</div>
+            <div class="term-def">If you can't find who said it or where the number came from, be skeptical. AI invents citations.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">Deepfake Video and Audio — Look For:</div>
+        <div class="terms-grid">
+          <div class="term-card">
+            <div class="term-name">Lip Sync Mismatch</div>
+            <div class="term-def">Mouth movements that don't quite match the words — especially noticeable on longer syllables.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Unnatural Blinking</div>
+            <div class="term-def">Either too frequent or not frequent enough. Real people blink in a surprisingly consistent rhythm.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Lighting That Doesn't Match</div>
+            <div class="term-def">The light on the face doesn't match the environment behind the person — usually subtle but visible.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Blurry Face Edges</div>
+            <div class="term-def">Warping or blurring around the face, ears, or hairline — especially during motion.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Flat Voice Quality</div>
+            <div class="term-def">Real voices have breath, hesitation, and natural variation. AI voice sounds slightly too clean or robotic in transitions.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">AI Voice Clone Scam Calls — Watch For:</div>
+        <div class="terms-grid">
+          <div class="term-card">
+            <div class="term-name">Fake Distress from "Family"</div>
+            <div class="term-def">A caller who sounds like a family member or coworker claiming to be in trouble and asking for money or personal info.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Urgency and Pressure</div>
+            <div class="term-def">"Don't tell anyone, just send money now." Real emergencies allow time for verification.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">Voice That Feels Slightly Off</div>
+            <div class="term-def">Sounds right but has small pauses, robotic transitions, or missing emotional variation.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-name">No Family Code Word Known</div>
+            <div class="term-def">Establish a private code word with close family for emergencies. Real family will know it. Scammers won't.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 5: Verification Routine -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">5</span>
+        <span class="section-title">Your 30-Second Verification Routine</span>
+      </div>
+      <p class="section-subtitle">When you see something suspicious — alarming photo, shocking headline, viral video — run through this before sharing.</p>
+      <div class="steps-list">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Check the source</div>
+            <div class="step-desc">Who published this? Is it a site you recognize? Look for an About page, a real author name, and a publication date. If any of those are missing, pause.</div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Reverse image search</div>
+            <div class="step-desc">Right-click the image on desktop and select "Search image" — or drag it into images.google.com. If the same image appears on unrelated stories from years ago, it's been recycled or fabricated.</div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Look for the original</div>
+            <div class="step-desc">Search for the story on Google News. If multiple credible outlets cover it, it's more likely real. If only one site has it, or every result is a copy of the same post, be skeptical.</div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">When in doubt, don't share</div>
+            <div class="step-desc">You are not obligated to pass along information you can't verify. Sitting on a story for 24 hours costs you nothing. Spreading a fabricated photo or quote can reach thousands.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 6: Free vs Paid Privacy -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">6</span>
+        <span class="section-title">Free vs. Paid — What's Different About Privacy</span>
+      </div>
+      <p class="section-subtitle">The tier you use affects how your conversations may be handled.</p>
+      <table class="privacy-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Free Tier</th>
+            <th>Paid Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">ChatGPT (OpenAI)</td>
+            <td>Conversations may be used to train future models by default. You can opt out in Settings → Data Controls.</td>
+            <td>Same opt-out available. Enterprise plans include stronger data protections; training use is off by default for paid API customers.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Claude (Anthropic)</td>
+            <td>Free conversations may be reviewed by humans for safety and quality. Not used for training by default on the consumer app.</td>
+            <td>Similar to free tier for the consumer app. Enterprise and API plans include stricter data handling agreements.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Gemini (Google)</td>
+            <td>Free conversations are reviewed by humans and may improve Google's products. Tied to your Google account.</td>
+            <td>Google One AI Premium subscribers get stricter privacy controls. Workspace customers have enterprise-grade protections.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="table-note">The bottom line: Paid tiers generally give you more control, but always check the current privacy settings in your account — they change. The safest assumption on any free AI tool is that human reviewers may read your conversations. That's not an alarm — it's just a reason to keep sensitive information out.</p>
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <h3>Being careful doesn't mean being afraid.</h3>
+      <p>AI is a tool — knowing how to use it safely makes it more useful, not less. You don't need to avoid AI; you just need to know what belongs in the conversation and what doesn't. The habits in this checklist take seconds to build and protect you for years.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      A free resource from <a href="https://epiphanydynamics.ai">Epiphany Dynamics</a> <img src="ed-icon.png" alt="Epiphany Dynamics" style="width: 56px; height: auto; vertical-align: middle; margin-left: 4px;" />
+    </div>
+    <div class="footer-tagline">"Knowing how to use AI safely makes it more useful, not less."</div>
+  </div>
+
+</div>
+</body>
+</html>
