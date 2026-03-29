@@ -70,6 +70,26 @@ export function getProgress(): ProgressState {
     if (parsed.streakLastDate === undefined) parsed.streakLastDate = null
     if (parsed.lastVisited === undefined) parsed.lastVisited = null
     if (parsed.unlockedRewards === undefined) parsed.unlockedRewards = []
+    // Self-repair: if all lessons in a module are complete but module isn't flagged, fix it
+    const LESSON_COUNTS: Record<string, number> = {
+      'module-1': 4, 'module-2': 5, 'module-3': 4, 'module-4': 4,
+      'module-5': 4, 'module-6': 4, 'module-7': 4,
+    }
+    let repaired = false
+    for (const [modId, expected] of Object.entries(LESSON_COUNTS)) {
+      const mod = parsed.modules[modId]
+      if (!mod || mod.completed) continue
+      const completedCount = Object.values(mod.lessons).filter((l) => l.completed).length
+      if (completedCount >= expected) {
+        mod.completed = true
+        mod.completedAt = mod.completedAt ?? new Date().toISOString()
+        repaired = true
+      }
+    }
+    if (repaired) {
+      parsed.lastUpdated = new Date().toISOString()
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed))
+    }
     return parsed
   } catch {
     return getDefaultState()
