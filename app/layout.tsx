@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
+import GlobalNav from "@/components/nav/GlobalNav";
 import "./globals.css";
 
 /* Kahoot uses Montserrat globally — weight 700+ for headings, 400-600 for body */
@@ -66,6 +67,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${geistMono.variable} antialiased`}
       >
+        <GlobalNav />
         {children}
         <footer
           className="w-full py-4 text-center border-t"

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   completeLesson,
+  completeModule,
   isLessonCompleted,
   setLastVisited,
   getProgress,
@@ -119,6 +120,8 @@ export default function LessonContent({
     });
 
     if (isLastLesson) {
+      // Mark the module as complete
+      completeModule(moduleId, 0);
       // Unlock the cheat sheet reward for this module
       const reward = getRewardForModule(moduleId);
       if (reward) {
