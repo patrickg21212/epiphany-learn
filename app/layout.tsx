@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import GlobalNav from "@/components/nav/GlobalNav";
 import "./globals.css";
+
+const GA_ID = "G-5B61XZ9M1H";
 
 /* Kahoot uses Montserrat globally — weight 700+ for headings, 400-600 for body */
 const montserrat = Montserrat({
@@ -21,6 +24,8 @@ const geistMono = localFont({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   themeColor: [
     { media: "(prefers-color-scheme: dark)", color: "#050505" },
     { media: "(prefers-color-scheme: light)", color: "#050505" },
@@ -64,6 +69,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+      </head>
       <body
         className={`${montserrat.variable} ${geistMono.variable} antialiased`}
       >
