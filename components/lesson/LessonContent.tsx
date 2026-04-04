@@ -62,6 +62,12 @@ export default function LessonContent({
   const startedAtRef = useRef(Date.now());
   const isLastLesson = nextLesson === null;
 
+  // Lock body scroll so only the slide content area scrolls
+  useEffect(() => {
+    document.body.classList.add("lesson-active");
+    return () => document.body.classList.remove("lesson-active");
+  }, []);
+
   useEffect(() => {
     setCompleted(isLessonCompleted(moduleId, lesson.id));
     setLastVisited(moduleId, lesson.slug, lesson.title);
@@ -134,7 +140,7 @@ export default function LessonContent({
   const color = getModuleColor(moduleId);
 
   return (
-    <div className="flex flex-col" style={{ height: "calc(100vh - 64px)" }}>
+    <div className="flex flex-col flex-1 min-h-0">
       {/* Gamification overlays */}
       <XPBurst xp={lesson.xpReward} visible={showXP} />
       <Confetti count={60} active={showConfetti} />

@@ -52,9 +52,9 @@ export default async function LessonPage({ params }: Props) {
   const progressPercent = ((lessonIndex + 1) / mod.lessons.length) * 100;
 
   return (
-    <main className="min-h-screen bg-[#050505]" style={colorVars as React.CSSProperties}>
-      {/* Sticky header nav */}
-      <header className="sticky top-0 z-10 backdrop-blur-xl shadow-lg" style={{ background: "rgba(5,5,5,0.9)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+    <main className="flex flex-col bg-[#050505] overflow-hidden" style={{ ...(colorVars as React.CSSProperties), height: 'calc(100dvh - 3rem)' }}>
+      {/* Lesson header nav — non-sticky, sits at top of flex layout */}
+      <header className="flex-shrink-0 backdrop-blur-xl shadow-lg z-10" style={{ background: "rgba(5,5,5,0.9)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3 text-sm">
             <Link href="/modules" className="text-[#F0EFEB]/30 hover:text-[#F0EFEB]/70 transition-colors">

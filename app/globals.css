@@ -83,6 +83,8 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -93,6 +95,13 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* Lock body scroll on lesson pages — only .slide-scroll-area scrolls */
+body.lesson-active {
+  height: 100dvh;
+  overflow: hidden;
 }
 
 :focus-visible {
@@ -1411,13 +1420,21 @@ body {
   animation: shimmer 3s ease-in-out infinite;
 }
 
+.reveal-card-front {
+  background: radial-gradient(ellipse at 70% 20%, rgba(19,104,206,0.12) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.01) 100%) !important;
+}
+
 .reveal-card-sparkle {
   position: absolute;
-  width: 4px;
-  height: 4px;
   border-radius: 50%;
   background: white;
-  animation: revealSparkle 2s ease-in-out infinite;
+  animation: starTwinkle var(--star-duration, 2.5s) ease-in-out infinite;
+  animation-delay: var(--star-delay, 0s);
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.05; transform: scale(0.6); }
+  50% { opacity: var(--star-peak, 0.5); transform: scale(1); }
 }
 
 @keyframes revealSparkle {
@@ -1536,10 +1553,35 @@ body {
     font-size: 0.75rem;
   }
 
-  /* Navigation buttons: full width, larger tap target */
+  /* Navigation buttons: larger tap target */
   .slide-renderer button {
     min-height: 44px;
     min-width: 44px;
+  }
+
+  /* Slide nav bar: tighter padding */
+  .slide-renderer .flex-shrink-0 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Blockquote: reduce horizontal padding on mobile */
+  .prose-lesson blockquote {
+    padding: 1rem 1.25rem;
+  }
+
+  /* Slide prose: constrain max-widths to viewport */
+  .slide-prose p {
+    max-width: 100%;
+  }
+
+  .slide-prose ul,
+  .slide-prose ol {
+    max-width: 100%;
+  }
+
+  .slide-prose blockquote {
+    max-width: 100%;
   }
 }
 

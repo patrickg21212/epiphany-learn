@@ -83,9 +83,13 @@ export default function SlideRenderer({ children, color, glow }: Props) {
       (el as HTMLElement).style.display = idx === displayedSlide ? "" : "none";
     });
 
-    // Scroll the slide area to top
-    const scrollArea = container.closest(".slide-scroll-area");
-    if (scrollArea) scrollArea.scrollTop = 0;
+    // Scroll the slide area to top (scrollTo for iOS compatibility)
+    const scrollArea = container.closest(".slide-scroll-area") as HTMLElement | null;
+    if (scrollArea) {
+      scrollArea.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+      scrollArea.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
   }, [displayedSlide, ready]);
 
   // ─── Transition orchestrator ───
@@ -159,8 +163,7 @@ export default function SlideRenderer({ children, color, glow }: Props) {
 
   return (
     <div
-      className="slide-renderer flex flex-col"
-      style={{ height: "calc(100vh - 64px)", minHeight: "500px" }}
+      className="slide-renderer flex flex-col flex-1 min-h-0"
       onTouchStart={(e) => {
         touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }}
@@ -176,7 +179,7 @@ export default function SlideRenderer({ children, color, glow }: Props) {
       }}
     >
       {/* ═══ Slide Content ═══ */}
-      <div className="flex-1 overflow-y-auto slide-scroll-area">
+      <div className="flex-1 min-h-0 overflow-y-auto slide-scroll-area" style={{ WebkitOverflowScrolling: "touch", overscrollBehaviorY: "contain" }}>
         <div className="max-w-2xl mx-auto px-5 py-6 md:py-8">
           {/* Slide counter */}
           {totalSlides > 1 && ready && (
@@ -208,6 +211,7 @@ export default function SlideRenderer({ children, color, glow }: Props) {
             background: "rgba(5,5,5,0.95)",
             backdropFilter: "blur(12px)",
             borderTop: "1px solid rgba(255,255,255,0.06)",
+            paddingBottom: "max(12px, env(safe-area-inset-bottom))",
           }}
         >
           {/* Back */}
